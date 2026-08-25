@@ -11,6 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { toast } from "@/hooks/use-toast";
 import { gerarRelatorioPDF } from "@/lib/pdfReport";
 import { cidsOnco, listarProcedimentos, capitulosCid, type Procedimento } from "@/data/sigtap";
+import { RelatorioCobertura } from "@/components/RelatorioCobertura";
 
 // Nomenclatura oficial das formas de organização (subgrupo 0304)
 export const formasOrganizacao = [
@@ -193,6 +194,8 @@ export default function AnaliseProcedimentos() {
       </header>
 
       <main className="container mx-auto px-4 py-6 space-y-6">
+        <RelatorioCobertura linhas={matriz} />
+
         <Card>
           <CardHeader className="pb-3">
             <CardTitle className="text-base">Cobertura por forma de organização</CardTitle>

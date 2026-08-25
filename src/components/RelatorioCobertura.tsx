@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { gerarRelatorioPDF } from "@/lib/pdfReport";
-import { formasOrganizacao } from "@/pages/AnaliseProcedimentos";
+import { formasOrganizacao } from "@/data/formasOrganizacao";
 
 export interface LinhaCobertura {
   codigo: string;

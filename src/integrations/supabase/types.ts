@@ -98,13 +98,6 @@ export type Database = {
     }
     Functions: {
       cpf_is_authorized: { Args: { _cpf: string }; Returns: boolean }
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
       user_has_paid_access: { Args: { _user_id: string }; Returns: boolean }
     }
     Enums: {

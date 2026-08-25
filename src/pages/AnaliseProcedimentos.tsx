@@ -11,6 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { toast } from "@/hooks/use-toast";
 import { gerarRelatorioPDF } from "@/lib/pdfReport";
 import { cidsOnco, listarProcedimentos, capitulosCid, type Procedimento } from "@/data/sigtap";
+import { RelatorioCobertura } from "@/components/RelatorioCobertura";
 
 // Nomenclatura oficial das formas de organização (subgrupo 0304)
 export const formasOrganizacao = [

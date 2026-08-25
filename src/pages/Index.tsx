@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Activity, Database, Shield, LogOut, Settings, BookOpen, ArrowLeft, Calculator, ShieldCheck, Dna, Pill } from "lucide-react";
+import { Activity, Database, Shield, LogOut, Settings, BookOpen, ArrowLeft, Calculator, Grid3x3, ShieldCheck, Dna, Pill } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -101,6 +101,15 @@ export default function Index() {
             >
               <Pill className="w-4 h-4 mr-1" />
               <span className="text-xs sm:text-sm">Esquemas</span>
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate("/analise")}
+              className="text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10 h-8 px-2"
+            >
+              <Grid3x3 className="w-4 h-4 mr-1" />
+              <span className="text-xs sm:text-sm">Análise</span>
             </Button>
             <Button
               variant="ghost"

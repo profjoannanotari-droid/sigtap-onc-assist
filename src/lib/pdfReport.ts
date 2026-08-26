@@ -218,6 +218,29 @@ export async function gerarRelatorioPDF(input: RelatorioInput): Promise<void> {
     }
   }
 
+  // --- Assinatura do responsável ---
+  const assinaturaData = await carregarDataUrl(assinaturaJoanna);
+  if (assinaturaData) {
+    y = garantirEspaco(doc, y, 90, pageH);
+    y += 10;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(...COR_MUTED);
+    doc.text("Relatório elaborado por:", margemX, y);
+    const assinW = 150;
+    const assinH = assinW / 2; // proporção 2:1 da imagem
+    doc.addImage(assinaturaData, "PNG", margemX, y + 4, assinW, assinH);
+    y += 4 + assinH + 4;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(...COR_PRIMARIA_DARK);
+    doc.text("Joanna Notari", margemX, y);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(...COR_MUTED);
+    doc.text("FiluszTec — Health Technology", margemX, y + 12);
+  }
+
   // --- Rodapé com paginação ---
   const total = doc.getNumberOfPages();
   for (let i = 1; i <= total; i++) {

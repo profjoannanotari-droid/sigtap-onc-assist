@@ -87,10 +87,19 @@ export async function gerarRelatorioPDF(input: RelatorioInput): Promise<void> {
   doc.setFillColor(...COR_PRIMARIA_DARK);
   doc.rect(0, 110, pageW, 4, "F");
 
+  // Logo FiluszTec (canto superior direito, sobre cartão branco)
+  const logoData = await carregarDataUrl(logoFiluszTec);
+  if (logoData) {
+    const logoSize = 52;
+    doc.setFillColor(255, 255, 255);
+    doc.roundedRect(pageW - margemX - logoSize - 10, 22, logoSize + 20, logoSize + 20, 6, 6, "F");
+    doc.addImage(logoData, "PNG", pageW - margemX - logoSize, 32, logoSize, logoSize);
+  }
+
   doc.setTextColor(255, 255, 255);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(18);
-  doc.text(input.titulo, margemX, 56, { maxWidth: conteudoW });
+  doc.text(input.titulo, margemX, 56, { maxWidth: conteudoW - 90 });
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10.5);

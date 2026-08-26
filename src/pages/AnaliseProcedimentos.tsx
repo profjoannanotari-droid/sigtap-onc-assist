@@ -113,7 +113,7 @@ export default function AnaliseProcedimentos() {
     setGerando(true);
     try {
       const formaSel = formasOrganizacao.find((f) => f.codigo === forma);
-      const amostra = filtradas.slice(0, 200);
+      const amostra = filtradas;
       const resumo =
         `Análise de cobertura de CID-10 por forma de organização do subgrupo 0304 (SIGTAP). ` +
         `${matriz.length} CIDs oncológicos analisados contra ${listarProcedimentos().length} procedimentos. ` +
@@ -151,9 +151,7 @@ export default function AnaliseProcedimentos() {
                 : l.faltantes.map((c) => formasOrganizacao.find((f) => f.codigo === c)?.curto).join(", ") || "—",
             ]),
           },
-          ...(filtradas.length > amostra.length
-            ? [{ tipo: "paragrafo" as const, texto: `Listagem truncada nos primeiros ${amostra.length} CIDs de ${filtradas.length}. Exporte o CSV para a relação completa.` }]
-            : []),
+          { tipo: "paragrafo" as const, texto: `Relação completa: ${filtradas.length} CID(s) listados.` },
         ],
         nomeArquivo: `analise-procedimentos-${new Date().toISOString().slice(0, 10)}`,
       });

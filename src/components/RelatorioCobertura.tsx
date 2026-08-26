@@ -140,7 +140,7 @@ ${secoes}</body></html>`;
   async function exportarPDF() {
     setGerando(true);
     try {
-      const amostra = linhasDetalhe.slice(0, 300);
+      const amostra = linhasDetalhe;
       await gerarRelatorioPDF({
         titulo: "Cobertura de CID-10 por formas de organização",
         subtitulo: "Distribuição dos CIDs oncológicos conforme o número de formas de organização do subgrupo 0304 com código disponível",
@@ -171,14 +171,10 @@ ${secoes}</body></html>`;
             cabecalho: ["Formas", "CID", "Descrição", "Formas sem código"],
             linhas: amostra.map((d) => [String(d.formasAtendidas), d.codigo, d.descricao, d.faltantes || "—"]),
           },
-          ...(linhasDetalhe.length > amostra.length
-            ? [
-                {
-                  tipo: "paragrafo" as const,
-                  texto: `Listagem truncada nos primeiros ${amostra.length} de ${linhasDetalhe.length} CIDs. Use a exportação em Excel para a relação completa.`,
-                },
-              ]
-            : []),
+          {
+            tipo: "paragrafo" as const,
+            texto: `Relação completa: ${linhasDetalhe.length} CID(s) listados.`,
+          },
         ],
         nomeArquivo: `cobertura-cid-formas-${dataStr}`,
       });

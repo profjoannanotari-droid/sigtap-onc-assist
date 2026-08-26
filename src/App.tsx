@@ -15,6 +15,7 @@ import Esquemas from "./pages/Esquemas.tsx";
 import AnaliseProcedimentos from "./pages/AnaliseProcedimentos.tsx";
 
 import { AccessGate } from "@/components/AccessGate";
+import { AdminGate } from "@/components/AdminGate";
 
 const queryClient = new QueryClient();
 

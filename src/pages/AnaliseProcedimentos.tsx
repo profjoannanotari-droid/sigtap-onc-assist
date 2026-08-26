@@ -15,6 +15,7 @@ import { RelatorioCobertura } from "@/components/RelatorioCobertura";
 import { CidsForaSigtap } from "@/components/CidsForaSigtap";
 import { cidsAusentesSigtap, fonteCidOficial, gruposNeoplasia } from "@/data/cidAusentesSigtap";
 import { formasOrganizacao } from "@/data/formasOrganizacao";
+import { SeletorCompetencia, useCompetencia } from "@/components/SeletorCompetencia";
 
 export { formasOrganizacao };
 

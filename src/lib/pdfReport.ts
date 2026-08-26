@@ -81,37 +81,64 @@ export async function gerarRelatorioPDF(input: RelatorioInput): Promise<void> {
   const margemX = 48;
   const conteudoW = pageW - margemX * 2;
 
-  // --- Cabeçalho da capa ---
-  doc.setFillColor(...COR_PRIMARIA);
-  doc.rect(0, 0, pageW, 110, "F");
-  doc.setFillColor(...COR_PRIMARIA_DARK);
-  doc.rect(0, 110, pageW, 4, "F");
-
-  // Logo FiluszTec (canto superior direito, sobre cartão branco)
+  // --- Cabeçalho da capa (altura dinâmica para evitar sobreposição) ---
   const logoData = await carregarDataUrl(logoFiluszTec);
-  if (logoData) {
-    const logoSize = 52;
-    doc.setFillColor(255, 255, 255);
-    doc.roundedRect(pageW - margemX - logoSize - 10, 22, logoSize + 20, logoSize + 20, 6, 6, "F");
-    doc.addImage(logoData, "PNG", pageW - margemX - logoSize, 32, logoSize, logoSize);
+  const reservaLogo = logoData ? 92 : 0; // espaço horizontal reservado à logo
+
+  // Mede o título para calcular posições sem sobrepor subtítulo/data
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(18);
+  const tituloLinhas = doc.splitTextToSize(input.titulo, conteudoW - reservaLogo);
+  const tituloY = 46;
+  const tituloH = tituloLinhas.length * 22;
+
+  let subtituloH = 0;
+  let subtLinhas: string[] = [];
+  if (input.subtitulo) {
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10.5);
+    subtLinhas = doc.splitTextToSize(input.subtitulo, conteudoW - reservaLogo);
+    subtituloH = subtLinhas.length * 14 + 6;
   }
 
+  const headerH = tituloY + tituloH + subtituloH + 34; // espaço p/ data + margem inferior
+
+  doc.setFillColor(...COR_PRIMARIA);
+  doc.rect(0, 0, pageW, headerH, "F");
+  doc.setFillColor(...COR_PRIMARIA_DARK);
+  doc.rect(0, headerH, pageW, 4, "F");
+
+  // Logo FiluszTec (canto superior direito, sobre cartão branco, centralizada)
+  if (logoData) {
+    const logoSize = 52;
+    const cardW = logoSize + 20;
+    doc.setFillColor(255, 255, 255);
+    doc.roundedRect(pageW - margemX - cardW, headerH / 2 - cardW / 2 - 2, cardW, cardW, 6, 6, "F");
+    doc.addImage(logoData, "PNG", pageW - margemX - logoSize - 10, headerH / 2 - logoSize / 2 - 2, logoSize, logoSize);
+  }
+
+  // Título
   doc.setTextColor(255, 255, 255);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(18);
-  doc.text(input.titulo, margemX, 56, { maxWidth: conteudoW - 90 });
+  doc.text(tituloLinhas, margemX, tituloY);
 
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(10.5);
+  // Subtítulo (abaixo do título, sem sobreposição)
+  let cursorY = tituloY + tituloH + 6;
   if (input.subtitulo) {
-    doc.text(input.subtitulo, margemX, 80, { maxWidth: conteudoW });
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10.5);
+    doc.text(subtLinhas, margemX, cursorY);
+    cursorY += subtituloH;
   }
 
+  // Data de geração (abaixo do subtítulo)
+  doc.setFont("helvetica", "normal");
   doc.setFontSize(8.5);
   const dataStr = new Date().toLocaleString("pt-BR", { dateStyle: "long", timeStyle: "short" });
-  doc.text(`Relatório gerado em ${dataStr}`, margemX, 98);
+  doc.text(`Relatório gerado em ${dataStr}`, margemX, headerH - 12);
 
-  let y = 134;
+  let y = headerH + 28;
 
   // --- Badges ---
   if (input.badges && input.badges.length > 0) {

@@ -3,6 +3,28 @@
 import jsPDF from "jspdf";
 import autoTable, { type RowInput } from "jspdf-autotable";
 import { supabase } from "@/integrations/supabase/client";
+import logoFiluszTec from "@/assets/filusztec-logo.png";
+import assinaturaJoanna from "@/assets/assinatura-joanna.png";
+
+// Carrega uma imagem importada como data URL (necessário para jsPDF.addImage)
+const cacheDataUrl: Record<string, string> = {};
+async function carregarDataUrl(src: string): Promise<string | null> {
+  if (cacheDataUrl[src]) return cacheDataUrl[src];
+  try {
+    const res = await fetch(src);
+    const blob = await res.blob();
+    const dataUrl = await new Promise<string>((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(r.result as string);
+      r.onerror = reject;
+      r.readAsDataURL(blob);
+    });
+    cacheDataUrl[src] = dataUrl;
+    return dataUrl;
+  } catch {
+    return null;
+  }
+}
 
 // Paleta sóbria alinhada ao tema médico (azul/teal)
 const COR_PRIMARIA: [number, number, number] = [8, 145, 178];   // teal-600 (~hsl 188)

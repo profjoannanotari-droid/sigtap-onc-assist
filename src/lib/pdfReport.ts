@@ -163,7 +163,7 @@ export async function gerarRelatorioPDF(input: RelatorioInput): Promise<void> {
 
   // --- Introdução IA ---
   if (introducao) {
-    y = secaoTitulo(doc, "Análise contextual (IA)", margemX, y, pageW);
+    y = secaoTitulo(doc, "Análise contextual", margemX, y, pageW);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
     doc.setTextColor(...COR_TEXTO);

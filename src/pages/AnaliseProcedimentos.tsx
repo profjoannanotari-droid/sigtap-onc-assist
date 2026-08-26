@@ -354,6 +354,21 @@ export default function AnaliseProcedimentos() {
                 </SelectContent>
               </Select>
             </div>
+            <div className="space-y-1.5 lg:col-span-2">
+              <Label className="text-xs">Escopo da análise no relatório</Label>
+              <Select value={escopo} onValueChange={(v) => setEscopo(v as "geral" | "especifico")}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent className="bg-popover">
+                  <SelectItem value="geral">Geral — toda a base + fonte oficial</SelectItem>
+                  <SelectItem value="especifico">Específica — somente o recorte dos filtros</SelectItem>
+                </SelectContent>
+              </Select>
+              <p className="text-[11px] text-muted-foreground leading-tight">
+                {escopo === "especifico"
+                  ? "A introdução da IA e as tabelas do PDF tratam apenas dos CIDs e da forma selecionada nos filtros."
+                  : "O PDF traz o panorama completo da base, lacunas por forma e o confronto com a fonte oficial CID-10."}
+              </p>
+            </div>
           </CardContent>
         </Card>
 

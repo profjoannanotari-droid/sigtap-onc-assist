@@ -116,13 +116,20 @@ export default function AnaliseProcedimentos() {
     try {
       const formaSel = formasOrganizacao.find((f) => f.codigo === forma);
       const amostra = filtradas;
+      const ausentesPorGrupo = (["maligna", "in_situ", "incerta"] as const).map((g) => ({
+        nome: gruposNeoplasia[g],
+        qtd: cidsAusentesSigtap.filter((c) => c.grupo === g).length,
+      }));
       const resumo =
         `Análise de cobertura de CID-10 por forma de organização do subgrupo 0304 (SIGTAP). ` +
         `${matriz.length} CIDs oncológicos analisados contra ${listarProcedimentos().length} procedimentos. ` +
         `Filtro: ${modo === "lacunas" ? "somente lacunas" : "matriz completa"}${formaSel ? `, forma ${formaSel.curto} ${formaSel.nome}` : ", todas as formas"}. ` +
         `${filtradas.length} CIDs listados. ` +
         `Lacunas por forma: ${resumoPorForma.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} CIDs sem código`).join("; ")}. ` +
-        `${semNenhum.length} CIDs não possuem qualquer procedimento do subgrupo 0304.`;
+        `${semNenhum.length} CIDs não possuem qualquer procedimento do subgrupo 0304. ` +
+        `Confronto com a fonte oficial ${fonteCidOficial.nome} (universo ${fonteCidOficial.universo} códigos, escopo ${fonteCidOficial.escopo}): ` +
+        `${cidsAusentesSigtap.length} códigos oncológicos oficiais sequer constam da tabela SIGTAP ` +
+        `(${ausentesPorGrupo.map((g) => `${g.nome}: ${g.qtd}`).join("; ")}).`;
 
       await gerarRelatorioPDF({
         titulo: "Análise de Procedimentos por Forma de Organização",

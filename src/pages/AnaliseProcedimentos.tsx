@@ -116,38 +116,120 @@ export default function AnaliseProcedimentos() {
     setGerando(true);
     try {
       const formaSel = formasOrganizacao.find((f) => f.codigo === forma);
+      const capSel = capitulosCid.find((c) => c.codigo === capitulo);
       const amostra = filtradas;
+      const especifico = escopo === "especifico";
+      const formasAlvo = formaSel ? [formaSel] : formasOrganizacao;
       const ausentesPorGrupo = (["maligna", "in_situ", "incerta"] as const).map((g) => ({
         nome: gruposNeoplasia[g],
         qtd: cidsAusentesSigtap.filter((c) => c.grupo === g).length,
       }));
-      const resumo =
-        `Análise de cobertura de CID-10 por forma de organização do subgrupo 0304 (SIGTAP). ` +
-        `${matriz.length} CIDs oncológicos analisados contra ${listarProcedimentos().length} procedimentos. ` +
-        `Filtro: ${modo === "lacunas" ? "somente lacunas" : "matriz completa"}${formaSel ? `, forma ${formaSel.curto} ${formaSel.nome}` : ", todas as formas"}. ` +
-        `${filtradas.length} CIDs listados. ` +
-        `Lacunas por forma: ${resumoPorForma.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} CIDs sem código`).join("; ")}. ` +
-        `${semNenhum.length} CIDs não possuem qualquer procedimento do subgrupo 0304. ` +
-        `Confronto com a fonte oficial ${fonteCidOficial.nome} (universo ${fonteCidOficial.universo} códigos, escopo ${fonteCidOficial.escopo}): ` +
-        `${cidsAusentesSigtap.length} códigos oncológicos oficiais sequer constam da tabela SIGTAP ` +
-        `(${ausentesPorGrupo.map((g) => `${g.nome}: ${g.qtd}`).join("; ")}).`;
+      const descricaoFiltros =
+        `busca "${busca.trim() || "—"}", capítulo ${capSel ? `${capSel.codigo} ${capSel.nome}` : "todos"}, ` +
+        `forma ${formaSel ? `${formaSel.curto} ${formaSel.nome}` : "todas"}, ` +
+        `visualização ${modo === "lacunas" ? "somente lacunas" : "matriz completa"}`;
+
+      // Resumo por forma restrito ao recorte quando a análise é específica
+      const resumoEscopo = formasAlvo.map((f) => {
+        const base = especifico ? filtradas : matriz;
+        const semCodigo = base.filter((l) => l.faltantes.includes(f.codigo)).length;
+        return { ...f, semCodigo, comCodigo: base.length - semCodigo };
+      });
+
+      const resumo = especifico
+        ? `Análise ESPECÍFICA do recorte solicitado nos filtros (${descricaoFiltros}) sobre a cobertura de CID-10 ` +
+          `pelas formas de organização do subgrupo 0304 (SIGTAP). ` +
+          `${filtradas.length} CIDs correspondem ao recorte, de um total de ${matriz.length} CIDs oncológicos da base. ` +
+          `Lacunas dentro do recorte: ${resumoEscopo.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} sem código`).join("; ")}. ` +
+          `${filtradas.filter((l) => l.totalProcedimentos === 0).length} CIDs do recorte não possuem qualquer procedimento do subgrupo 0304. ` +
+          `A análise deve tratar exclusivamente deste recorte, suas implicações assistenciais e de faturamento, sem generalizar para toda a tabela.`
+        : `Análise de cobertura de CID-10 por forma de organização do subgrupo 0304 (SIGTAP). ` +
+          `${matriz.length} CIDs oncológicos analisados contra ${listarProcedimentos().length} procedimentos. ` +
+          `Filtro: ${descricaoFiltros}. ` +
+          `${filtradas.length} CIDs listados. ` +
+          `Lacunas por forma: ${resumoPorForma.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} CIDs sem código`).join("; ")}. ` +
+          `${semNenhum.length} CIDs não possuem qualquer procedimento do subgrupo 0304. ` +
+          `Confronto com a fonte oficial ${fonteCidOficial.nome} (universo ${fonteCidOficial.universo} códigos, escopo ${fonteCidOficial.escopo}): ` +
+          `${cidsAusentesSigtap.length} códigos oncológicos oficiais sequer constam da tabela SIGTAP ` +
+          `(${ausentesPorGrupo.map((g) => `${g.nome}: ${g.qtd}`).join("; ")}).`;
+
+      const secoesGerais = [
+        { tipo: "paragrafo" as const, texto: `Relação completa: ${filtradas.length} CID(s) listados.` },
+        {
+          tipo: "paragrafo" as const,
+          texto:
+            `Confronto com fonte oficial — ${fonteCidOficial.nome} (${fonteCidOficial.escopo}), ` +
+            `universo de ${fonteCidOficial.universo} códigos oncológicos. Dos códigos oficiais, ` +
+            `${cidsAusentesSigtap.length} não constam da base de compatibilidade do subgrupo 0304 da tabela SIGTAP, ` +
+            `configurando ausência absoluta de código de tratamento oncológico para esses diagnósticos.`,
+        },
+        {
+          tipo: "tabela" as const,
+          titulo: "CIDs oncológicos oficiais ausentes da tabela SIGTAP — síntese por grupo",
+          cabecalho: ["Grupo (CID-10)", "Ausentes"],
+          linhas: (["maligna", "in_situ", "incerta"] as const).map((g) => [
+            gruposNeoplasia[g],
+            String(cidsAusentesSigtap.filter((c) => c.grupo === g).length),
+          ]),
+        },
+        {
+          tipo: "tabela" as const,
+          titulo: "Relação completa dos CIDs oncológicos ausentes da tabela SIGTAP",
+          cabecalho: ["CID-10", "Descrição oficial", "Grupo"],
+          linhas: cidsAusentesSigtap.map((c) => [c.codigo, c.descricao, gruposNeoplasia[c.grupo]]),
+        },
+      ];
+
+      const secoesEspecificas = [
+        {
+          tipo: "paragrafo" as const,
+          texto:
+            `Recorte solicitado: ${descricaoFiltros}. ` +
+            `${filtradas.length} de ${matriz.length} CIDs da base atendem a esses critérios. ` +
+            `As tabelas a seguir referem-se exclusivamente a este recorte.`,
+        },
+        {
+          tipo: "tabela" as const,
+          titulo: "Detalhamento do recorte — cobertura por forma de organização",
+          cabecalho: ["CID", "Descrição", ...formasAlvo.map((f) => f.curto), "Formas sem código"],
+          linhas: amostra.map((l) => [
+            l.codigo,
+            l.descricao,
+            ...formasAlvo.map((f) => (l.cobertura[f.codigo] ? String(l.cobertura[f.codigo]) : "—")),
+            l.faltantes.length === formasOrganizacao.length
+              ? "TODAS"
+              : l.faltantes.map((c) => formasOrganizacao.find((f) => f.codigo === c)?.curto).join(", ") || "—",
+          ]),
+        },
+      ];
 
       await gerarRelatorioPDF({
-        titulo: "Análise de Procedimentos por Forma de Organização",
-        subtitulo: "Cobertura de CID-10 no subgrupo 0304 (Tratamento em Oncologia) e identificação de lacunas",
+        titulo: especifico
+          ? "Análise Específica — Recorte de Filtros"
+          : "Análise de Procedimentos por Forma de Organização",
+        subtitulo: especifico
+          ? `Cobertura de CID-10 no subgrupo 0304 para o recorte: ${descricaoFiltros}`
+          : "Cobertura de CID-10 no subgrupo 0304 (Tratamento em Oncologia) e identificação de lacunas",
         badges: [
           `${filtradas.length} CIDs listados`,
+          especifico ? "Análise específica dos filtros" : "Análise geral",
           modo === "lacunas" ? "Somente lacunas" : "Matriz completa",
           formaSel ? `${formaSel.curto} ${formaSel.nome}` : "Todas as formas",
           capitulo !== "todos" ? capitulo : "Todos os capítulos",
         ],
-        contextoIA: { tipo: "auditoria", resumoDados: resumo, publicoAlvo: "Auditoria e faturamento em oncologia (SUS)" },
+        contextoIA: {
+          tipo: "auditoria",
+          resumoDados: resumo,
+          publicoAlvo: "Auditoria e faturamento em oncologia (SUS)",
+        },
         secoes: [
           {
             tipo: "tabela",
-            titulo: "Resumo de cobertura por forma de organização",
+            titulo: especifico
+              ? "Resumo de cobertura no recorte selecionado"
+              : "Resumo de cobertura por forma de organização",
             cabecalho: ["Código", "Forma de organização", "CIDs com código", "CIDs sem código"],
-            linhas: resumoPorForma.map((f) => [f.curto, f.nome, String(f.comCodigo), String(f.semCodigo)]),
+            linhas: resumoEscopo.map((f) => [f.curto, f.nome, String(f.comCodigo), String(f.semCodigo)]),
           },
           {
             tipo: "tabela",
@@ -161,32 +243,9 @@ export default function AnaliseProcedimentos() {
                 : l.faltantes.map((c) => formasOrganizacao.find((f) => f.codigo === c)?.curto).join(", ") || "—",
             ]),
           },
-          { tipo: "paragrafo" as const, texto: `Relação completa: ${filtradas.length} CID(s) listados.` },
-          {
-            tipo: "paragrafo" as const,
-            texto:
-              `Confronto com fonte oficial — ${fonteCidOficial.nome} (${fonteCidOficial.escopo}), ` +
-              `universo de ${fonteCidOficial.universo} códigos oncológicos. Dos códigos oficiais, ` +
-              `${cidsAusentesSigtap.length} não constam da base de compatibilidade do subgrupo 0304 da tabela SIGTAP, ` +
-              `configurando ausência absoluta de código de tratamento oncológico para esses diagnósticos.`,
-          },
-          {
-            tipo: "tabela" as const,
-            titulo: "CIDs oncológicos oficiais ausentes da tabela SIGTAP — síntese por grupo",
-            cabecalho: ["Grupo (CID-10)", "Ausentes"],
-            linhas: (["maligna", "in_situ", "incerta"] as const).map((g) => [
-              gruposNeoplasia[g],
-              String(cidsAusentesSigtap.filter((c) => c.grupo === g).length),
-            ]),
-          },
-          {
-            tipo: "tabela" as const,
-            titulo: "Relação completa dos CIDs oncológicos ausentes da tabela SIGTAP",
-            cabecalho: ["CID-10", "Descrição oficial", "Grupo"],
-            linhas: cidsAusentesSigtap.map((c) => [c.codigo, c.descricao, gruposNeoplasia[c.grupo]]),
-          },
+          ...(especifico ? secoesEspecificas : secoesGerais),
         ],
-        nomeArquivo: `analise-procedimentos-${new Date().toISOString().slice(0, 10)}`,
+        nomeArquivo: `${especifico ? "analise-especifica" : "analise-procedimentos"}-${new Date().toISOString().slice(0, 10)}`,
       });
     } finally {
       setGerando(false);

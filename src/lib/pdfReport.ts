@@ -3,6 +3,28 @@
 import jsPDF from "jspdf";
 import autoTable, { type RowInput } from "jspdf-autotable";
 import { supabase } from "@/integrations/supabase/client";
+import logoFiluszTec from "@/assets/filusztec-logo.png";
+import assinaturaJoanna from "@/assets/assinatura-joanna.png";
+
+// Carrega uma imagem importada como data URL (necessário para jsPDF.addImage)
+const cacheDataUrl: Record<string, string> = {};
+async function carregarDataUrl(src: string): Promise<string | null> {
+  if (cacheDataUrl[src]) return cacheDataUrl[src];
+  try {
+    const res = await fetch(src);
+    const blob = await res.blob();
+    const dataUrl = await new Promise<string>((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(r.result as string);
+      r.onerror = reject;
+      r.readAsDataURL(blob);
+    });
+    cacheDataUrl[src] = dataUrl;
+    return dataUrl;
+  } catch {
+    return null;
+  }
+}
 
 // Paleta sóbria alinhada ao tema médico (azul/teal)
 const COR_PRIMARIA: [number, number, number] = [8, 145, 178];   // teal-600 (~hsl 188)
@@ -65,10 +87,19 @@ export async function gerarRelatorioPDF(input: RelatorioInput): Promise<void> {
   doc.setFillColor(...COR_PRIMARIA_DARK);
   doc.rect(0, 110, pageW, 4, "F");
 
+  // Logo FiluszTec (canto superior direito, sobre cartão branco)
+  const logoData = await carregarDataUrl(logoFiluszTec);
+  if (logoData) {
+    const logoSize = 52;
+    doc.setFillColor(255, 255, 255);
+    doc.roundedRect(pageW - margemX - logoSize - 10, 22, logoSize + 20, logoSize + 20, 6, 6, "F");
+    doc.addImage(logoData, "PNG", pageW - margemX - logoSize, 32, logoSize, logoSize);
+  }
+
   doc.setTextColor(255, 255, 255);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(18);
-  doc.text(input.titulo, margemX, 56, { maxWidth: conteudoW });
+  doc.text(input.titulo, margemX, 56, { maxWidth: conteudoW - 90 });
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10.5);
@@ -185,6 +216,29 @@ export async function gerarRelatorioPDF(input: RelatorioInput): Promise<void> {
       });
       y = (doc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY + 14;
     }
+  }
+
+  // --- Assinatura do responsável ---
+  const assinaturaData = await carregarDataUrl(assinaturaJoanna);
+  if (assinaturaData) {
+    y = garantirEspaco(doc, y, 90, pageH);
+    y += 10;
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(...COR_MUTED);
+    doc.text("Relatório elaborado por:", margemX, y);
+    const assinW = 150;
+    const assinH = assinW / 2; // proporção 2:1 da imagem
+    doc.addImage(assinaturaData, "PNG", margemX, y + 4, assinW, assinH);
+    y += 4 + assinH + 4;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(...COR_PRIMARIA_DARK);
+    doc.text("Joanna Notari", margemX, y);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(...COR_MUTED);
+    doc.text("FiluszTec — Health Technology", margemX, y + 12);
   }
 
   // --- Rodapé com paginação ---

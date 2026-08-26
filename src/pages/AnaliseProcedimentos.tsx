@@ -12,6 +12,8 @@ import { toast } from "@/hooks/use-toast";
 import { gerarRelatorioPDF } from "@/lib/pdfReport";
 import { cidsOnco, listarProcedimentos, capitulosCid, type Procedimento } from "@/data/sigtap";
 import { RelatorioCobertura } from "@/components/RelatorioCobertura";
+import { CidsForaSigtap } from "@/components/CidsForaSigtap";
+import { cidsAusentesSigtap, fonteCidOficial, gruposNeoplasia } from "@/data/cidAusentesSigtap";
 import { formasOrganizacao } from "@/data/formasOrganizacao";
 
 export { formasOrganizacao };
@@ -114,13 +116,20 @@ export default function AnaliseProcedimentos() {
     try {
       const formaSel = formasOrganizacao.find((f) => f.codigo === forma);
       const amostra = filtradas;
+      const ausentesPorGrupo = (["maligna", "in_situ", "incerta"] as const).map((g) => ({
+        nome: gruposNeoplasia[g],
+        qtd: cidsAusentesSigtap.filter((c) => c.grupo === g).length,
+      }));
       const resumo =
         `Análise de cobertura de CID-10 por forma de organização do subgrupo 0304 (SIGTAP). ` +
         `${matriz.length} CIDs oncológicos analisados contra ${listarProcedimentos().length} procedimentos. ` +
         `Filtro: ${modo === "lacunas" ? "somente lacunas" : "matriz completa"}${formaSel ? `, forma ${formaSel.curto} ${formaSel.nome}` : ", todas as formas"}. ` +
         `${filtradas.length} CIDs listados. ` +
         `Lacunas por forma: ${resumoPorForma.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} CIDs sem código`).join("; ")}. ` +
-        `${semNenhum.length} CIDs não possuem qualquer procedimento do subgrupo 0304.`;
+        `${semNenhum.length} CIDs não possuem qualquer procedimento do subgrupo 0304. ` +
+        `Confronto com a fonte oficial ${fonteCidOficial.nome} (universo ${fonteCidOficial.universo} códigos, escopo ${fonteCidOficial.escopo}): ` +
+        `${cidsAusentesSigtap.length} códigos oncológicos oficiais sequer constam da tabela SIGTAP ` +
+        `(${ausentesPorGrupo.map((g) => `${g.nome}: ${g.qtd}`).join("; ")}).`;
 
       await gerarRelatorioPDF({
         titulo: "Análise de Procedimentos por Forma de Organização",
@@ -152,6 +161,29 @@ export default function AnaliseProcedimentos() {
             ]),
           },
           { tipo: "paragrafo" as const, texto: `Relação completa: ${filtradas.length} CID(s) listados.` },
+          {
+            tipo: "paragrafo" as const,
+            texto:
+              `Confronto com fonte oficial — ${fonteCidOficial.nome} (${fonteCidOficial.escopo}), ` +
+              `universo de ${fonteCidOficial.universo} códigos oncológicos. Dos códigos oficiais, ` +
+              `${cidsAusentesSigtap.length} não constam da base de compatibilidade do subgrupo 0304 da tabela SIGTAP, ` +
+              `configurando ausência absoluta de código de tratamento oncológico para esses diagnósticos.`,
+          },
+          {
+            tipo: "tabela" as const,
+            titulo: "CIDs oncológicos oficiais ausentes da tabela SIGTAP — síntese por grupo",
+            cabecalho: ["Grupo (CID-10)", "Ausentes"],
+            linhas: (["maligna", "in_situ", "incerta"] as const).map((g) => [
+              gruposNeoplasia[g],
+              String(cidsAusentesSigtap.filter((c) => c.grupo === g).length),
+            ]),
+          },
+          {
+            tipo: "tabela" as const,
+            titulo: "Relação completa dos CIDs oncológicos ausentes da tabela SIGTAP",
+            cabecalho: ["CID-10", "Descrição oficial", "Grupo"],
+            linhas: cidsAusentesSigtap.map((c) => [c.codigo, c.descricao, gruposNeoplasia[c.grupo]]),
+          },
         ],
         nomeArquivo: `analise-procedimentos-${new Date().toISOString().slice(0, 10)}`,
       });
@@ -182,6 +214,11 @@ export default function AnaliseProcedimentos() {
       </header>
 
       <main className="container mx-auto px-4 py-6 space-y-6">
+        <CidsForaSigtap
+          semProcedimento={semNenhum.map((l) => ({ codigo: l.codigo, descricao: l.descricao }))}
+          totalCidsBase={matriz.length}
+        />
+
         <RelatorioCobertura linhas={matriz} />
 
         <Card>

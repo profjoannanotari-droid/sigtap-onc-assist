@@ -15,6 +15,7 @@ import { RelatorioCobertura } from "@/components/RelatorioCobertura";
 import { CidsForaSigtap } from "@/components/CidsForaSigtap";
 import { cidsAusentesSigtap, fonteCidOficial, gruposNeoplasia } from "@/data/cidAusentesSigtap";
 import { formasOrganizacao } from "@/data/formasOrganizacao";
+import { SeletorCompetencia, useCompetencia } from "@/components/SeletorCompetencia";
 
 export { formasOrganizacao };
 
@@ -56,6 +57,7 @@ function construirMatriz(procedimentos: Procedimento[]): LinhaAnalise[] {
 
 export default function AnaliseProcedimentos() {
   const navigate = useNavigate();
+  const { bases, base, competencia, setCompetencia, recarregar } = useCompetencia();
   const [busca, setBusca] = useState("");
   const [capitulo, setCapitulo] = useState<string>("todos");
   const [forma, setForma] = useState<string>("todas");
@@ -63,7 +65,8 @@ export default function AnaliseProcedimentos() {
   const [escopo, setEscopo] = useState<"geral" | "especifico">("geral");
   const [gerando, setGerando] = useState(false);
 
-  const matriz = useMemo(() => construirMatriz(listarProcedimentos()), []);
+  const procedimentosBase = base?.procedimentos ?? listarProcedimentos();
+  const matriz = useMemo(() => construirMatriz(procedimentosBase), [procedimentosBase]);
 
   const filtradas = useMemo(() => {
     const termo = busca.trim().toLowerCase();
@@ -125,6 +128,7 @@ export default function AnaliseProcedimentos() {
         qtd: cidsAusentesSigtap.filter((c) => c.grupo === g).length,
       }));
       const descricaoFiltros =
+        `competência ${competencia}, ` +
         `busca "${busca.trim() || "—"}", capítulo ${capSel ? `${capSel.codigo} ${capSel.nome}` : "todos"}, ` +
         `forma ${formaSel ? `${formaSel.curto} ${formaSel.nome}` : "todas"}, ` +
         `visualização ${modo === "lacunas" ? "somente lacunas" : "matriz completa"}`;

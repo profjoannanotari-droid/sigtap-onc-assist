@@ -161,6 +161,29 @@ export default function AnaliseProcedimentos() {
             ]),
           },
           { tipo: "paragrafo" as const, texto: `Relação completa: ${filtradas.length} CID(s) listados.` },
+          {
+            tipo: "paragrafo" as const,
+            texto:
+              `Confronto com fonte oficial — ${fonteCidOficial.nome} (${fonteCidOficial.escopo}), ` +
+              `universo de ${fonteCidOficial.universo} códigos oncológicos. Dos códigos oficiais, ` +
+              `${cidsAusentesSigtap.length} não constam da base de compatibilidade do subgrupo 0304 da tabela SIGTAP, ` +
+              `configurando ausência absoluta de código de tratamento oncológico para esses diagnósticos.`,
+          },
+          {
+            tipo: "tabela" as const,
+            titulo: "CIDs oncológicos oficiais ausentes da tabela SIGTAP — síntese por grupo",
+            cabecalho: ["Grupo (CID-10)", "Ausentes"],
+            linhas: (["maligna", "in_situ", "incerta"] as const).map((g) => [
+              gruposNeoplasia[g],
+              String(cidsAusentesSigtap.filter((c) => c.grupo === g).length),
+            ]),
+          },
+          {
+            tipo: "tabela" as const,
+            titulo: "Relação completa dos CIDs oncológicos ausentes da tabela SIGTAP",
+            cabecalho: ["CID-10", "Descrição oficial", "Grupo"],
+            linhas: cidsAusentesSigtap.map((c) => [c.codigo, c.descricao, gruposNeoplasia[c.grupo]]),
+          },
         ],
         nomeArquivo: `analise-procedimentos-${new Date().toISOString().slice(0, 10)}`,
       });

@@ -15,6 +15,7 @@ import Esquemas from "./pages/Esquemas.tsx";
 import AnaliseProcedimentos from "./pages/AnaliseProcedimentos.tsx";
 
 import { AccessGate } from "@/components/AccessGate";
+import { AdminGate } from "@/components/AdminGate";
 
 const queryClient = new QueryClient();
 
@@ -35,10 +36,10 @@ const App = () => (
               <Route path="/admin" element={<Admin />} />
               <Route path="/cid" element={<PesquisarCid />} />
               <Route path="/estadiamento" element={<Estadiamento />} />
-              <Route path="/auditoria" element={<AuditoriaCompatibilidades />} />
+              <Route path="/auditoria" element={<AdminGate><AuditoriaCompatibilidades /></AdminGate>} />
               <Route path="/precisao" element={<Precisao />} />
               <Route path="/esquemas" element={<Esquemas />} />
-              <Route path="/analise" element={<AnaliseProcedimentos />} />
+              <Route path="/analise" element={<AdminGate><AnaliseProcedimentos /></AdminGate>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AccessGate>

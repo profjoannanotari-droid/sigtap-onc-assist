@@ -292,6 +292,12 @@ export default function AuditoriaCompatibilidades() {
               <p className="text-primary-foreground/80 text-xs sm:text-sm mt-0.5">
                 Comparação sistema × base SIGTAP por procedimento
               </p>
+              <p className="text-primary-foreground/70 text-[11px] sm:text-xs mt-1">
+                Área restrita ao administrador · auditoria recalculada automaticamente a cada
+                atualização da tabela (competência atual: {atualizacaoInfo.competencia} ·
+                atualizada em {atualizacaoInfo.dataAtualizacao})
+              </p>
+
             </div>
           </div>
         </div>

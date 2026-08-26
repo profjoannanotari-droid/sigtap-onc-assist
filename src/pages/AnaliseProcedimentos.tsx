@@ -128,6 +128,7 @@ export default function AnaliseProcedimentos() {
         qtd: cidsAusentesSigtap.filter((c) => c.grupo === g).length,
       }));
       const descricaoFiltros =
+        `competência ${competencia}, ` +
         `busca "${busca.trim() || "—"}", capítulo ${capSel ? `${capSel.codigo} ${capSel.nome}` : "todos"}, ` +
         `forma ${formaSel ? `${formaSel.curto} ${formaSel.nome}` : "todas"}, ` +
         `visualização ${modo === "lacunas" ? "somente lacunas" : "matriz completa"}`;

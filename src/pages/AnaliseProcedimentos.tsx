@@ -60,6 +60,7 @@ export default function AnaliseProcedimentos() {
   const [capitulo, setCapitulo] = useState<string>("todos");
   const [forma, setForma] = useState<string>("todas");
   const [modo, setModo] = useState<"lacunas" | "matriz">("lacunas");
+  const [escopo, setEscopo] = useState<"geral" | "especifico">("geral");
   const [gerando, setGerando] = useState(false);
 
   const matriz = useMemo(() => construirMatriz(listarProcedimentos()), []);

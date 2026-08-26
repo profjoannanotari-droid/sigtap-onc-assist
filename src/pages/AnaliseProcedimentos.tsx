@@ -12,6 +12,8 @@ import { toast } from "@/hooks/use-toast";
 import { gerarRelatorioPDF } from "@/lib/pdfReport";
 import { cidsOnco, listarProcedimentos, capitulosCid, type Procedimento } from "@/data/sigtap";
 import { RelatorioCobertura } from "@/components/RelatorioCobertura";
+import { CidsForaSigtap } from "@/components/CidsForaSigtap";
+import { cidsAusentesSigtap, fonteCidOficial, gruposNeoplasia } from "@/data/cidAusentesSigtap";
 import { formasOrganizacao } from "@/data/formasOrganizacao";
 
 export { formasOrganizacao };

@@ -309,6 +309,14 @@ export default function AuditoriaCompatibilidades() {
       </header>
 
       <main className="container mx-auto px-4 py-6 space-y-4">
+        <SeletorCompetencia
+          bases={bases}
+          base={base}
+          competencia={competencia}
+          onChange={setCompetencia}
+          onRecarregar={recarregar}
+        />
+
         {/* Estatísticas */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <Card>

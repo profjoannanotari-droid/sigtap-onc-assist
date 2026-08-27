@@ -215,6 +215,7 @@ export default function AnaliseProcedimentos() {
           ? `Cobertura de CID-10 no subgrupo 0304 para o recorte: ${descricaoFiltros}`
           : "Cobertura de CID-10 no subgrupo 0304 (Tratamento em Oncologia) e identificação de lacunas",
         badges: [
+          `Competência ${competencia}`,
           `${filtradas.length} CIDs listados`,
           especifico ? "Análise específica dos filtros" : "Análise geral",
           modo === "lacunas" ? "Somente lacunas" : "Matriz completa",

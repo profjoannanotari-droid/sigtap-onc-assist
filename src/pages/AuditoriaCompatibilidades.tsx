@@ -92,7 +92,24 @@ export default function AuditoriaCompatibilidades() {
       // audita somente procedimentos existentes na competência selecionada
       if (naCompetencia.size > 0 && !proc) continue;
       const diretas = basesigtap[cod]?.length || 0;
-      ...
+      // Conta quantas vezes este código aparece como item em outras listas (relações reversas)
+      let reversas = 0;
+      for (const [chave, lista] of Object.entries(basesigtap)) {
+        if (normalizar(chave) === cod) continue;
+        for (const item of lista) {
+          if (normalizar(item.codigo) === cod) reversas++;
+        }
+      }
+
+      const retornadas = getCompatibilidades(cod);
+      const total = retornadas.length;
+      const esperado = diretas + reversas;
+
+      const concomitantes = retornadas.filter((r) => r.categoria.includes("Concomitantes")).length;
+      const excludentes = retornadas.filter((r) => r.categoria.includes("Excludente")).length;
+      const compativeis = retornadas.filter((r) => r.categoria.includes("Compativel")).length;
+
+      const status: "ok" | "divergente" = total >= Math.max(diretas, 1) ? "ok" : "divergente";
       resultado.push({
         codigo: cod,
         nome: proc?.nome || nomesPorCodigo[cod] || "(sem nome registrado)",

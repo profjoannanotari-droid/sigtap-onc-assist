@@ -85,34 +85,17 @@ export default function AuditoriaCompatibilidades() {
     }
 
     const resultado: LinhaAuditoria[] = [];
+    const naCompetencia = new Map(procedimentosBase.map((p) => [normalizar(p.codigo), p]));
 
     for (const cod of todosCodigos) {
+      const proc = naCompetencia.get(cod);
+      // audita somente procedimentos existentes na competência selecionada
+      if (naCompetencia.size > 0 && !proc) continue;
       const diretas = basesigtap[cod]?.length || 0;
-
-      // Conta quantas vezes este código aparece como item em outras listas (relações reversas)
-      let reversas = 0;
-      for (const [chave, lista] of Object.entries(basesigtap)) {
-        if (normalizar(chave) === cod) continue;
-        for (const item of lista) {
-          if (normalizar(item.codigo) === cod) reversas++;
-        }
-      }
-
-      const retornadas = getCompatibilidades(cod);
-      const total = retornadas.length;
-      const esperado = diretas + reversas;
-
-      const concomitantes = retornadas.filter((r) => r.categoria.includes("Concomitantes")).length;
-      const excludentes = retornadas.filter((r) => r.categoria.includes("Excludente")).length;
-      const compativeis = retornadas.filter((r) => r.categoria.includes("Compativel")).length;
-
-      // "esperado" pode ser maior que "total" pois há deduplicação por (categoria + código)
-      // status divergente apenas se total < esperado E houver discrepância significativa
-      const status: "ok" | "divergente" = total >= Math.max(diretas, 1) ? "ok" : "divergente";
-
+      ...
       resultado.push({
         codigo: cod,
-        nome: nomesPorCodigo[cod] || "(sem nome registrado)",
+        nome: proc?.nome || nomesPorCodigo[cod] || "(sem nome registrado)",
         diretas,
         reversas,
         total,
@@ -125,7 +108,7 @@ export default function AuditoriaCompatibilidades() {
     }
 
     return resultado.sort((a, b) => a.codigo.localeCompare(b.codigo));
-  }, []);
+  }, [procedimentosBase]);
 
   const filtradas = useMemo(() => {
     const termo = busca.trim().toLowerCase();

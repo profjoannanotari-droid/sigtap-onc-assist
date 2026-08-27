@@ -279,6 +279,14 @@ export default function AnaliseProcedimentos() {
       </header>
 
       <main className="container mx-auto px-4 py-6 space-y-6">
+        <SeletorCompetencia
+          bases={bases}
+          base={base}
+          competencia={competencia}
+          onChange={setCompetencia}
+          onRecarregar={recarregar}
+        />
+
         <CidsForaSigtap
           semProcedimento={semNenhum.map((l) => ({ codigo: l.codigo, descricao: l.descricao }))}
           totalCidsBase={matriz.length}

@@ -148,7 +148,7 @@ export default function AnaliseProcedimentos() {
           `${filtradas.filter((l) => l.totalProcedimentos === 0).length} CIDs do recorte não possuem qualquer procedimento do subgrupo 0304. ` +
           `A análise deve tratar exclusivamente deste recorte, suas implicações assistenciais e de faturamento, sem generalizar para toda a tabela.`
         : `Análise de cobertura de CID-10 por forma de organização do subgrupo 0304 (SIGTAP). ` +
-          `${matriz.length} CIDs oncológicos analisados contra ${listarProcedimentos().length} procedimentos. ` +
+          `${matriz.length} CIDs oncológicos analisados contra ${procedimentosBase.length} procedimentos da competência ${competencia}. ` +
           `Filtro: ${descricaoFiltros}. ` +
           `${filtradas.length} CIDs listados. ` +
           `Lacunas por forma: ${resumoPorForma.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} CIDs sem código`).join("; ")}. ` +

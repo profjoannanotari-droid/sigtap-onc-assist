@@ -31,6 +31,7 @@ import {
 } from "@/data/atualizacao";
 import { Sparkles } from "lucide-react";
 import ComparadorCompetencias from "@/components/ComparadorCompetencias";
+import { SeletorCompetencia, useCompetencia } from "@/components/SeletorCompetencia";
 
 interface LinhaAuditoria {
   codigo: string;
@@ -51,10 +52,13 @@ function normalizar(codigo: string): string {
 
 export default function AuditoriaCompatibilidades() {
   const navigate = useNavigate();
+  const { bases, base, competencia, setCompetencia, recarregar } = useCompetencia();
   const [busca, setBusca] = useState("");
   const [filtroStatus, setFiltroStatus] = useState<"todos" | "ok" | "divergente">("todos");
   const [selected, setSelected] = useState<Procedimento | null>(null);
   const [gerandoPdf, setGerandoPdf] = useState(false);
+
+  const procedimentosBase = base?.procedimentos ?? [];
 
   const linhas: LinhaAuditoria[] = useMemo(() => {
     // Coleta todos os códigos que aparecem como chave OU como item
@@ -81,10 +85,13 @@ export default function AuditoriaCompatibilidades() {
     }
 
     const resultado: LinhaAuditoria[] = [];
+    const naCompetencia = new Map(procedimentosBase.map((p) => [normalizar(p.codigo), p]));
 
     for (const cod of todosCodigos) {
+      const proc = naCompetencia.get(cod);
+      // audita somente procedimentos existentes na competência selecionada
+      if (naCompetencia.size > 0 && !proc) continue;
       const diretas = basesigtap[cod]?.length || 0;
-
       // Conta quantas vezes este código aparece como item em outras listas (relações reversas)
       let reversas = 0;
       for (const [chave, lista] of Object.entries(basesigtap)) {
@@ -102,13 +109,10 @@ export default function AuditoriaCompatibilidades() {
       const excludentes = retornadas.filter((r) => r.categoria.includes("Excludente")).length;
       const compativeis = retornadas.filter((r) => r.categoria.includes("Compativel")).length;
 
-      // "esperado" pode ser maior que "total" pois há deduplicação por (categoria + código)
-      // status divergente apenas se total < esperado E houver discrepância significativa
       const status: "ok" | "divergente" = total >= Math.max(diretas, 1) ? "ok" : "divergente";
-
       resultado.push({
         codigo: cod,
-        nome: nomesPorCodigo[cod] || "(sem nome registrado)",
+        nome: proc?.nome || nomesPorCodigo[cod] || "(sem nome registrado)",
         diretas,
         reversas,
         total,
@@ -121,7 +125,7 @@ export default function AuditoriaCompatibilidades() {
     }
 
     return resultado.sort((a, b) => a.codigo.localeCompare(b.codigo));
-  }, []);
+  }, [procedimentosBase]);
 
   const filtradas = useMemo(() => {
     const termo = busca.trim().toLowerCase();
@@ -151,13 +155,14 @@ export default function AuditoriaCompatibilidades() {
   async function exportarPDF() {
     setGerandoPdf(true);
     try {
-      const resumo = `Auditoria de compatibilidades de ${stats.totalProc} procedimentos do subgrupo 0304 (SIGTAP). ` +
+      const resumo = `Auditoria de compatibilidades da competência ${competencia} com ${stats.totalProc} procedimentos do subgrupo 0304 (SIGTAP). ` +
         `Total de ${stats.totalRelacoes} relações no sistema vs ${stats.totalEsperadas} relações brutas (diretas + reversas com duplicatas) na base SIGTAP. ` +
         `${stats.comDivergencia} procedimento(s) com divergência detectada.`;
       await gerarRelatorioPDF({
         titulo: "Relatório de Auditoria de Compatibilidades SIGTAP",
-        subtitulo: "Comparação sistema × base SIGTAP por procedimento",
+        subtitulo: `Comparação sistema × base SIGTAP por procedimento — competência ${competencia}`,
         badges: [
+          `Competência ${competencia}`,
           `${stats.totalProc} procedimentos`,
           `${stats.totalRelacoes} relações`,
           `${stats.comDivergencia} divergências`,
@@ -304,6 +309,14 @@ export default function AuditoriaCompatibilidades() {
       </header>
 
       <main className="container mx-auto px-4 py-6 space-y-4">
+        <SeletorCompetencia
+          bases={bases}
+          base={base}
+          competencia={competencia}
+          onChange={setCompetencia}
+          onRecarregar={recarregar}
+        />
+
         {/* Estatísticas */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <Card>

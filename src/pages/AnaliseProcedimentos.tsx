@@ -148,7 +148,7 @@ export default function AnaliseProcedimentos() {
           `${filtradas.filter((l) => l.totalProcedimentos === 0).length} CIDs do recorte não possuem qualquer procedimento do subgrupo 0304. ` +
           `A análise deve tratar exclusivamente deste recorte, suas implicações assistenciais e de faturamento, sem generalizar para toda a tabela.`
         : `Análise de cobertura de CID-10 por forma de organização do subgrupo 0304 (SIGTAP). ` +
-          `${matriz.length} CIDs oncológicos analisados contra ${listarProcedimentos().length} procedimentos. ` +
+          `${matriz.length} CIDs oncológicos analisados contra ${procedimentosBase.length} procedimentos da competência ${competencia}. ` +
           `Filtro: ${descricaoFiltros}. ` +
           `${filtradas.length} CIDs listados. ` +
           `Lacunas por forma: ${resumoPorForma.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} CIDs sem código`).join("; ")}. ` +
@@ -215,6 +215,7 @@ export default function AnaliseProcedimentos() {
           ? `Cobertura de CID-10 no subgrupo 0304 para o recorte: ${descricaoFiltros}`
           : "Cobertura de CID-10 no subgrupo 0304 (Tratamento em Oncologia) e identificação de lacunas",
         badges: [
+          `Competência ${competencia}`,
           `${filtradas.length} CIDs listados`,
           especifico ? "Análise específica dos filtros" : "Análise geral",
           modo === "lacunas" ? "Somente lacunas" : "Matriz completa",
@@ -278,6 +279,14 @@ export default function AnaliseProcedimentos() {
       </header>
 
       <main className="container mx-auto px-4 py-6 space-y-6">
+        <SeletorCompetencia
+          bases={bases}
+          base={base}
+          competencia={competencia}
+          onChange={setCompetencia}
+          onRecarregar={recarregar}
+        />
+
         <CidsForaSigtap
           semProcedimento={semNenhum.map((l) => ({ codigo: l.codigo, descricao: l.descricao }))}
           totalCidsBase={matriz.length}

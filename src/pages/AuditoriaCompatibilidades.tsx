@@ -155,13 +155,14 @@ export default function AuditoriaCompatibilidades() {
   async function exportarPDF() {
     setGerandoPdf(true);
     try {
-      const resumo = `Auditoria de compatibilidades de ${stats.totalProc} procedimentos do subgrupo 0304 (SIGTAP). ` +
+      const resumo = `Auditoria de compatibilidades da competência ${competencia} com ${stats.totalProc} procedimentos do subgrupo 0304 (SIGTAP). ` +
         `Total de ${stats.totalRelacoes} relações no sistema vs ${stats.totalEsperadas} relações brutas (diretas + reversas com duplicatas) na base SIGTAP. ` +
         `${stats.comDivergencia} procedimento(s) com divergência detectada.`;
       await gerarRelatorioPDF({
         titulo: "Relatório de Auditoria de Compatibilidades SIGTAP",
-        subtitulo: "Comparação sistema × base SIGTAP por procedimento",
+        subtitulo: `Comparação sistema × base SIGTAP por procedimento — competência ${competencia}`,
         badges: [
+          `Competência ${competencia}`,
           `${stats.totalProc} procedimentos`,
           `${stats.totalRelacoes} relações`,
           `${stats.comDivergencia} divergências`,

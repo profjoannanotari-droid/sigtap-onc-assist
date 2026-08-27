@@ -52,10 +52,13 @@ function normalizar(codigo: string): string {
 
 export default function AuditoriaCompatibilidades() {
   const navigate = useNavigate();
+  const { bases, base, competencia, setCompetencia, recarregar } = useCompetencia();
   const [busca, setBusca] = useState("");
   const [filtroStatus, setFiltroStatus] = useState<"todos" | "ok" | "divergente">("todos");
   const [selected, setSelected] = useState<Procedimento | null>(null);
   const [gerandoPdf, setGerandoPdf] = useState(false);
+
+  const procedimentosBase = base?.procedimentos ?? [];
 
   const linhas: LinhaAuditoria[] = useMemo(() => {
     // Coleta todos os códigos que aparecem como chave OU como item

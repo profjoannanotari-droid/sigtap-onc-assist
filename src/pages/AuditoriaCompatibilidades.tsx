@@ -31,6 +31,7 @@ import {
 } from "@/data/atualizacao";
 import { Sparkles } from "lucide-react";
 import ComparadorCompetencias from "@/components/ComparadorCompetencias";
+import { SeletorCompetencia, useCompetencia } from "@/components/SeletorCompetencia";
 
 interface LinhaAuditoria {
   codigo: string;

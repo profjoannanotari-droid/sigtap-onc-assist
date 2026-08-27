@@ -18,7 +18,7 @@ import {
 
 export function useCompetencia() {
   const [versao, setVersao] = useState(0);
-  const [competencia, setCompetencia] = useState(competenciaVigente);
+  const [competencia, setCompetencia] = useState<string>(competenciaVigente);
   const bases = useMemo(() => listarBasesCompetencia(), [versao]);
   const base = bases.find((b) => b.competencia === competencia) ?? bases[0];
   const recarregar = useCallback(() => setVersao((v) => v + 1), []);

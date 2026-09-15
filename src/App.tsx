@@ -13,6 +13,8 @@ import AuditoriaCompatibilidades from "./pages/AuditoriaCompatibilidades.tsx";
 import Precisao from "./pages/Precisao.tsx";
 import Esquemas from "./pages/Esquemas.tsx";
 import AnaliseProcedimentos from "./pages/AnaliseProcedimentos.tsx";
+import ComparativoCompetencias from "./pages/ComparativoCompetencias.tsx";
+
 
 import { AccessGate } from "@/components/AccessGate";
 import { AdminGate } from "@/components/AdminGate";
@@ -40,6 +42,8 @@ const App = () => (
               <Route path="/precisao" element={<Precisao />} />
               <Route path="/esquemas" element={<Esquemas />} />
               <Route path="/analise" element={<AdminGate><AnaliseProcedimentos /></AdminGate>} />
+              <Route path="/comparativo" element={<AdminGate><ComparativoCompetencias /></AdminGate>} />
+
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AccessGate>

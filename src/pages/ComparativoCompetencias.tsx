@@ -13,7 +13,18 @@ import { toast } from "@/hooks/use-toast";
 import { gerarRelatorioPDF } from "@/lib/pdfReport";
 import { listarBasesCompetencia } from "@/lib/competencias";
 import { formasOrganizacao } from "@/data/formasOrganizacao";
-import { cidsOnco, type Procedimento } from "@/data/sigtap";
+import { type Procedimento } from "@/data/sigtap";
+import { HistoricoAtualizacoes } from "@/components/HistoricoAtualizacoes";
+import {
+  brl,
+  compararCids,
+  compararProcedimentos,
+  formaDoCodigo,
+  nomeForma,
+  rotuloMudanca as rotulo,
+  type DiffProc,
+  type TipoMudanca,
+} from "@/lib/diffCompetencias";
 
 const brl = (v: number) =>
   v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 2 });

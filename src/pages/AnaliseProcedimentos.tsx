@@ -13,6 +13,8 @@ import { gerarRelatorioPDF } from "@/lib/pdfReport";
 import { cidsOnco, listarProcedimentos, capitulosCid, type Procedimento } from "@/data/sigtap";
 import { RelatorioCobertura } from "@/components/RelatorioCobertura";
 import { CidsForaSigtap } from "@/components/CidsForaSigtap";
+import { RelatorioMudancas } from "@/components/RelatorioMudancas";
+
 import { cidsAusentesSigtap, fonteCidOficial, gruposNeoplasia } from "@/data/cidAusentesSigtap";
 import { formasOrganizacao } from "@/data/formasOrganizacao";
 import { SeletorCompetencia, useCompetencia } from "@/components/SeletorCompetencia";

@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Activity, Database, Shield, LogOut, Settings, BookOpen, ArrowLeft, Calculator, Grid3x3, ShieldCheck, Dna, Pill } from "lucide-react";
+import { Activity, Database, Shield, LogOut, Settings, BookOpen, ArrowLeft, Calculator, Grid3x3, ShieldCheck, Dna, Pill, ArrowRightLeft } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";

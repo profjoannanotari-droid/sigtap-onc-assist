@@ -55,17 +55,21 @@ const nomePorCodigo = (codigo: string) => indice.porCodigo.get(chave(codigo));
 const indice = construirIndice();
 
 function resolverPorFragmento(fragmento: string) {
-  const f = norm(fragmento);
+  const f = norm(fragmento.replace(/^[.\s—-]+/, "").replace(/\)\s*$/, ""));
   if (f.length < 8) return null;
-  const candidatos = indice.todos.filter((n) => {
-    const nn = norm(n);
-    return nn !== f && nn.endsWith(f);
-  });
-  return candidatos.length === 1 ? candidatos[0] : null;
+  const candidatos = indice.todos
+    .filter((n) => {
+      const nn = norm(n);
+      return nn !== f && nn.endsWith(f);
+    })
+    .sort((a, b) => a.length - b.length);
+  return candidatos[0] ?? null;
 }
 
 function parseVinculo(texto: string, tipo: TipoVinculo): VinculoLegivel {
-  const corte = texto.lastIndexOf(" (");
+  // O detalhe sempre começa com a categoria "(APAC ...".
+  const inicioDetalhe = texto.indexOf(" (APAC");
+  const corte = inicioDetalhe >= 0 ? inicioDetalhe : texto.lastIndexOf(" (");
   const cabeca = (corte > 0 ? texto.slice(0, corte) : texto).trim();
   const detalhe = corte > 0 ? texto.slice(corte + 2).replace(/\)\s*$/, "") : "";
 

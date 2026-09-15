@@ -4,7 +4,10 @@
 
 import { compatibilidades } from "@/data/compatibilidade";
 import { listarProcedimentos } from "@/data/sigtap";
+import { nomesProcedimentoOficial } from "@/data/nomesProcedimentoOficial";
 import { mudancasCompatibilidadeDetalhe, type MudancaCompatibilidade } from "@/data/atualizacao";
+
+const chave = (codigo: string) => codigo.replace(/^0+/, "");
 
 export type TipoVinculo = "incluido" | "removido" | "quantidade";
 

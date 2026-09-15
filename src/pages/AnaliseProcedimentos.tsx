@@ -405,28 +405,39 @@ export default function AnaliseProcedimentos() {
               </Button>
             </div>
           </CardHeader>
-          <CardContent className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-24">CID</TableHead>
-                  <TableHead className="min-w-[220px]">Descrição</TableHead>
-                  {formasOrganizacao.map((f) => (
-                    <TableHead key={f.codigo} className="text-center text-[10px] leading-tight w-16">
-                      <span className="font-mono block">{f.curto}</span>
-                      <span className="text-muted-foreground">{f.nome.split(" ")[0]}</span>
-                    </TableHead>
-                  ))}
-                </TableRow>
-              </TableHeader>
+          <CardContent className="space-y-3">
+            <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
+              {formasOrganizacao.map((f) => (
+                <span key={f.codigo}>
+                  <span className="font-mono">{f.curto}</span> = {f.nome}
+                </span>
+              ))}
+            </div>
+            <div className="overflow-x-auto max-h-[70vh] overflow-y-auto rounded-md border">
+              <Table className="min-w-[900px]">
+                <TableHeader className="sticky top-0 z-10 bg-card">
+                  <TableRow>
+                    <TableHead className="w-20 bg-card">CID</TableHead>
+                    <TableHead className="min-w-[260px] bg-card">Descrição</TableHead>
+                    {formasOrganizacao.map((f) => (
+                      <TableHead
+                        key={f.codigo}
+                        title={f.nome}
+                        className="text-center font-mono text-[10px] leading-tight w-14 bg-card"
+                      >
+                        {f.curto}
+                      </TableHead>
+                    ))}
+                  </TableRow>
+                </TableHeader>
               <TableBody>
-                {filtradas.slice(0, 400).map((l) => (
+                {filtradas.map((l) => (
                   <TableRow key={l.codigo}>
-                    <TableCell className="font-mono text-xs">{l.codigo}</TableCell>
-                    <TableCell className="text-xs">
-                      {l.descricao}
+                    <TableCell className="font-mono text-xs align-top whitespace-nowrap">{l.codigo}</TableCell>
+                    <TableCell className="text-xs align-top">
+                      <span className="block leading-snug break-words">{l.descricao}</span>
                       {l.totalProcedimentos === 0 && (
-                        <Badge variant="destructive" className="ml-2 text-[10px]">sem procedimento no 0304</Badge>
+                        <Badge variant="destructive" className="mt-1 text-[10px]">sem procedimento no 0304</Badge>
                       )}
                     </TableCell>
                     {formasOrganizacao.map((f) => (

@@ -287,10 +287,13 @@ export default function AnaliseProcedimentos() {
           onRecarregar={recarregar}
         />
 
+        <RelatorioMudancas />
+
         <CidsForaSigtap
           semProcedimento={semNenhum.map((l) => ({ codigo: l.codigo, descricao: l.descricao }))}
           totalCidsBase={matriz.length}
         />
+
 
         <RelatorioCobertura linhas={matriz} />
 

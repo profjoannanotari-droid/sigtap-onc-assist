@@ -42,6 +42,8 @@ const App = () => (
               <Route path="/precisao" element={<Precisao />} />
               <Route path="/esquemas" element={<Esquemas />} />
               <Route path="/analise" element={<AdminGate><AnaliseProcedimentos /></AdminGate>} />
+              <Route path="/comparativo" element={<AdminGate><ComparativoCompetencias /></AdminGate>} />
+
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AccessGate>

@@ -297,6 +297,7 @@ export default function ComparativoCompetencias() {
             <TabsTrigger value="procedimentos">Por procedimento</TabsTrigger>
             <TabsTrigger value="cids">Por CID-10</TabsTrigger>
             <TabsTrigger value="formas">Por forma de organização</TabsTrigger>
+            <TabsTrigger value="historico">Histórico de atualizações</TabsTrigger>
           </TabsList>
 
           <TabsContent value="procedimentos">
@@ -421,6 +422,10 @@ export default function ComparativoCompetencias() {
                 </Table>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="historico">
+            <HistoricoAtualizacoes />
           </TabsContent>
         </Tabs>
       </main>

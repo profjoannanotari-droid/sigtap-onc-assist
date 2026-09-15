@@ -4,7 +4,10 @@
 
 import { compatibilidades } from "@/data/compatibilidade";
 import { listarProcedimentos } from "@/data/sigtap";
+import { nomesProcedimentoOficial } from "@/data/nomesProcedimentoOficial";
 import { mudancasCompatibilidadeDetalhe, type MudancaCompatibilidade } from "@/data/atualizacao";
+
+const chave = (codigo: string) => codigo.replace(/^0+/, "");
 
 export type TipoVinculo = "incluido" | "removido" | "quantidade";
 
@@ -32,29 +35,41 @@ function construirIndice() {
   const porCodigo = new Map<string, string>();
   for (const lista of Object.values(compatibilidades)) {
     for (const c of lista) {
-      const atual = porCodigo.get(c.codigo);
-      if (!atual || atual.length < c.nome.length) porCodigo.set(c.codigo, c.nome);
+      const k = chave(c.codigo);
+      const atual = porCodigo.get(k);
+      if (!atual || atual.length < c.nome.length) porCodigo.set(k, c.nome);
     }
   }
-  for (const p of listarProcedimentos()) porCodigo.set(p.codigo, p.nome);
+  for (const p of listarProcedimentos()) porCodigo.set(chave(p.codigo), p.nome);
+  // O PDF oficial de compatibilidades traz os nomes completos: tem prioridade.
+  for (const [cod, nome] of Object.entries(nomesProcedimentoOficial)) {
+    const atual = porCodigo.get(chave(cod));
+    if (!atual || atual.length < nome.length) porCodigo.set(chave(cod), nome);
+  }
   const todos = Array.from(new Set(porCodigo.values()));
   return { porCodigo, todos };
 }
 
+const nomePorCodigo = (codigo: string) => indice.porCodigo.get(chave(codigo));
+
 const indice = construirIndice();
 
 function resolverPorFragmento(fragmento: string) {
-  const f = norm(fragmento);
+  const f = norm(fragmento.replace(/^[.\s—-]+/, "").replace(/\)\s*$/, ""));
   if (f.length < 8) return null;
-  const candidatos = indice.todos.filter((n) => {
-    const nn = norm(n);
-    return nn !== f && nn.endsWith(f);
-  });
-  return candidatos.length === 1 ? candidatos[0] : null;
+  const candidatos = indice.todos
+    .filter((n) => {
+      const nn = norm(n);
+      return nn !== f && nn.endsWith(f);
+    })
+    .sort((a, b) => a.length - b.length);
+  return candidatos[0] ?? null;
 }
 
 function parseVinculo(texto: string, tipo: TipoVinculo): VinculoLegivel {
-  const corte = texto.lastIndexOf(" (");
+  // O detalhe sempre começa com a categoria "(APAC ...".
+  const inicioDetalhe = texto.indexOf(" (APAC");
+  const corte = inicioDetalhe >= 0 ? inicioDetalhe : texto.lastIndexOf(" (");
   const cabeca = (corte > 0 ? texto.slice(0, corte) : texto).trim();
   const detalhe = corte > 0 ? texto.slice(corte + 2).replace(/\)\s*$/, "") : "";
 
@@ -66,7 +81,7 @@ function parseVinculo(texto: string, tipo: TipoVinculo): VinculoLegivel {
   const comCodigo = cabeca.match(/^(\d{9,10})\s*[—-]\s*(.*)$/);
   if (comCodigo) {
     const [, codigo, nomeArquivo] = comCodigo;
-    const canonico = indice.porCodigo.get(codigo);
+    const canonico = nomePorCodigo(codigo);
     const nome = canonico && canonico.length >= nomeArquivo.length ? canonico : nomeArquivo;
     return {
       tipo,
@@ -107,7 +122,7 @@ function parseVinculo(texto: string, tipo: TipoVinculo): VinculoLegivel {
 }
 
 function converter(m: MudancaCompatibilidade): MudancaCompatLegivel {
-  const nomeProc = indice.porCodigo.get(m.codigo) ?? m.nome;
+  const nomeProc = nomePorCodigo(m.codigo) ?? m.nome;
   return {
     codigo: m.codigo,
     nome: nomeProc.length >= m.nome.length ? nomeProc : m.nome,

@@ -35,14 +35,22 @@ function construirIndice() {
   const porCodigo = new Map<string, string>();
   for (const lista of Object.values(compatibilidades)) {
     for (const c of lista) {
-      const atual = porCodigo.get(c.codigo);
-      if (!atual || atual.length < c.nome.length) porCodigo.set(c.codigo, c.nome);
+      const k = chave(c.codigo);
+      const atual = porCodigo.get(k);
+      if (!atual || atual.length < c.nome.length) porCodigo.set(k, c.nome);
     }
   }
-  for (const p of listarProcedimentos()) porCodigo.set(p.codigo, p.nome);
+  for (const p of listarProcedimentos()) porCodigo.set(chave(p.codigo), p.nome);
+  // O PDF oficial de compatibilidades traz os nomes completos: tem prioridade.
+  for (const [cod, nome] of Object.entries(nomesProcedimentoOficial)) {
+    const atual = porCodigo.get(chave(cod));
+    if (!atual || atual.length < nome.length) porCodigo.set(chave(cod), nome);
+  }
   const todos = Array.from(new Set(porCodigo.values()));
   return { porCodigo, todos };
 }
+
+const nomePorCodigo = (codigo: string) => indice.porCodigo.get(chave(codigo));
 
 const indice = construirIndice();
 

@@ -118,7 +118,7 @@ function parseVinculo(texto: string, tipo: TipoVinculo): VinculoLegivel {
 }
 
 function converter(m: MudancaCompatibilidade): MudancaCompatLegivel {
-  const nomeProc = indice.porCodigo.get(m.codigo) ?? m.nome;
+  const nomeProc = nomePorCodigo(m.codigo) ?? m.nome;
   return {
     codigo: m.codigo,
     nome: nomeProc.length >= m.nome.length ? nomeProc : m.nome,

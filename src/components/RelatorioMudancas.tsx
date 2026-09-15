@@ -134,15 +134,23 @@ export function RelatorioMudancas() {
                 {
                   tipo: "tabela" as const,
                   titulo: "Mudanças nas regras de compatibilidade",
-                  cabecalho: ["Código", "Procedimento", "Vínculos incluídos", "Vínculos retirados", "Quantidade"],
-                  linhas: mudancasCompatibilidadeDetalhe.map((m) => [
-                    m.codigo,
-                    m.nome,
-                    m.incluidas.join("\n") || "—",
-                    m.removidas.join("\n") || "—",
-                    m.quantidade.join("\n") || "—",
-                  ]),
-                  larguras: [10, 24, 30, 22, 14],
+                  cabecalho: ["Código", "Procedimento", "Mudança", "Procedimento vinculado", "Regra"],
+                  linhas: mudancasCompatLegiveis.flatMap((m) =>
+                    m.vinculos.map((v) => [
+                      m.codigo,
+                      m.nome,
+                      rotuloVinculo[v.tipo],
+                      v.codigo ? `${v.codigo} — ${v.nome}` : v.nome,
+                      [
+                        v.categoria,
+                        v.quantidade ? `quantidade máxima ${v.quantidade}` : "",
+                        v.desde ? `vigente desde ${v.desde}` : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" · ") || "—",
+                    ]),
+                  ),
+                  larguras: [10, 24, 12, 26, 28],
                 },
               ])
             : []),

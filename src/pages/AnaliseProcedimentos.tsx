@@ -456,18 +456,20 @@ export default function AnaliseProcedimentos() {
                 ))}
                 {filtradas.length === 0 && (
                   <TableRow>
-                    <TableCell colSpan={12} className="text-center text-sm text-muted-foreground py-8">
+                    <TableCell
+                      colSpan={2 + formasOrganizacao.length}
+                      className="text-center text-sm text-muted-foreground py-8"
+                    >
                       Nenhum CID encontrado com os filtros atuais.
                     </TableCell>
                   </TableRow>
                 )}
               </TableBody>
-            </Table>
-            {filtradas.length > 400 && (
-              <p className="text-xs text-muted-foreground mt-3">
-                Exibindo os primeiros 400 de {filtradas.length}. Use o CSV para a relação completa.
-              </p>
-            )}
+              </Table>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Exibindo a relação completa: {filtradas.length} CID(s).
+            </p>
           </CardContent>
         </Card>
       </main>

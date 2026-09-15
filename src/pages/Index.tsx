@@ -114,6 +114,16 @@ export default function Index() {
             <Button
               variant="ghost"
               size="sm"
+              onClick={() => navigate("/comparativo")}
+              className="text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10 h-8 px-2"
+            >
+              <ArrowRightLeft className="w-4 h-4 mr-1" />
+              <span className="text-xs sm:text-sm">Comparativo</span>
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={() => navigate("/auditoria")}
               className="text-primary-foreground/90 hover:text-primary-foreground hover:bg-primary-foreground/10 h-8 px-2"
             >

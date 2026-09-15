@@ -12,6 +12,7 @@ import {
   mudancasCompatibilidades,
   resumoMudancas,
 } from "@/data/atualizacao";
+import { mudancasCompatLegiveis, rotuloVinculo } from "@/lib/mudancasCompat";
 
 const rotuloTipo: Record<string, string> = {
   adicionado: "Procedimento incluído",
@@ -228,27 +229,45 @@ export function RelatorioMudancas() {
             <p className="text-sm text-muted-foreground">Nenhuma alteração de compatibilidade nesta competência.</p>
           ) : (
             <ul className="space-y-2">
-              {mudancasCompatibilidadeDetalhe.map((m) => (
-                <li key={m.codigo} className="rounded-md border p-3 space-y-1.5">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <Badge variant="outline" className="font-mono text-[11px]">{m.codigo}</Badge>
-                    <span className="text-sm font-medium">{m.nome}</span>
+              {mudancasCompatLegiveis.map((m) => (
+                <li key={m.codigo} className="rounded-md border p-3 space-y-2">
+                  <div className="flex items-start gap-2 flex-wrap">
+                    <Badge variant="outline" className="font-mono text-[11px] shrink-0">{m.codigo}</Badge>
+                    <span className="text-sm font-medium leading-snug break-words min-w-0 flex-1">{m.nome}</span>
                   </div>
-                  {m.incluidas.map((t, i) => (
-                    <p key={`i${i}`} className="text-xs text-muted-foreground flex gap-1.5">
-                      <Plus className="w-3.5 h-3.5 shrink-0 mt-0.5 text-primary" /> {t}
-                    </p>
-                  ))}
-                  {m.removidas.map((t, i) => (
-                    <p key={`r${i}`} className="text-xs text-muted-foreground flex gap-1.5">
-                      <Minus className="w-3.5 h-3.5 shrink-0 mt-0.5 text-destructive" /> {t}
-                    </p>
-                  ))}
-                  {m.quantidade.map((t, i) => (
-                    <p key={`q${i}`} className="text-xs text-muted-foreground flex gap-1.5">
-                      <RefreshCcw className="w-3.5 h-3.5 shrink-0 mt-0.5" /> {t}
-                    </p>
-                  ))}
+                  {m.vinculos.map((v, i) => {
+                    const Icone = v.tipo === "incluido" ? Plus : v.tipo === "removido" ? Minus : RefreshCcw;
+                    const cor =
+                      v.tipo === "incluido"
+                        ? "text-primary"
+                        : v.tipo === "removido"
+                          ? "text-destructive"
+                          : "text-muted-foreground";
+                    return (
+                      <div key={i} className="flex gap-1.5 text-xs">
+                        <Icone className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${cor}`} />
+                        <div className="min-w-0 space-y-0.5">
+                          <p className="font-medium leading-snug break-words">
+                            {v.codigo ? `${v.codigo} — ` : ""}
+                            {v.nome}
+                            {!v.nomeCompleto && (
+                              <span className="text-muted-foreground font-normal"> (nome parcial na tabela de origem)</span>
+                            )}
+                          </p>
+                          <p className="text-muted-foreground leading-snug break-words">
+                            {[
+                              rotuloVinculo[v.tipo],
+                              v.categoria,
+                              v.quantidade ? `quantidade máxima ${v.quantidade}` : "",
+                              v.desde ? `vigente desde ${v.desde}` : "",
+                            ]
+                              .filter(Boolean)
+                              .join(" · ")}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </li>
               ))}
             </ul>

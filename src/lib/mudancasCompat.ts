@@ -77,7 +77,7 @@ function parseVinculo(texto: string, tipo: TipoVinculo): VinculoLegivel {
   const comCodigo = cabeca.match(/^(\d{9,10})\s*[—-]\s*(.*)$/);
   if (comCodigo) {
     const [, codigo, nomeArquivo] = comCodigo;
-    const canonico = indice.porCodigo.get(codigo);
+    const canonico = nomePorCodigo(codigo);
     const nome = canonico && canonico.length >= nomeArquivo.length ? canonico : nomeArquivo;
     return {
       tipo,

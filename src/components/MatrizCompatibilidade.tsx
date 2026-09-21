@@ -250,11 +250,13 @@ export function MatrizCompatibilidade() {
       if (idadeNum !== undefined && !Number.isNaN(idadeNum)) badges.push(`Idade: ${idadeNum} ano(s)`);
       if (limite !== TODOS) badges.push(limite === "com" ? "Com limite de quantidade" : "Sem limite");
 
-      const qtdIncompativeis = filtrados.filter((p) => /Incompat/i.test(p.categoria)).length;
-      const qtdSecundario = filtrados.filter((p) => /Secundário/i.test(p.categoria)).length;
-      const qtdConcomitantes = filtrados.filter((p) => /Concomitantes/i.test(p.categoria)).length;
-      const qtdCompativeis = filtrados.length - qtdIncompativeis;
-      const procComLimite = filtrados.filter((p) => p.quantidade > 0).length;
+      const qtdIncompativeis = vinculos.filter((p) => /Incompat/i.test(p.categoria)).length;
+      const qtdSecundario = vinculos.filter((p) => /Secundário/i.test(p.categoria)).length;
+      const qtdConcomitantes = vinculos.filter((p) => /Concomitantes/i.test(p.categoria)).length;
+      const qtdCompativeis = vinculos.length - qtdIncompativeis;
+      const procComLimite = vinculos.filter((p) => p.quantidade > 0).length;
+      const comVinculo = porProcedimento.length - semCompatibilidade.length;
+
 
       await gerarRelatorioPDF({
         titulo: "Compatibilidade entre procedimentos — SIGTAP 0304",

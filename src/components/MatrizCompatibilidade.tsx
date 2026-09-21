@@ -169,6 +169,57 @@ export function MatrizCompatibilidade() {
     [filtrados],
   );
 
+  // Análise procedimento a procedimento (base para o detalhamento do relatório)
+  const porProcedimento = useMemo(() => {
+    const mapa = new Map<
+      string,
+      {
+        codigo: string;
+        nome: string;
+        forma: string;
+        proc?: Procedimento;
+        total: number;
+        incompativeis: number;
+        secundarios: number;
+        concomitantes: number;
+        comLimite: number;
+        vinculos: Par[];
+      }
+    >();
+    for (const p of filtrados) {
+      const k = chave(p.principal);
+      let it = mapa.get(k);
+      if (!it) {
+        it = {
+          codigo: p.principal,
+          nome: p.nomePrincipal,
+          forma: p.forma,
+          proc: p.proc,
+          total: 0,
+          incompativeis: 0,
+          secundarios: 0,
+          concomitantes: 0,
+          comLimite: 0,
+          vinculos: [],
+        };
+        mapa.set(k, it);
+      }
+      if (p.categoria === SEM_COMPAT) continue;
+      it.total++;
+      it.vinculos.push(p);
+      if (/Incompat/i.test(p.categoria)) it.incompativeis++;
+      if (/Secundário/i.test(p.categoria)) it.secundarios++;
+      if (/Concomitantes/i.test(p.categoria)) it.concomitantes++;
+      if (p.quantidade > 0) it.comLimite++;
+    }
+    return Array.from(mapa.values()).sort((a, b) => cod10(a.codigo).localeCompare(cod10(b.codigo)));
+  }, [filtrados]);
+
+  const semCompatibilidade = useMemo(
+    () => porProcedimento.filter((p) => p.total === 0),
+    [porProcedimento],
+  );
+
   const nomeForma = (c: string) => formasOrganizacao.find((f) => f.codigo === c)?.nome ?? c;
 
   const limparFiltros = () => {

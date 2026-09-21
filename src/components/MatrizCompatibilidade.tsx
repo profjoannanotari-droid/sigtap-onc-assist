@@ -191,8 +191,8 @@ export function MatrizCompatibilidade() {
             titulo: "Vínculos de compatibilidade",
             cabecalho: ["Principal", "Vinculado", "Tipo", "Qtd. máx.", "Vigente desde", "Idade / Sexo"],
             linhas: filtrados.map((p) => [
-              `${p.principal}\n${p.nomePrincipal}`,
-              `${p.secundario}\n${p.nomeSecundario}`,
+              `${cod10(p.principal)}\n${p.nomePrincipal}`,
+              `${cod10(p.secundario)}\n${p.nomeSecundario}`,
               rotuloCategoria(p.categoria),
               p.quantidade > 0 ? String(p.quantidade) : "Sem limite",
               p.desde || "—",
@@ -327,11 +327,11 @@ export function MatrizCompatibilidade() {
               {filtrados.map((p, i) => (
                 <TableRow key={`${p.principal}-${p.secundario}-${i}`}>
                   <TableCell className="align-top">
-                    <div className="font-mono text-xs text-muted-foreground">{p.principal}</div>
+                    <div className="font-mono text-xs text-muted-foreground">{cod10(p.principal)}</div>
                     <div className="text-sm">{p.nomePrincipal}</div>
                   </TableCell>
                   <TableCell className="align-top">
-                    <div className="font-mono text-xs text-muted-foreground">{p.secundario}</div>
+                    <div className="font-mono text-xs text-muted-foreground">{cod10(p.secundario)}</div>
                     <div className="text-sm">{p.nomeSecundario}</div>
                   </TableCell>
                   <TableCell className="align-top">

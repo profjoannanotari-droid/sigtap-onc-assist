@@ -204,16 +204,27 @@ export async function gerarRelatorioPDF(input: RelatorioInput): Promise<void> {
       y += 6;
     } else if (sec.tipo === "kv") {
       doc.setFontSize(9.5);
+      // Largura da coluna de chaves: a maior chave, limitada a 60% do conteúdo
+      doc.setFont("helvetica", "bold");
+      const maxChaveW = Math.max(
+        ...sec.itens.map((it) => doc.getTextWidth(`${it.chave}:`)),
+      );
+      const colunaChave = Math.min(maxChaveW + 12, conteudoW * 0.6);
       for (const it of sec.itens) {
-        y = garantirEspaco(doc, y, 16, pageH);
+        const chaveTxt = `${it.chave}:`;
+        doc.setFont("helvetica", "bold");
+        const chaveLinhas = doc.splitTextToSize(chaveTxt, colunaChave);
+        doc.setFont("helvetica", "normal");
+        const valorLinhas = doc.splitTextToSize(it.valor, conteudoW - colunaChave - 10);
+        const altura = Math.max(chaveLinhas.length, valorLinhas.length) * 13 + 2;
+        y = garantirEspaco(doc, y, altura, pageH);
         doc.setFont("helvetica", "bold");
         doc.setTextColor(...COR_MUTED);
-        doc.text(`${it.chave}:`, margemX, y);
+        doc.text(chaveLinhas, margemX, y);
         doc.setFont("helvetica", "normal");
         doc.setTextColor(...COR_TEXTO);
-        const valorLinhas = doc.splitTextToSize(it.valor, conteudoW - 130);
-        doc.text(valorLinhas, margemX + 130, y);
-        y += Math.max(14, valorLinhas.length * 13);
+        doc.text(valorLinhas, margemX + colunaChave + 10, y);
+        y += altura;
       }
       y += 6;
     } else if (sec.tipo === "tabela") {

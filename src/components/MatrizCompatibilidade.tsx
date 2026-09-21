@@ -372,7 +372,8 @@ export function MatrizCompatibilidade() {
           </Button>
         </div>
         <p className="text-sm text-muted-foreground">
-          {filtrados.length} vínculos · {principaisFiltrados} procedimentos principais
+          {filtrados.filter((p) => p.categoria !== SEM_COMPAT).length} vínculos ·{" "}
+          {porProcedimento.length} procedimentos analisados · {semCompatibilidade.length} sem compatibilidade
         </p>
       </CardHeader>
       <CardContent className="space-y-4">

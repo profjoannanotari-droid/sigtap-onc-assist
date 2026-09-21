@@ -175,6 +175,12 @@ export function MatrizCompatibilidade() {
       if (idadeNum !== undefined && !Number.isNaN(idadeNum)) badges.push(`Idade: ${idadeNum} ano(s)`);
       if (limite !== TODOS) badges.push(limite === "com" ? "Com limite de quantidade" : "Sem limite");
 
+      const qtdIncompativeis = filtrados.filter((p) => /Incompat/i.test(p.categoria)).length;
+      const qtdSecundario = filtrados.filter((p) => /Secundário/i.test(p.categoria)).length;
+      const qtdConcomitantes = filtrados.filter((p) => /Concomitantes/i.test(p.categoria)).length;
+      const qtdCompativeis = filtrados.length - qtdIncompativeis;
+      const procComLimite = filtrados.filter((p) => p.quantidade > 0).length;
+
       await gerarRelatorioPDF({
         titulo: "Compatibilidade entre procedimentos — SIGTAP 0304",
         subtitulo:

@@ -273,35 +273,80 @@ export function MatrizCompatibilidade() {
             tipo: "kv",
             titulo: "Conclusão — resumo dos vínculos",
             itens: [
-              { chave: "Total de vínculos analisados", valor: String(filtrados.length) },
+              { chave: "Procedimentos analisados", valor: String(porProcedimento.length) },
+              { chave: "Procedimentos com compatibilidade", valor: String(comVinculo) },
+              { chave: "Procedimentos sem compatibilidade", valor: String(semCompatibilidade.length) },
+              { chave: "Total de vínculos analisados", valor: String(vinculos.length) },
               { chave: "Vínculos compatíveis", valor: String(qtdCompativeis) },
               { chave: "Vínculos excludentes (incompatíveis)", valor: String(qtdIncompativeis) },
               { chave: "Principal x Secundário", valor: String(qtdSecundario) },
               { chave: "Principal x Principal concomitantes (APACs diferentes)", valor: String(qtdConcomitantes) },
               { chave: "Vínculos com limite de quantidade", valor: String(procComLimite) },
-              { chave: "Procedimentos principais envolvidos", valor: String(principaisFiltrados) },
             ],
           },
           {
             tipo: "paragrafo",
             texto:
-              `Do total de ${filtrados.length} vínculos listados, ${qtdCompativeis} são compatíveis e ${qtdIncompativeis} são excludentes (incompatíveis entre si). ` +
+              `Foram analisados ${porProcedimento.length} procedimentos${forma !== TODOS ? ` da forma de organização ${forma} — ${nomeForma(forma)}` : ""}. ` +
+              `Destes, ${comVinculo} possuem ao menos um vínculo cadastrado e ${semCompatibilidade.length} estão sem compatibilidade. ` +
+              `Do total de ${vinculos.length} vínculos listados, ${qtdCompativeis} são compatíveis e ${qtdIncompativeis} são excludentes (incompatíveis entre si). ` +
               `Entre os compatíveis, ${qtdSecundario} são do tipo Principal x Secundário e ${qtdConcomitantes} são Principal x Principal concomitantes (autorizáveis em APACs diferentes). ` +
               `${procComLimite} vínculos possuem limite de quantidade definido.`,
           },
           {
             tipo: "tabela",
-            titulo: "Vínculos de compatibilidade",
-            cabecalho: ["Principal", "Vinculado", "Tipo", "Qtd. máx.", "Vigente desde", "Idade / Sexo"],
-            linhas: filtrados.map((p) => [
-              `${cod10(p.principal)}\n${p.nomePrincipal}`,
-              `${cod10(p.secundario)}\n${p.nomeSecundario}`,
-              rotuloCategoria(p.categoria),
-              p.quantidade > 0 ? String(p.quantidade) : "Sem limite",
-              p.desde || "—",
+            titulo: "Panorama procedimento a procedimento",
+            cabecalho: [
+              "Procedimento",
+              "Forma de organização",
+              "Vínculos",
+              "Compatíveis",
+              "Excludentes",
+              "Principal x Secundário",
+              "Concomitantes",
+              "Idade / Sexo",
+            ],
+            linhas: porProcedimento.map((p) => [
+              `${cod10(p.codigo)}\n${p.nome}`,
+              `${p.forma} — ${nomeForma(p.forma)}`,
+              p.total > 0 ? String(p.total) : SEM_COMPAT,
+              p.total > 0 ? String(p.total - p.incompativeis) : "—",
+              p.total > 0 ? String(p.incompativeis) : "—",
+              p.total > 0 ? String(p.secundarios) : "—",
+              p.total > 0 ? String(p.concomitantes) : "—",
               `${p.proc?.idadeMinima ?? "—"} a ${p.proc?.idadeMaxima ?? "—"} · ${p.proc?.sexo ?? "—"}`,
             ]),
           },
+          ...(semCompatibilidade.length > 0
+            ? [
+                {
+                  tipo: "tabela" as const,
+                  titulo: "Procedimentos sem compatibilidade cadastrada",
+                  cabecalho: ["Procedimento", "Forma de organização", "Situação", "Idade / Sexo", "Valor"],
+                  linhas: semCompatibilidade.map((p) => [
+                    `${cod10(p.codigo)}\n${p.nome}`,
+                    `${p.forma} — ${nomeForma(p.forma)}`,
+                    SEM_COMPAT,
+                    `${p.proc?.idadeMinima ?? "—"} a ${p.proc?.idadeMaxima ?? "—"} · ${p.proc?.sexo ?? "—"}`,
+                    p.proc ? brl(p.proc.valor) : "—",
+                  ]),
+                },
+              ]
+            : []),
+          ...porProcedimento
+            .filter((p) => p.total > 0)
+            .map((p) => ({
+              tipo: "tabela" as const,
+              titulo: `${cod10(p.codigo)} — ${p.nome} (${p.total} vínculo${p.total > 1 ? "s" : ""})`,
+              cabecalho: ["Procedimento vinculado", "Tipo", "Qtd. máx.", "Vigente desde", "Idade / Sexo"],
+              linhas: p.vinculos.map((v) => [
+                `${cod10(v.secundario)}\n${v.nomeSecundario}`,
+                rotuloCategoria(v.categoria),
+                v.quantidade > 0 ? String(v.quantidade) : "Sem limite",
+                v.desde || "—",
+                `${v.proc?.idadeMinima ?? "—"} a ${v.proc?.idadeMaxima ?? "—"} · ${v.proc?.sexo ?? "—"}`,
+              ]),
+            })),
         ],
         nomeArquivo: "compatibilidade-procedimentos-sigtap",
       });

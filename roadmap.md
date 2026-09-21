@@ -5,4 +5,4 @@
 - [x] Mostrar procedimentos sem vínculo em nenhuma posição
 - [x] Consolidar tela e PDF em uma tabela única
 - [x] Corrigir margens e comportamento em telas estreitas
-- [ ] Validar contagens, códigos solicitados e relatório
+- [x] Validar contagens, códigos solicitados e relatório

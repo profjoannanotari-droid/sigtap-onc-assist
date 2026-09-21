@@ -26,6 +26,12 @@ const cod10 = (codigo: string) => codigo.replace(/\D/g, "").padStart(10, "0");
 const brl = (v: number) =>
   v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 2 });
 
+function resumoCids(cids: string[]): string {
+  if (cids.length === 0) return "Sem CID cadastrado";
+  if (cids.length <= 12) return cids.join(", ");
+  return `${cids.slice(0, 12).join(", ")} + ${cids.length - 12} CIDs`;
+}
+
 // "19 Ano(s)" / "0 Mes(es)" / "6 Dia(s)" -> anos
 function idadeEmAnos(txt?: string): number | undefined {
   if (!txt) return undefined;
@@ -509,7 +515,12 @@ export function MatrizCompatibilidade() {
                       <>
                         {p.proc.idadeMinima ?? "—"} a {p.proc.idadeMaxima ?? "—"}
                         <div className="text-muted-foreground">{p.proc.sexo ?? "—"}</div>
-                        <div className="mt-1 text-xs text-muted-foreground">{p.proc.cidsCompativeis.join(", ") || "Sem CID cadastrado"}</div>
+                        <div
+                          className="mt-1 text-xs text-muted-foreground"
+                          title={p.proc.cidsCompativeis.join(", ")}
+                        >
+                          {resumoCids(p.proc.cidsCompativeis)}
+                        </div>
                       </>
                     ) : (
                       "—"

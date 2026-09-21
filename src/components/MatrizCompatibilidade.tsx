@@ -59,6 +59,9 @@ interface Par {
   desde: string;
 }
 
+const identificadorVinculo = (codigo: string, categoria: string) =>
+  `${chave(codigo)}|${categoria}`;
+
 export function MatrizCompatibilidade() {
   const [busca, setBusca] = useState("");
   const [categoria, setCategoria] = useState(TODOS);
@@ -76,14 +79,19 @@ export function MatrizCompatibilidade() {
 
   const pares = useMemo<Par[]>(() => {
     const out: Par[] = [];
-    const vistos = new Set<string>();
+    const vinculosPorProcedimento = new Map<string, Set<string>>();
+
+    for (const p of listarProcedimentos()) {
+      vinculosPorProcedimento.set(chave(p.codigo), new Set());
+    }
 
     for (const [cod, lista] of Object.entries(compatibilidades)) {
       const p = procs.get(chave(cod));
       const nomePrincipal = p?.nome ?? nomesProcedimentoOficial[chave(cod)] ?? cod;
-      const forma = cod.padStart(10, "0").slice(0, 6);
-      vistos.add(chave(cod));
+      const forma = p?.subgrupo ?? cod10(cod).slice(0, 6);
       for (const c of lista) {
+        const idDireto = identificadorVinculo(c.codigo, c.categoria);
+        vinculosPorProcedimento.get(chave(cod))?.add(idDireto);
         out.push({
           principal: cod,
           nomePrincipal,
@@ -98,12 +106,34 @@ export function MatrizCompatibilidade() {
           quantidade: c.quantidade,
           desde: c.desde,
         });
+
+        // Alguns procedimentos aparecem somente como vinculados no arquivo oficial.
+        // A relação inversa garante que cada procedimento tenha sua própria análise.
+        const procVinculado = procs.get(chave(c.codigo));
+        if (procVinculado) {
+          const idInverso = identificadorVinculo(cod, c.categoria);
+          const conhecidos = vinculosPorProcedimento.get(chave(c.codigo));
+          if (conhecidos && !conhecidos.has(idInverso)) {
+            conhecidos.add(idInverso);
+            out.push({
+              principal: procVinculado.codigo,
+              nomePrincipal: procVinculado.nome,
+              proc: procVinculado,
+              forma: procVinculado.subgrupo ?? cod10(procVinculado.codigo).slice(0, 6),
+              secundario: cod,
+              nomeSecundario: nomePrincipal,
+              categoria: c.categoria,
+              quantidade: c.quantidade,
+              desde: c.desde,
+            });
+          }
+        }
       }
     }
 
-    // Procedimentos sem nenhum vínculo cadastrado entram na análise como "Sem compatibilidade"
+    // Todo procedimento da base recebe ao menos uma linha na análise.
     for (const p of listarProcedimentos()) {
-      if (vistos.has(chave(p.codigo))) continue;
+      if ((vinculosPorProcedimento.get(chave(p.codigo))?.size ?? 0) > 0) continue;
       out.push({
         principal: p.codigo,
         nomePrincipal: p.nome,
@@ -137,13 +167,18 @@ export function MatrizCompatibilidade() {
 
   const filtrados = useMemo(() => {
     const q = busca.trim().toLowerCase();
+    const qNumerico = q.replace(/[^\d]/g, "");
+    const buscaCodigoCompleto = qNumerico.length >= 9;
     return pares.filter((p) => {
       if (q) {
-        const soDigitos = q.replace(/\D/g, "");
-        if (soDigitos.length >= 3 && /^\d+$/.test(q.replace(/[\s.-]/g, ""))) {
+        if (qNumerico.length >= 3 && /^\d+$/.test(q.replace(/[\s.-]/g, ""))) {
+          if (buscaCodigoCompleto) {
+            if (cod10(p.principal) !== cod10(qNumerico)) return false;
+          } else {
           const sec = p.secundario ? `${cod10(p.secundario)} ${chave(p.secundario)}` : "";
           const alvoCod = `${cod10(p.principal)} ${chave(p.principal)} ${sec}`;
-          if (!alvoCod.includes(soDigitos) && !alvoCod.includes(chave(soDigitos))) return false;
+            if (!alvoCod.includes(qNumerico) && !alvoCod.includes(chave(qNumerico))) return false;
+          }
         } else {
           const alvo = `${p.principal} ${p.nomePrincipal} ${p.secundario} ${p.nomeSecundario}`.toLowerCase();
           if (!alvo.includes(q)) return false;
@@ -295,58 +330,19 @@ export function MatrizCompatibilidade() {
           },
           {
             tipo: "tabela",
-            titulo: "Panorama procedimento a procedimento",
-            cabecalho: [
-              "Procedimento",
-              "Forma de organização",
-              "Vínculos",
-              "Compatíveis",
-              "Excludentes",
-              "Principal x Secundário",
-              "Concomitantes",
-              "Idade / Sexo",
-            ],
-            linhas: porProcedimento.map((p) => [
-              `${cod10(p.codigo)}\n${p.nome}`,
-              `${p.forma} — ${nomeForma(p.forma)}`,
-              p.total > 0 ? String(p.total) : SEM_COMPAT,
-              p.total > 0 ? String(p.total - p.incompativeis) : "—",
-              p.total > 0 ? String(p.incompativeis) : "—",
-              p.total > 0 ? String(p.secundarios) : "—",
-              p.total > 0 ? String(p.concomitantes) : "—",
-              `${p.proc?.idadeMinima ?? "—"} a ${p.proc?.idadeMaxima ?? "—"} · ${p.proc?.sexo ?? "—"}`,
+            titulo: "Análise consolidada procedimento a procedimento",
+            cabecalho: ["Procedimento / forma", "Procedimento vinculado", "Compatibilidade", "Regras", "Elegibilidade do procedimento"],
+            larguras: [24, 24, 18, 12, 22],
+            linhas: filtrados.map((p) => [
+              `${cod10(p.principal)}\n${p.nomePrincipal}\n${p.forma} — ${nomeForma(p.forma)}`,
+              p.secundario ? `${cod10(p.secundario)}\n${p.nomeSecundario}` : SEM_COMPAT,
+              rotuloCategoria(p.categoria),
+              p.categoria === SEM_COMPAT
+                ? "—"
+                : `Qtd. máx.: ${p.quantidade > 0 ? p.quantidade : "Sem limite"}\nDesde: ${p.desde || "—"}`,
+              `Idade: ${p.proc?.idadeMinima ?? "—"} a ${p.proc?.idadeMaxima ?? "—"}\nSexo: ${p.proc?.sexo ?? "—"}\nCIDs: ${p.proc?.cidsCompativeis.join(", ") || "—"}`,
             ]),
           },
-          ...(semCompatibilidade.length > 0
-            ? [
-                {
-                  tipo: "tabela" as const,
-                  titulo: "Procedimentos sem compatibilidade cadastrada",
-                  cabecalho: ["Procedimento", "Forma de organização", "Situação", "Idade / Sexo", "Valor"],
-                  linhas: semCompatibilidade.map((p) => [
-                    `${cod10(p.codigo)}\n${p.nome}`,
-                    `${p.forma} — ${nomeForma(p.forma)}`,
-                    SEM_COMPAT,
-                    `${p.proc?.idadeMinima ?? "—"} a ${p.proc?.idadeMaxima ?? "—"} · ${p.proc?.sexo ?? "—"}`,
-                    p.proc ? brl(p.proc.valor) : "—",
-                  ]),
-                },
-              ]
-            : []),
-          ...porProcedimento
-            .filter((p) => p.total > 0)
-            .map((p) => ({
-              tipo: "tabela" as const,
-              titulo: `${cod10(p.codigo)} — ${p.nome} (${p.total} vínculo${p.total > 1 ? "s" : ""})`,
-              cabecalho: ["Procedimento vinculado", "Tipo", "Qtd. máx.", "Vigente desde", "Idade / Sexo"],
-              linhas: p.vinculos.map((v) => [
-                `${cod10(v.secundario)}\n${v.nomeSecundario}`,
-                rotuloCategoria(v.categoria),
-                v.quantidade > 0 ? String(v.quantidade) : "Sem limite",
-                v.desde || "—",
-                `${v.proc?.idadeMinima ?? "—"} a ${v.proc?.idadeMaxima ?? "—"} · ${v.proc?.sexo ?? "—"}`,
-              ]),
-            })),
         ],
         nomeArquivo: "compatibilidade-procedimentos-sigtap",
       });
@@ -359,7 +355,7 @@ export function MatrizCompatibilidade() {
   };
 
   return (
-    <Card>
+    <Card className="w-full min-w-0 overflow-hidden">
       <CardHeader className="pb-3">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <CardTitle className="text-base flex items-center gap-2">
@@ -376,7 +372,7 @@ export function MatrizCompatibilidade() {
           {porProcedimento.length} procedimentos analisados · {semCompatibilidade.length} sem compatibilidade
         </p>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="min-w-0 space-y-4 px-3 sm:px-6">
         <div className="grid gap-3 md:grid-cols-3">
           <div className="md:col-span-3">
             <Label className="text-xs">Buscar por código ou nome</Label>
@@ -459,27 +455,27 @@ export function MatrizCompatibilidade() {
           </div>
         </div>
 
-        <div className="overflow-x-auto max-h-[70vh] overflow-y-auto border rounded-md">
-          <Table>
+        <div className="w-full max-w-full overflow-auto max-h-[70vh] border rounded-md">
+          <Table className="min-w-[1120px] table-fixed">
             <TableHeader className="sticky top-0 bg-background z-10">
               <TableRow>
-                <TableHead className="min-w-[240px]">Procedimento principal</TableHead>
-                <TableHead className="min-w-[240px]">Procedimento vinculado</TableHead>
-                <TableHead className="min-w-[180px]">Tipo</TableHead>
-                <TableHead>Qtd. máx.</TableHead>
-                <TableHead>Desde</TableHead>
-                <TableHead className="min-w-[160px]">Idade / Sexo</TableHead>
-                <TableHead>Valor</TableHead>
+                <TableHead className="w-[260px]">Procedimento / forma</TableHead>
+                <TableHead className="w-[250px]">Procedimento vinculado</TableHead>
+                <TableHead className="w-[170px]">Compatibilidade</TableHead>
+                <TableHead className="w-[110px]">Regras</TableHead>
+                <TableHead className="w-[250px]">Idade, sexo e CIDs</TableHead>
+                <TableHead className="w-[100px]">Valor</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {filtrados.map((p, i) => (
                 <TableRow key={`${p.principal}-${p.secundario}-${i}`}>
-                  <TableCell className="align-top">
+                  <TableCell className="align-top whitespace-normal break-words">
                     <div className="font-mono text-xs text-muted-foreground">{cod10(p.principal)}</div>
                     <div className="text-sm">{p.nomePrincipal}</div>
+                    <div className="mt-1 text-xs text-muted-foreground">{p.forma} — {nomeForma(p.forma)}</div>
                   </TableCell>
-                  <TableCell className="align-top">
+                  <TableCell className="align-top whitespace-normal break-words">
                     {p.secundario ? (
                       <>
                         <div className="font-mono text-xs text-muted-foreground">{cod10(p.secundario)}</div>
@@ -489,7 +485,7 @@ export function MatrizCompatibilidade() {
                       <div className="text-sm text-muted-foreground">{SEM_COMPAT}</div>
                     )}
                   </TableCell>
-                  <TableCell className="align-top">
+                  <TableCell className="align-top whitespace-normal">
                     <Badge
                       variant={
                         p.categoria === SEM_COMPAT
@@ -502,15 +498,15 @@ export function MatrizCompatibilidade() {
                       {rotuloCategoria(p.categoria)}
                     </Badge>
                   </TableCell>
-                  <TableCell className="align-top text-sm">
-                    {p.categoria === SEM_COMPAT ? "—" : p.quantidade > 0 ? p.quantidade : "Sem limite"}
+                  <TableCell className="align-top text-sm whitespace-normal">
+                    {p.categoria === SEM_COMPAT ? "—" : <>{p.quantidade > 0 ? `Máx. ${p.quantidade}` : "Sem limite"}<div className="text-muted-foreground">{p.desde || "—"}</div></>}
                   </TableCell>
-                  <TableCell className="align-top text-sm">{p.desde || "—"}</TableCell>
-                  <TableCell className="align-top text-sm">
+                  <TableCell className="align-top text-sm whitespace-normal break-words">
                     {p.proc ? (
                       <>
                         {p.proc.idadeMinima ?? "—"} a {p.proc.idadeMaxima ?? "—"}
                         <div className="text-muted-foreground">{p.proc.sexo ?? "—"}</div>
+                        <div className="mt-1 text-xs text-muted-foreground">{p.proc.cidsCompativeis.join(", ") || "Sem CID cadastrado"}</div>
                       </>
                     ) : (
                       "—"
@@ -523,7 +519,7 @@ export function MatrizCompatibilidade() {
               ))}
               {filtrados.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center text-sm text-muted-foreground py-8">
+                    <TableCell colSpan={6} className="text-center text-sm text-muted-foreground py-8">
                     Nenhum vínculo encontrado com os filtros atuais.
                   </TableCell>
                 </TableRow>

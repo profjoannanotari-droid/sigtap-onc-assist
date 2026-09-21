@@ -228,6 +228,11 @@ export async function gerarRelatorioPDF(input: RelatorioInput): Promise<void> {
       }
       y += 6;
     } else if (sec.tipo === "tabela") {
+      const columnStyles = sec.larguras
+        ? Object.fromEntries(
+            sec.larguras.map((proporcao, index) => [index, { cellWidth: conteudoW * proporcao / 100 }]),
+          )
+        : undefined;
       autoTable(doc, {
         head: [sec.cabecalho],
         body: sec.linhas,
@@ -250,6 +255,7 @@ export async function gerarRelatorioPDF(input: RelatorioInput): Promise<void> {
           halign: "left",
         },
         alternateRowStyles: { fillColor: [248, 250, 252] },
+        columnStyles,
         theme: "grid",
       });
       y = (doc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY + 14;

@@ -193,6 +193,26 @@ export function MatrizCompatibilidade() {
         },
         secoes: [
           {
+            tipo: "kv",
+            titulo: "Conclusão — resumo dos vínculos",
+            itens: [
+              { chave: "Total de vínculos analisados", valor: String(filtrados.length) },
+              { chave: "Vínculos compatíveis", valor: String(qtdCompativeis) },
+              { chave: "Vínculos excludentes (incompatíveis)", valor: String(qtdIncompativeis) },
+              { chave: "Principal x Secundário", valor: String(qtdSecundario) },
+              { chave: "Principal x Principal concomitantes (APACs diferentes)", valor: String(qtdConcomitantes) },
+              { chave: "Vínculos com limite de quantidade", valor: String(procComLimite) },
+              { chave: "Procedimentos principais envolvidos", valor: String(principaisFiltrados) },
+            ],
+          },
+          {
+            tipo: "paragrafo",
+            texto:
+              `Do total de ${filtrados.length} vínculos listados, ${qtdCompativeis} são compatíveis e ${qtdIncompativeis} são excludentes (incompatíveis entre si). ` +
+              `Entre os compatíveis, ${qtdSecundario} são do tipo Principal x Secundário e ${qtdConcomitantes} são Principal x Principal concomitantes (autorizáveis em APACs diferentes). ` +
+              `${procComLimite} vínculos possuem limite de quantidade definido.`,
+          },
+          {
             tipo: "tabela",
             titulo: "Vínculos de compatibilidade",
             cabecalho: ["Principal", "Vinculado", "Tipo", "Qtd. máx.", "Vigente desde", "Idade / Sexo"],

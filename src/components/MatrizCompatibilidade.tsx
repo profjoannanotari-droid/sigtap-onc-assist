@@ -141,7 +141,8 @@ export function MatrizCompatibilidade() {
       if (q) {
         const soDigitos = q.replace(/\D/g, "");
         if (soDigitos.length >= 3 && /^\d+$/.test(q.replace(/[\s.-]/g, ""))) {
-          const alvoCod = `${cod10(p.principal)} ${chave(p.principal)} ${cod10(p.secundario)} ${chave(p.secundario)}`;
+          const sec = p.secundario ? `${cod10(p.secundario)} ${chave(p.secundario)}` : "";
+          const alvoCod = `${cod10(p.principal)} ${chave(p.principal)} ${sec}`;
           if (!alvoCod.includes(soDigitos) && !alvoCod.includes(chave(soDigitos))) return false;
         } else {
           const alvo = `${p.principal} ${p.nomePrincipal} ${p.secundario} ${p.nomeSecundario}`.toLowerCase();

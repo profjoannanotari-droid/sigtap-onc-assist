@@ -76,10 +76,13 @@ export function MatrizCompatibilidade() {
 
   const pares = useMemo<Par[]>(() => {
     const out: Par[] = [];
+    const vistos = new Set<string>();
+
     for (const [cod, lista] of Object.entries(compatibilidades)) {
       const p = procs.get(chave(cod));
       const nomePrincipal = p?.nome ?? nomesProcedimentoOficial[chave(cod)] ?? cod;
       const forma = cod.padStart(10, "0").slice(0, 6);
+      vistos.add(chave(cod));
       for (const c of lista) {
         out.push({
           principal: cod,
@@ -97,7 +100,24 @@ export function MatrizCompatibilidade() {
         });
       }
     }
-    return out.sort((a, b) => a.principal.localeCompare(b.principal));
+
+    // Procedimentos sem nenhum vínculo cadastrado entram na análise como "Sem compatibilidade"
+    for (const p of listarProcedimentos()) {
+      if (vistos.has(chave(p.codigo))) continue;
+      out.push({
+        principal: p.codigo,
+        nomePrincipal: p.nome,
+        proc: p,
+        forma: cod10(p.codigo).slice(0, 6),
+        secundario: "",
+        nomeSecundario: SEM_COMPAT,
+        categoria: SEM_COMPAT,
+        quantidade: 0,
+        desde: "",
+      });
+    }
+
+    return out.sort((a, b) => cod10(a.principal).localeCompare(cod10(b.principal)));
   }, [procs]);
 
   const categorias = useMemo(

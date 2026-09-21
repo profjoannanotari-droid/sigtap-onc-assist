@@ -480,16 +480,30 @@ export function MatrizCompatibilidade() {
                     <div className="text-sm">{p.nomePrincipal}</div>
                   </TableCell>
                   <TableCell className="align-top">
-                    <div className="font-mono text-xs text-muted-foreground">{cod10(p.secundario)}</div>
-                    <div className="text-sm">{p.nomeSecundario}</div>
+                    {p.secundario ? (
+                      <>
+                        <div className="font-mono text-xs text-muted-foreground">{cod10(p.secundario)}</div>
+                        <div className="text-sm">{p.nomeSecundario}</div>
+                      </>
+                    ) : (
+                      <div className="text-sm text-muted-foreground">{SEM_COMPAT}</div>
+                    )}
                   </TableCell>
                   <TableCell className="align-top">
-                    <Badge variant={/Incompat/i.test(p.categoria) ? "destructive" : "secondary"}>
+                    <Badge
+                      variant={
+                        p.categoria === SEM_COMPAT
+                          ? "outline"
+                          : /Incompat/i.test(p.categoria)
+                            ? "destructive"
+                            : "secondary"
+                      }
+                    >
                       {rotuloCategoria(p.categoria)}
                     </Badge>
                   </TableCell>
                   <TableCell className="align-top text-sm">
-                    {p.quantidade > 0 ? p.quantidade : "Sem limite"}
+                    {p.categoria === SEM_COMPAT ? "—" : p.quantidade > 0 ? p.quantidade : "Sem limite"}
                   </TableCell>
                   <TableCell className="align-top text-sm">{p.desde || "—"}</TableCell>
                   <TableCell className="align-top text-sm">

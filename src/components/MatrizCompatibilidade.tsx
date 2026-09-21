@@ -18,6 +18,7 @@ import { nomesProcedimentoOficial } from "@/data/nomesProcedimentoOficial";
 import { formasOrganizacao } from "@/data/formasOrganizacao";
 
 const TODOS = "__todos__";
+const SEM_COMPAT = "Sem compatibilidade";
 
 const chave = (codigo: string) => codigo.replace(/^0+/, "");
 const cod10 = (codigo: string) => codigo.replace(/\D/g, "").padStart(10, "0");
@@ -75,10 +76,13 @@ export function MatrizCompatibilidade() {
 
   const pares = useMemo<Par[]>(() => {
     const out: Par[] = [];
+    const vistos = new Set<string>();
+
     for (const [cod, lista] of Object.entries(compatibilidades)) {
       const p = procs.get(chave(cod));
       const nomePrincipal = p?.nome ?? nomesProcedimentoOficial[chave(cod)] ?? cod;
       const forma = cod.padStart(10, "0").slice(0, 6);
+      vistos.add(chave(cod));
       for (const c of lista) {
         out.push({
           principal: cod,
@@ -96,7 +100,24 @@ export function MatrizCompatibilidade() {
         });
       }
     }
-    return out.sort((a, b) => a.principal.localeCompare(b.principal));
+
+    // Procedimentos sem nenhum vínculo cadastrado entram na análise como "Sem compatibilidade"
+    for (const p of listarProcedimentos()) {
+      if (vistos.has(chave(p.codigo))) continue;
+      out.push({
+        principal: p.codigo,
+        nomePrincipal: p.nome,
+        proc: p,
+        forma: cod10(p.codigo).slice(0, 6),
+        secundario: "",
+        nomeSecundario: SEM_COMPAT,
+        categoria: SEM_COMPAT,
+        quantidade: 0,
+        desde: "",
+      });
+    }
+
+    return out.sort((a, b) => cod10(a.principal).localeCompare(cod10(b.principal)));
   }, [procs]);
 
   const categorias = useMemo(
@@ -120,7 +141,8 @@ export function MatrizCompatibilidade() {
       if (q) {
         const soDigitos = q.replace(/\D/g, "");
         if (soDigitos.length >= 3 && /^\d+$/.test(q.replace(/[\s.-]/g, ""))) {
-          const alvoCod = `${cod10(p.principal)} ${chave(p.principal)} ${cod10(p.secundario)} ${chave(p.secundario)}`;
+          const sec = p.secundario ? `${cod10(p.secundario)} ${chave(p.secundario)}` : "";
+          const alvoCod = `${cod10(p.principal)} ${chave(p.principal)} ${sec}`;
           if (!alvoCod.includes(soDigitos) && !alvoCod.includes(chave(soDigitos))) return false;
         } else {
           const alvo = `${p.principal} ${p.nomePrincipal} ${p.secundario} ${p.nomeSecundario}`.toLowerCase();
@@ -147,6 +169,57 @@ export function MatrizCompatibilidade() {
     [filtrados],
   );
 
+  // Análise procedimento a procedimento (base para o detalhamento do relatório)
+  const porProcedimento = useMemo(() => {
+    const mapa = new Map<
+      string,
+      {
+        codigo: string;
+        nome: string;
+        forma: string;
+        proc?: Procedimento;
+        total: number;
+        incompativeis: number;
+        secundarios: number;
+        concomitantes: number;
+        comLimite: number;
+        vinculos: Par[];
+      }
+    >();
+    for (const p of filtrados) {
+      const k = chave(p.principal);
+      let it = mapa.get(k);
+      if (!it) {
+        it = {
+          codigo: p.principal,
+          nome: p.nomePrincipal,
+          forma: p.forma,
+          proc: p.proc,
+          total: 0,
+          incompativeis: 0,
+          secundarios: 0,
+          concomitantes: 0,
+          comLimite: 0,
+          vinculos: [],
+        };
+        mapa.set(k, it);
+      }
+      if (p.categoria === SEM_COMPAT) continue;
+      it.total++;
+      it.vinculos.push(p);
+      if (/Incompat/i.test(p.categoria)) it.incompativeis++;
+      if (/Secundário/i.test(p.categoria)) it.secundarios++;
+      if (/Concomitantes/i.test(p.categoria)) it.concomitantes++;
+      if (p.quantidade > 0) it.comLimite++;
+    }
+    return Array.from(mapa.values()).sort((a, b) => cod10(a.codigo).localeCompare(cod10(b.codigo)));
+  }, [filtrados]);
+
+  const semCompatibilidade = useMemo(
+    () => porProcedimento.filter((p) => p.total === 0),
+    [porProcedimento],
+  );
+
   const nomeForma = (c: string) => formasOrganizacao.find((f) => f.codigo === c)?.nome ?? c;
 
   const limparFiltros = () => {
@@ -165,9 +238,11 @@ export function MatrizCompatibilidade() {
     }
     setGerando(true);
     try {
+      const vinculos = filtrados.filter((p) => p.categoria !== SEM_COMPAT);
       const badges = [
-        `${filtrados.length} vínculos`,
-        `${principaisFiltrados} procedimentos principais`,
+        `${vinculos.length} vínculos`,
+        `${principaisFiltrados} procedimentos analisados`,
+        `${semCompatibilidade.length} sem compatibilidade`,
       ];
       if (categoria !== TODOS) badges.push(rotuloCategoria(categoria));
       if (forma !== TODOS) badges.push(nomeForma(forma));
@@ -175,11 +250,13 @@ export function MatrizCompatibilidade() {
       if (idadeNum !== undefined && !Number.isNaN(idadeNum)) badges.push(`Idade: ${idadeNum} ano(s)`);
       if (limite !== TODOS) badges.push(limite === "com" ? "Com limite de quantidade" : "Sem limite");
 
-      const qtdIncompativeis = filtrados.filter((p) => /Incompat/i.test(p.categoria)).length;
-      const qtdSecundario = filtrados.filter((p) => /Secundário/i.test(p.categoria)).length;
-      const qtdConcomitantes = filtrados.filter((p) => /Concomitantes/i.test(p.categoria)).length;
-      const qtdCompativeis = filtrados.length - qtdIncompativeis;
-      const procComLimite = filtrados.filter((p) => p.quantidade > 0).length;
+      const qtdIncompativeis = vinculos.filter((p) => /Incompat/i.test(p.categoria)).length;
+      const qtdSecundario = vinculos.filter((p) => /Secundário/i.test(p.categoria)).length;
+      const qtdConcomitantes = vinculos.filter((p) => /Concomitantes/i.test(p.categoria)).length;
+      const qtdCompativeis = vinculos.length - qtdIncompativeis;
+      const procComLimite = vinculos.filter((p) => p.quantidade > 0).length;
+      const comVinculo = porProcedimento.length - semCompatibilidade.length;
+
 
       await gerarRelatorioPDF({
         titulo: "Compatibilidade entre procedimentos — SIGTAP 0304",
@@ -188,7 +265,7 @@ export function MatrizCompatibilidade() {
         badges,
         contextoIA: {
           tipo: "auditoria",
-          resumoDados: `Relação de ${filtrados.length} vínculos de compatibilidade entre procedimentos do subgrupo 0304, envolvendo ${principaisFiltrados} procedimentos principais. Filtros aplicados: ${badges.join("; ")}.`,
+          resumoDados: `Análise minuciosa, procedimento a procedimento, de ${porProcedimento.length} procedimentos do subgrupo 0304: ${comVinculo} possuem vínculos de compatibilidade (${vinculos.length} vínculos no total) e ${semCompatibilidade.length} estão sem compatibilidade cadastrada. Filtros aplicados: ${badges.join("; ")}.`,
           publicoAlvo: "Equipe de faturamento e auditoria oncológica",
         },
         secoes: [
@@ -196,35 +273,80 @@ export function MatrizCompatibilidade() {
             tipo: "kv",
             titulo: "Conclusão — resumo dos vínculos",
             itens: [
-              { chave: "Total de vínculos analisados", valor: String(filtrados.length) },
+              { chave: "Procedimentos analisados", valor: String(porProcedimento.length) },
+              { chave: "Procedimentos com compatibilidade", valor: String(comVinculo) },
+              { chave: "Procedimentos sem compatibilidade", valor: String(semCompatibilidade.length) },
+              { chave: "Total de vínculos analisados", valor: String(vinculos.length) },
               { chave: "Vínculos compatíveis", valor: String(qtdCompativeis) },
               { chave: "Vínculos excludentes (incompatíveis)", valor: String(qtdIncompativeis) },
               { chave: "Principal x Secundário", valor: String(qtdSecundario) },
               { chave: "Principal x Principal concomitantes (APACs diferentes)", valor: String(qtdConcomitantes) },
               { chave: "Vínculos com limite de quantidade", valor: String(procComLimite) },
-              { chave: "Procedimentos principais envolvidos", valor: String(principaisFiltrados) },
             ],
           },
           {
             tipo: "paragrafo",
             texto:
-              `Do total de ${filtrados.length} vínculos listados, ${qtdCompativeis} são compatíveis e ${qtdIncompativeis} são excludentes (incompatíveis entre si). ` +
+              `Foram analisados ${porProcedimento.length} procedimentos${forma !== TODOS ? ` da forma de organização ${forma} — ${nomeForma(forma)}` : ""}. ` +
+              `Destes, ${comVinculo} possuem ao menos um vínculo cadastrado e ${semCompatibilidade.length} estão sem compatibilidade. ` +
+              `Do total de ${vinculos.length} vínculos listados, ${qtdCompativeis} são compatíveis e ${qtdIncompativeis} são excludentes (incompatíveis entre si). ` +
               `Entre os compatíveis, ${qtdSecundario} são do tipo Principal x Secundário e ${qtdConcomitantes} são Principal x Principal concomitantes (autorizáveis em APACs diferentes). ` +
               `${procComLimite} vínculos possuem limite de quantidade definido.`,
           },
           {
             tipo: "tabela",
-            titulo: "Vínculos de compatibilidade",
-            cabecalho: ["Principal", "Vinculado", "Tipo", "Qtd. máx.", "Vigente desde", "Idade / Sexo"],
-            linhas: filtrados.map((p) => [
-              `${cod10(p.principal)}\n${p.nomePrincipal}`,
-              `${cod10(p.secundario)}\n${p.nomeSecundario}`,
-              rotuloCategoria(p.categoria),
-              p.quantidade > 0 ? String(p.quantidade) : "Sem limite",
-              p.desde || "—",
+            titulo: "Panorama procedimento a procedimento",
+            cabecalho: [
+              "Procedimento",
+              "Forma de organização",
+              "Vínculos",
+              "Compatíveis",
+              "Excludentes",
+              "Principal x Secundário",
+              "Concomitantes",
+              "Idade / Sexo",
+            ],
+            linhas: porProcedimento.map((p) => [
+              `${cod10(p.codigo)}\n${p.nome}`,
+              `${p.forma} — ${nomeForma(p.forma)}`,
+              p.total > 0 ? String(p.total) : SEM_COMPAT,
+              p.total > 0 ? String(p.total - p.incompativeis) : "—",
+              p.total > 0 ? String(p.incompativeis) : "—",
+              p.total > 0 ? String(p.secundarios) : "—",
+              p.total > 0 ? String(p.concomitantes) : "—",
               `${p.proc?.idadeMinima ?? "—"} a ${p.proc?.idadeMaxima ?? "—"} · ${p.proc?.sexo ?? "—"}`,
             ]),
           },
+          ...(semCompatibilidade.length > 0
+            ? [
+                {
+                  tipo: "tabela" as const,
+                  titulo: "Procedimentos sem compatibilidade cadastrada",
+                  cabecalho: ["Procedimento", "Forma de organização", "Situação", "Idade / Sexo", "Valor"],
+                  linhas: semCompatibilidade.map((p) => [
+                    `${cod10(p.codigo)}\n${p.nome}`,
+                    `${p.forma} — ${nomeForma(p.forma)}`,
+                    SEM_COMPAT,
+                    `${p.proc?.idadeMinima ?? "—"} a ${p.proc?.idadeMaxima ?? "—"} · ${p.proc?.sexo ?? "—"}`,
+                    p.proc ? brl(p.proc.valor) : "—",
+                  ]),
+                },
+              ]
+            : []),
+          ...porProcedimento
+            .filter((p) => p.total > 0)
+            .map((p) => ({
+              tipo: "tabela" as const,
+              titulo: `${cod10(p.codigo)} — ${p.nome} (${p.total} vínculo${p.total > 1 ? "s" : ""})`,
+              cabecalho: ["Procedimento vinculado", "Tipo", "Qtd. máx.", "Vigente desde", "Idade / Sexo"],
+              linhas: p.vinculos.map((v) => [
+                `${cod10(v.secundario)}\n${v.nomeSecundario}`,
+                rotuloCategoria(v.categoria),
+                v.quantidade > 0 ? String(v.quantidade) : "Sem limite",
+                v.desde || "—",
+                `${v.proc?.idadeMinima ?? "—"} a ${v.proc?.idadeMaxima ?? "—"} · ${v.proc?.sexo ?? "—"}`,
+              ]),
+            })),
         ],
         nomeArquivo: "compatibilidade-procedimentos-sigtap",
       });
@@ -250,7 +372,8 @@ export function MatrizCompatibilidade() {
           </Button>
         </div>
         <p className="text-sm text-muted-foreground">
-          {filtrados.length} vínculos · {principaisFiltrados} procedimentos principais
+          {filtrados.filter((p) => p.categoria !== SEM_COMPAT).length} vínculos ·{" "}
+          {porProcedimento.length} procedimentos analisados · {semCompatibilidade.length} sem compatibilidade
         </p>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -357,16 +480,30 @@ export function MatrizCompatibilidade() {
                     <div className="text-sm">{p.nomePrincipal}</div>
                   </TableCell>
                   <TableCell className="align-top">
-                    <div className="font-mono text-xs text-muted-foreground">{cod10(p.secundario)}</div>
-                    <div className="text-sm">{p.nomeSecundario}</div>
+                    {p.secundario ? (
+                      <>
+                        <div className="font-mono text-xs text-muted-foreground">{cod10(p.secundario)}</div>
+                        <div className="text-sm">{p.nomeSecundario}</div>
+                      </>
+                    ) : (
+                      <div className="text-sm text-muted-foreground">{SEM_COMPAT}</div>
+                    )}
                   </TableCell>
                   <TableCell className="align-top">
-                    <Badge variant={/Incompat/i.test(p.categoria) ? "destructive" : "secondary"}>
+                    <Badge
+                      variant={
+                        p.categoria === SEM_COMPAT
+                          ? "outline"
+                          : /Incompat/i.test(p.categoria)
+                            ? "destructive"
+                            : "secondary"
+                      }
+                    >
                       {rotuloCategoria(p.categoria)}
                     </Badge>
                   </TableCell>
                   <TableCell className="align-top text-sm">
-                    {p.quantidade > 0 ? p.quantidade : "Sem limite"}
+                    {p.categoria === SEM_COMPAT ? "—" : p.quantidade > 0 ? p.quantidade : "Sem limite"}
                   </TableCell>
                   <TableCell className="align-top text-sm">{p.desde || "—"}</TableCell>
                   <TableCell className="align-top text-sm">

@@ -177,16 +177,19 @@ export function MatrizCompatibilidade() {
   const filtrados = useMemo(() => {
     const q = busca.trim().toLowerCase();
     const qNumerico = q.replace(/[^\d]/g, "");
-    const buscaCodigoCompleto = qNumerico.length >= 9;
+    const trechoCodigo = q.match(/(?:\d[\s.-]*){9,10}/)?.[0].replace(/\D/g, "") ?? "";
+    const codigoBuscado = trechoCodigo.length >= 9 ? trechoCodigo : qNumerico;
+    const buscaPorCodigo = codigoBuscado.length >= 3 && (/^\d+$/.test(q.replace(/[\s.-]/g, "")) || trechoCodigo.length >= 9);
+    const buscaCodigoCompleto = codigoBuscado.length >= 9;
     return pares.filter((p) => {
       if (q) {
-        if (qNumerico.length >= 3 && /^\d+$/.test(q.replace(/[\s.-]/g, ""))) {
+        if (buscaPorCodigo) {
           if (buscaCodigoCompleto) {
-            if (cod10(p.principal) !== cod10(qNumerico)) return false;
+            if (cod10(p.principal) !== cod10(codigoBuscado)) return false;
           } else {
-          const sec = p.secundario ? `${cod10(p.secundario)} ${chave(p.secundario)}` : "";
-          const alvoCod = `${cod10(p.principal)} ${chave(p.principal)} ${sec}`;
-            if (!alvoCod.includes(qNumerico) && !alvoCod.includes(chave(qNumerico))) return false;
+            const sec = p.secundario ? `${cod10(p.secundario)} ${chave(p.secundario)}` : "";
+            const alvoCod = `${cod10(p.principal)} ${chave(p.principal)} ${sec}`;
+            if (!alvoCod.includes(codigoBuscado) && !alvoCod.includes(chave(codigoBuscado))) return false;
           }
         } else {
           const alvo = `${p.principal} ${p.nomePrincipal} ${p.secundario} ${p.nomeSecundario}`.toLowerCase();

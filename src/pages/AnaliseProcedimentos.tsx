@@ -291,6 +291,8 @@ export default function AnaliseProcedimentos() {
 
         <RelatorioMudancas />
 
+        <MatrizCompatibilidade />
+
         <CidsForaSigtap
           semProcedimento={semNenhum.map((l) => ({ codigo: l.codigo, descricao: l.descricao }))}
           totalCidsBase={matriz.length}

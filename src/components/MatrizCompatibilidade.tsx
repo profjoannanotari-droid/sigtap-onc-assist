@@ -265,7 +265,7 @@ export function MatrizCompatibilidade() {
         badges,
         contextoIA: {
           tipo: "auditoria",
-          resumoDados: `Relação de ${filtrados.length} vínculos de compatibilidade entre procedimentos do subgrupo 0304, envolvendo ${principaisFiltrados} procedimentos principais. Filtros aplicados: ${badges.join("; ")}.`,
+          resumoDados: `Análise minuciosa, procedimento a procedimento, de ${porProcedimento.length} procedimentos do subgrupo 0304: ${comVinculo} possuem vínculos de compatibilidade (${vinculos.length} vínculos no total) e ${semCompatibilidade.length} estão sem compatibilidade cadastrada. Filtros aplicados: ${badges.join("; ")}.`,
           publicoAlvo: "Equipe de faturamento e auditoria oncológica",
         },
         secoes: [

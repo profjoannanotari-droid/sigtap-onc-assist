@@ -14,7 +14,6 @@ import { cidsOnco, listarProcedimentos, capitulosCid, type Procedimento } from "
 import { RelatorioCobertura } from "@/components/RelatorioCobertura";
 import { CidsForaSigtap } from "@/components/CidsForaSigtap";
 import { RelatorioMudancas } from "@/components/RelatorioMudancas";
-import { MatrizCompatibilidade } from "@/components/MatrizCompatibilidade";
 
 import { cidsAusentesSigtap, fonteCidOficial, gruposNeoplasia } from "@/data/cidAusentesSigtap";
 import { formasOrganizacao } from "@/data/formasOrganizacao";
@@ -292,7 +291,6 @@ export default function AnaliseProcedimentos() {
 
         <RelatorioMudancas />
 
-        <MatrizCompatibilidade />
 
         <CidsForaSigtap
           semProcedimento={semNenhum.map((l) => ({ codigo: l.codigo, descricao: l.descricao }))}

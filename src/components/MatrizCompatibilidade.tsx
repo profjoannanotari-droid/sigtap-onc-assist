@@ -20,6 +20,7 @@ import { formasOrganizacao } from "@/data/formasOrganizacao";
 const TODOS = "__todos__";
 
 const chave = (codigo: string) => codigo.replace(/^0+/, "");
+const cod10 = (codigo: string) => codigo.replace(/\D/g, "").padStart(10, "0");
 
 const brl = (v: number) =>
   v.toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 2 });
@@ -117,8 +118,14 @@ export function MatrizCompatibilidade() {
     const q = busca.trim().toLowerCase();
     return pares.filter((p) => {
       if (q) {
-        const alvo = `${p.principal} ${p.nomePrincipal} ${p.secundario} ${p.nomeSecundario}`.toLowerCase();
-        if (!alvo.includes(q)) return false;
+        const soDigitos = q.replace(/\D/g, "");
+        if (soDigitos.length >= 3 && /^\d+$/.test(q.replace(/[\s.-]/g, ""))) {
+          const alvoCod = `${cod10(p.principal)} ${chave(p.principal)} ${cod10(p.secundario)} ${chave(p.secundario)}`;
+          if (!alvoCod.includes(soDigitos) && !alvoCod.includes(chave(soDigitos))) return false;
+        } else {
+          const alvo = `${p.principal} ${p.nomePrincipal} ${p.secundario} ${p.nomeSecundario}`.toLowerCase();
+          if (!alvo.includes(q)) return false;
+        }
       }
       if (categoria !== TODOS && p.categoria !== categoria) return false;
       if (forma !== TODOS && p.forma !== forma) return false;
@@ -184,8 +191,8 @@ export function MatrizCompatibilidade() {
             titulo: "Vínculos de compatibilidade",
             cabecalho: ["Principal", "Vinculado", "Tipo", "Qtd. máx.", "Vigente desde", "Idade / Sexo"],
             linhas: filtrados.map((p) => [
-              `${p.principal}\n${p.nomePrincipal}`,
-              `${p.secundario}\n${p.nomeSecundario}`,
+              `${cod10(p.principal)}\n${p.nomePrincipal}`,
+              `${cod10(p.secundario)}\n${p.nomeSecundario}`,
               rotuloCategoria(p.categoria),
               p.quantidade > 0 ? String(p.quantidade) : "Sem limite",
               p.desde || "—",
@@ -320,11 +327,11 @@ export function MatrizCompatibilidade() {
               {filtrados.map((p, i) => (
                 <TableRow key={`${p.principal}-${p.secundario}-${i}`}>
                   <TableCell className="align-top">
-                    <div className="font-mono text-xs text-muted-foreground">{p.principal}</div>
+                    <div className="font-mono text-xs text-muted-foreground">{cod10(p.principal)}</div>
                     <div className="text-sm">{p.nomePrincipal}</div>
                   </TableCell>
                   <TableCell className="align-top">
-                    <div className="font-mono text-xs text-muted-foreground">{p.secundario}</div>
+                    <div className="font-mono text-xs text-muted-foreground">{cod10(p.secundario)}</div>
                     <div className="text-sm">{p.nomeSecundario}</div>
                   </TableCell>
                   <TableCell className="align-top">

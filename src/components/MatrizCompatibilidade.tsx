@@ -238,9 +238,11 @@ export function MatrizCompatibilidade() {
     }
     setGerando(true);
     try {
+      const vinculos = filtrados.filter((p) => p.categoria !== SEM_COMPAT);
       const badges = [
-        `${filtrados.length} vínculos`,
-        `${principaisFiltrados} procedimentos principais`,
+        `${vinculos.length} vínculos`,
+        `${principaisFiltrados} procedimentos analisados`,
+        `${semCompatibilidade.length} sem compatibilidade`,
       ];
       if (categoria !== TODOS) badges.push(rotuloCategoria(categoria));
       if (forma !== TODOS) badges.push(nomeForma(forma));

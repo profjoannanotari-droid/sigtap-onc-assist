@@ -9,7 +9,7 @@ export default function Compatibilidade() {
   return (
     <div className="min-h-screen bg-background">
       <header className="gradient-medical">
-        <div className="container mx-auto px-4 py-4 sm:py-6">
+        <div className="mx-auto w-full max-w-[1600px] px-4 py-4 sm:px-6 sm:py-6">
           <Button
             variant="ghost"
             size="sm"
@@ -27,7 +27,7 @@ export default function Compatibilidade() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-6">
+      <main className="mx-auto w-full max-w-[1600px] px-3 py-5 sm:px-6 sm:py-6">
         <MatrizCompatibilidade />
       </main>
     </div>

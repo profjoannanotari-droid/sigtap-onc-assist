@@ -91,21 +91,24 @@ export function MatrizCompatibilidade() {
       const forma = p?.subgrupo ?? cod10(cod).slice(0, 6);
       for (const c of lista) {
         const idDireto = identificadorVinculo(c.codigo, c.categoria);
-        vinculosPorProcedimento.get(chave(cod))?.add(idDireto);
-        out.push({
-          principal: cod,
-          nomePrincipal,
-          proc: p,
-          forma,
-          secundario: c.codigo,
-          nomeSecundario:
-            nomesProcedimentoOficial[chave(c.codigo)] ??
-            procs.get(chave(c.codigo))?.nome ??
-            c.nome,
-          categoria: c.categoria,
-          quantidade: c.quantidade,
-          desde: c.desde,
-        });
+        const diretosConhecidos = vinculosPorProcedimento.get(chave(cod));
+        if (!diretosConhecidos?.has(idDireto)) {
+          diretosConhecidos?.add(idDireto);
+          out.push({
+            principal: cod,
+            nomePrincipal,
+            proc: p,
+            forma,
+            secundario: c.codigo,
+            nomeSecundario:
+              nomesProcedimentoOficial[chave(c.codigo)] ??
+              procs.get(chave(c.codigo))?.nome ??
+              c.nome,
+            categoria: c.categoria,
+            quantidade: c.quantidade,
+            desde: c.desde,
+          });
+        }
 
         // Alguns procedimentos aparecem somente como vinculados no arquivo oficial.
         // A relação inversa garante que cada procedimento tenha sua própria análise.

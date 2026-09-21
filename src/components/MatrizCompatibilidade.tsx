@@ -175,6 +175,12 @@ export function MatrizCompatibilidade() {
       if (idadeNum !== undefined && !Number.isNaN(idadeNum)) badges.push(`Idade: ${idadeNum} ano(s)`);
       if (limite !== TODOS) badges.push(limite === "com" ? "Com limite de quantidade" : "Sem limite");
 
+      const qtdIncompativeis = filtrados.filter((p) => /Incompat/i.test(p.categoria)).length;
+      const qtdSecundario = filtrados.filter((p) => /Secundário/i.test(p.categoria)).length;
+      const qtdConcomitantes = filtrados.filter((p) => /Concomitantes/i.test(p.categoria)).length;
+      const qtdCompativeis = filtrados.length - qtdIncompativeis;
+      const procComLimite = filtrados.filter((p) => p.quantidade > 0).length;
+
       await gerarRelatorioPDF({
         titulo: "Compatibilidade entre procedimentos — SIGTAP 0304",
         subtitulo:
@@ -186,6 +192,26 @@ export function MatrizCompatibilidade() {
           publicoAlvo: "Equipe de faturamento e auditoria oncológica",
         },
         secoes: [
+          {
+            tipo: "kv",
+            titulo: "Conclusão — resumo dos vínculos",
+            itens: [
+              { chave: "Total de vínculos analisados", valor: String(filtrados.length) },
+              { chave: "Vínculos compatíveis", valor: String(qtdCompativeis) },
+              { chave: "Vínculos excludentes (incompatíveis)", valor: String(qtdIncompativeis) },
+              { chave: "Principal x Secundário", valor: String(qtdSecundario) },
+              { chave: "Principal x Principal concomitantes (APACs diferentes)", valor: String(qtdConcomitantes) },
+              { chave: "Vínculos com limite de quantidade", valor: String(procComLimite) },
+              { chave: "Procedimentos principais envolvidos", valor: String(principaisFiltrados) },
+            ],
+          },
+          {
+            tipo: "paragrafo",
+            texto:
+              `Do total de ${filtrados.length} vínculos listados, ${qtdCompativeis} são compatíveis e ${qtdIncompativeis} são excludentes (incompatíveis entre si). ` +
+              `Entre os compatíveis, ${qtdSecundario} são do tipo Principal x Secundário e ${qtdConcomitantes} são Principal x Principal concomitantes (autorizáveis em APACs diferentes). ` +
+              `${procComLimite} vínculos possuem limite de quantidade definido.`,
+          },
           {
             tipo: "tabela",
             titulo: "Vínculos de compatibilidade",

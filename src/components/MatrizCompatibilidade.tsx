@@ -18,6 +18,7 @@ import { nomesProcedimentoOficial } from "@/data/nomesProcedimentoOficial";
 import { formasOrganizacao } from "@/data/formasOrganizacao";
 
 const TODOS = "__todos__";
+const SEM_COMPAT = "Sem compatibilidade";
 
 const chave = (codigo: string) => codigo.replace(/^0+/, "");
 const cod10 = (codigo: string) => codigo.replace(/\D/g, "").padStart(10, "0");

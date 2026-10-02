@@ -63,6 +63,8 @@ interface Par {
   categoria: string;
   quantidade: number;
   desde: string;
+  /** Linha espelhada: na regra oficial, este procedimento é o SECUNDÁRIO e o "vinculado" é o principal. */
+  inverso?: boolean;
 }
 
 const identificadorVinculo = (codigo: string, categoria: string) =>
@@ -134,6 +136,7 @@ export function MatrizCompatibilidade() {
               categoria: c.categoria,
               quantidade: c.quantidade,
               desde: c.desde,
+              inverso: true,
             });
           }
         }
@@ -185,7 +188,11 @@ export function MatrizCompatibilidade() {
       if (q) {
         if (buscaPorCodigo) {
           if (buscaCodigoCompleto) {
-            if (cod10(p.principal) !== cod10(codigoBuscado)) return false;
+            const alvo = cod10(codigoBuscado);
+            const ehPrincipal = cod10(p.principal) === alvo;
+            // procedimentos fora da base (ex.: 0802010334) só existem como vinculados
+            const ehVinculadoDireto = !p.inverso && p.secundario !== "" && cod10(p.secundario) === alvo && !procs.has(chave(codigoBuscado));
+            if (!ehPrincipal && !ehVinculadoDireto) return false;
           } else {
             const sec = p.secundario ? `${cod10(p.secundario)} ${chave(p.secundario)}` : "";
             const alvoCod = `${cod10(p.principal)} ${chave(p.principal)} ${sec}`;
@@ -285,7 +292,16 @@ export function MatrizCompatibilidade() {
     }
     setGerando(true);
     try {
-      const vinculos = filtrados.filter((p) => p.categoria !== SEM_COMPAT);
+      // Conta cada regra oficial uma única vez (linhas espelhadas não duplicam os totais).
+      const vistos = new Set<string>();
+      const vinculos = filtrados.filter((p) => {
+        if (p.categoria === SEM_COMPAT) return false;
+        const [pr, sc] = p.inverso ? [p.secundario, p.principal] : [p.principal, p.secundario];
+        const k = `${chave(pr)}|${chave(sc)}|${p.categoria}`;
+        if (vistos.has(k)) return false;
+        vistos.add(k);
+        return true;
+      });
       const badges = [
         `${vinculos.length} vínculos`,
         `${principaisFiltrados} procedimentos analisados`,
@@ -348,7 +364,7 @@ export function MatrizCompatibilidade() {
             linhas: filtrados.map((p) => [
               `${cod10(p.principal)}\n${p.nomePrincipal}\n${p.forma} — ${nomeForma(p.forma)}`,
               p.secundario ? `${cod10(p.secundario)}\n${p.nomeSecundario}` : SEM_COMPAT,
-              rotuloCategoria(p.categoria),
+              rotuloCategoria(p.categoria) + (p.inverso ? "\n(este procedimento é o SECUNDÁRIO; o vinculado é o principal da regra)" : ""),
               p.categoria === SEM_COMPAT
                 ? "—"
                 : `Qtd. máx.: ${p.quantidade > 0 ? p.quantidade : "Sem limite"}\nDesde: ${p.desde || "—"}`,
@@ -509,6 +525,9 @@ export function MatrizCompatibilidade() {
                     >
                       {rotuloCategoria(p.categoria)}
                     </Badge>
+                    {p.inverso && (
+                      <div className="text-xs text-muted-foreground mt-1">Este procedimento é o secundário; o vinculado é o principal da regra.</div>
+                    )}
                   </TableCell>
                   <TableCell className="align-top text-sm whitespace-normal">
                     {p.categoria === SEM_COMPAT ? "—" : <>{p.quantidade > 0 ? `Máx. ${p.quantidade}` : "Sem limite"}<div className="text-muted-foreground">{p.desde || "—"}</div></>}

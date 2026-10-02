@@ -18,6 +18,13 @@ const ARQUIVOS_NECESSARIOS = [
 ];
 const MINIMO_ESPERADO_0304 = 100;
 
+function comPrazo<T>(p: Promise<T>, ms: number, oQue: string): Promise<T> {
+  return Promise.race([
+    p,
+    new Promise<never>((_, r) => setTimeout(() => r(new Error(`tempo esgotado em ${oQue}`)), ms)),
+  ]);
+}
+
 class Critica extends Error {
   constructor(public etapa: string, mensagem: string, public ajuste: string) {
     super(mensagem);
@@ -32,10 +39,9 @@ class Ftp {
   private enc = new TextEncoder();
 
   async conectar() {
-    this.conn = await Promise.race([
-      Deno.connect({ hostname: HOST, port: 21 }),
-      new Promise<never>((_, r) => setTimeout(() => r(new Error("tempo esgotado")), 20000)),
-    ]);
+    console.log("conectando FTP");
+    this.conn = await comPrazo(Deno.connect({ hostname: HOST, port: 21 }), 15000, "conexão");
+    console.log("conectado");
     await this.esperar([220]);
     await this.cmd("USER anonymous", [331, 230]);
     await this.cmd("PASS anonymous@notarisigtap", [230, 202]);
@@ -45,7 +51,7 @@ class Ftp {
   private async linha(): Promise<string> {
     while (!this.buf.includes("\r\n")) {
       const chunk = new Uint8Array(4096);
-      const n = await this.conn.read(chunk);
+      const n = await comPrazo(this.conn.read(chunk), 15000, "resposta do servidor");
       if (n === null) throw new Error("conexão encerrada pelo servidor");
       this.buf += this.dec.decode(chunk.subarray(0, n));
     }
@@ -76,13 +82,13 @@ class Ftp {
     const m = r.match(/(\d+),(\d+),(\d+),(\d+),(\d+),(\d+)/);
     if (!m) throw new Error("resposta PASV inválida");
     const port = Number(m[5]) * 256 + Number(m[6]);
-    const data = await Deno.connect({ hostname: HOST, port });
+    const data = await comPrazo(Deno.connect({ hostname: HOST, port }), 15000, "canal de dados");
     await this.cmd(comando, [125, 150]);
     const partes: Uint8Array[] = [];
     let total = 0;
     const chunk = new Uint8Array(65536);
     while (true) {
-      const n = await data.read(chunk);
+      const n = await comPrazo(data.read(chunk), 30000, "transferência");
       if (n === null) break;
       partes.push(chunk.slice(0, n));
       total += n;

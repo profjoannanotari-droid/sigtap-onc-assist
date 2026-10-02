@@ -82,7 +82,10 @@ class Ftp {
     const m = r.match(/(\d+),(\d+),(\d+),(\d+),(\d+),(\d+)/);
     if (!m) throw new Error("resposta PASV inválida");
     const port = Number(m[5]) * 256 + Number(m[6]);
-    const data = await comPrazo(Deno.connect({ hostname: HOST, port }), 15000, "canal de dados");
+    const ipPasv = `${m[1]}.${m[2]}.${m[3]}.${m[4]}`;
+    const privado = /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|127\.)/.test(ipPasv);
+    console.log("PASV", ipPasv, port);
+    const data = await comPrazo(Deno.connect({ hostname: privado ? HOST : ipPasv, port }), 15000, "canal de dados");
     await this.cmd(comando, [125, 150]);
     const partes: Uint8Array[] = [];
     let total = 0;

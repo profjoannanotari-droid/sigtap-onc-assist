@@ -167,6 +167,7 @@ Deno.serve(async (req) => {
 
   const corpo = await req.json().catch(() => ({}));
   if (corpo?.diagnostico) {
+    try { const c = await comPrazo(Deno.connect({ hostname: "portquiz.net", port: 5561 }), 8000, "portquiz"); c.close(); return json({ portquiz: "ok" }); } catch (e) { return json({ portquiz: String(e) }); }
     const urls = ["http://sigtap.datasus.gov.br/tabela-unificada/app/download.jsp", "https://ftp2.datasus.gov.br/pub/sistemas/tup/downloads/", "http://ftp2.datasus.gov.br/pub/sistemas/tup/downloads/"];
     const out: Record<string, string> = {};
     for (const u of urls) {

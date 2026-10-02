@@ -100,6 +100,9 @@ export default function ComparativoCompetencias() {
         badges: [
           `${diffProcs.length} mudanças em procedimentos`,
           `${diffCids.length} CIDs com cobertura alterada`,
+          ...(procsFiltrados.length !== diffProcs.length || cidsFiltrados.length !== diffCids.length
+            ? [`Filtro ativo: ${procsFiltrados.length} procedimento(s) e ${cidsFiltrados.length} CID(s) listados`]
+            : []),
         ],
         contextoIA: {
           tipo: "auditoria",
@@ -136,7 +139,7 @@ export default function ComparativoCompetencias() {
               String(f.mudancas),
             ]),
           },
-          diffProcs.length
+          procsFiltrados.length
             ? {
                 tipo: "tabela" as const,
                 titulo: "Mudanças por procedimento",
@@ -154,9 +157,11 @@ export default function ComparativoCompetencias() {
             : {
                 tipo: "paragrafo" as const,
                 titulo: "Mudanças por procedimento",
-                texto: "Nenhuma diferença encontrada entre as competências selecionadas.",
+                texto: diffProcs.length
+                  ? `Os filtros aplicados ocultaram todas as ${diffProcs.length} mudança(s) em procedimentos. Limpe os filtros para exportar a relação completa.`
+                  : "Nenhuma diferença encontrada entre as competências selecionadas.",
               },
-          diffCids.length
+          cidsFiltrados.length
             ? {
                 tipo: "tabela" as const,
                 titulo: "Mudanças por CID-10 e forma de organização",
@@ -174,7 +179,9 @@ export default function ComparativoCompetencias() {
             : {
                 tipo: "paragrafo" as const,
                 titulo: "Mudanças por CID-10",
-                texto: "Nenhum CID teve alteração nas formas de organização que o atendem.",
+                texto: diffCids.length
+                  ? `Os filtros aplicados ocultaram todos os ${diffCids.length} CID(s) com mudança. Limpe os filtros para exportar a relação completa.`
+                  : "Nenhum CID teve alteração nas formas de organização que o atendem.",
               },
         ],
         nomeArquivo: `comparativo_${baseA.competencia.replace("/", "-")}_${baseB.competencia.replace("/", "-")}`,

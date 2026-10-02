@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRightLeft, FileDown, Search } from "lucide-react";
+import { AlertaSincronizacao } from "@/components/AlertaSincronizacao";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -208,6 +209,7 @@ export default function ComparativoCompetencias() {
       </header>
 
       <main className="container mx-auto px-4 py-6 space-y-6">
+        <AlertaSincronizacao />
         <Card>
           <CardHeader className="pb-3 flex-row items-start justify-between gap-2 flex-wrap">
             <CardTitle className="text-base">Competências comparadas</CardTitle>

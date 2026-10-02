@@ -18,6 +18,7 @@ import { RelatorioMudancas } from "@/components/RelatorioMudancas";
 import { cidsAusentesSigtap, fonteCidOficial, gruposNeoplasia } from "@/data/cidAusentesSigtap";
 import { formasOrganizacao } from "@/data/formasOrganizacao";
 import { SeletorCompetencia, useCompetencia } from "@/components/SeletorCompetencia";
+import { AlertaSincronizacao } from "@/components/AlertaSincronizacao";
 
 export { formasOrganizacao };
 
@@ -281,6 +282,7 @@ export default function AnaliseProcedimentos() {
       </header>
 
       <main className="container mx-auto px-4 py-6 space-y-6">
+        <AlertaSincronizacao />
         <SeletorCompetencia
           bases={bases}
           base={base}

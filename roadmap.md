@@ -5,4 +5,4 @@
 - [x] Mostrar procedimentos sem vínculo em nenhuma posição
 - [x] Consolidar tela e PDF em uma tabela única
 - [x] Corrigir margens e comportamento em telas estreitas
-- [x] Validar contagens, códigos solicitados e relatório
+- [x] Validar contagens, códigos solicitados e relatório- Sincronização automática SIGTAP via DATASUS (função diária em sa-east-1) com crítica de falha — concluído; DATASUS bloqueia canal de dados FTP no momento

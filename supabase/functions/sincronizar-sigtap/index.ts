@@ -85,7 +85,7 @@ class Ftp {
     const ipPasv = `${m[1]}.${m[2]}.${m[3]}.${m[4]}`;
     const privado = /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|127\.)/.test(ipPasv);
     console.log("PASV", ipPasv, port);
-    const data = await comPrazo(Deno.connect({ hostname: privado ? HOST : ipPasv, port }), 15000, "canal de dados");
+    const data = await comPrazo(Deno.connect({ hostname: privado ? HOST : ipPasv, port }), 10000, "canal de dados");
     await this.cmd(comando, [125, 150]);
     const partes: Uint8Array[] = [];
     let total = 0;
@@ -105,7 +105,12 @@ class Ftp {
   }
 
   async listar(dir: string): Promise<string[]> {
-    const raw = await this.dados(`NLST ${dir}`);
+    let raw: Uint8Array | null = null;
+    let erro: unknown;
+    for (let i = 0; i < 3 && !raw; i++) {
+      try { raw = await this.dados(`NLST ${dir}`); } catch (e) { erro = e; }
+    }
+    if (!raw) throw erro;
     return this.dec.decode(raw).split(/\r?\n/).map((s) => s.trim().split("/").pop()!).filter(Boolean);
   }
 
@@ -164,17 +169,6 @@ Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   const json = (b: unknown, s = 200) =>
     new Response(JSON.stringify(b), { status: s, headers: { ...corsHeaders, "Content-Type": "application/json" } });
-
-  const corpo = await req.json().catch(() => ({}));
-  if (corpo?.diagnostico) {
-    try { const c = await comPrazo(Deno.connect({ hostname: "portquiz.net", port: 5561 }), 8000, "portquiz"); c.close(); return json({ portquiz: "ok" }); } catch (e) { return json({ portquiz: String(e) }); }
-    const urls = ["http://sigtap.datasus.gov.br/tabela-unificada/app/download.jsp", "https://ftp2.datasus.gov.br/pub/sistemas/tup/downloads/", "http://ftp2.datasus.gov.br/pub/sistemas/tup/downloads/"];
-    const out: Record<string, string> = {};
-    for (const u of urls) {
-      try { const r = await comPrazo(fetch(u), 15000, u); const t = await r.text(); out[u] = r.status + " " + t.slice(0, 1500); } catch (e) { out[u] = String(e); }
-    }
-    return json(out);
-  }
 
   const sb = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 

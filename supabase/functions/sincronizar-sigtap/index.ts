@@ -165,6 +165,16 @@ Deno.serve(async (req) => {
   const json = (b: unknown, s = 200) =>
     new Response(JSON.stringify(b), { status: s, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
+  const corpo = await req.json().catch(() => ({}));
+  if (corpo?.diagnostico) {
+    const urls = ["http://sigtap.datasus.gov.br/tabela-unificada/app/download.jsp", "https://ftp2.datasus.gov.br/pub/sistemas/tup/downloads/", "http://ftp2.datasus.gov.br/pub/sistemas/tup/downloads/"];
+    const out: Record<string, string> = {};
+    for (const u of urls) {
+      try { const r = await comPrazo(fetch(u), 15000, u); const t = await r.text(); out[u] = r.status + " " + t.slice(0, 1500); } catch (e) { out[u] = String(e); }
+    }
+    return json(out);
+  }
+
   const sb = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
   // trava: impede duas execuções simultâneas

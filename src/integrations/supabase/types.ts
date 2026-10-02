@@ -74,6 +74,57 @@ export type Database = {
         }
         Relationships: []
       }
+      sigtap_bases: {
+        Row: {
+          arquivo: string
+          competencia: string
+          created_at: string
+          procedimentos: Json
+          total_procedimentos: number
+        }
+        Insert: {
+          arquivo: string
+          competencia: string
+          created_at?: string
+          procedimentos: Json
+          total_procedimentos: number
+        }
+        Update: {
+          arquivo?: string
+          competencia?: string
+          created_at?: string
+          procedimentos?: Json
+          total_procedimentos?: number
+        }
+        Relationships: []
+      }
+      sigtap_sincronizacao: {
+        Row: {
+          competencia: string | null
+          created_at: string
+          detalhes: Json | null
+          id: string
+          mensagem: string
+          status: string
+        }
+        Insert: {
+          competencia?: string | null
+          created_at?: string
+          detalhes?: Json | null
+          id?: string
+          mensagem: string
+          status: string
+        }
+        Update: {
+          competencia?: string | null
+          created_at?: string
+          detalhes?: Json | null
+          id?: string
+          mensagem?: string
+          status?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string

@@ -18,6 +18,7 @@ import Compatibilidade from "./pages/Compatibilidade.tsx";
 
 
 import { AccessGate } from "@/components/AccessGate";
+import Atualizacoes from "./pages/Atualizacoes";
 import { AdminGate } from "@/components/AdminGate";
 
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ const App = () => (
               <Route path="/esquemas" element={<Esquemas />} />
               <Route path="/analise" element={<AdminGate><AnaliseProcedimentos /></AdminGate>} />
               <Route path="/comparativo" element={<AdminGate><ComparativoCompetencias /></AdminGate>} />
+              <Route path="/atualizacoes" element={<AdminGate><Atualizacoes /></AdminGate>} />
               <Route path="/compatibilidade" element={<Compatibilidade />} />
 
               <Route path="*" element={<NotFound />} />

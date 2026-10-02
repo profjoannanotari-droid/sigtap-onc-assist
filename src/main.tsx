@@ -1,5 +1,8 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import { carregarBaseMaisRecente } from "./lib/sincronizacaoSigtap";
 
-createRoot(document.getElementById("root")!).render(<App />);
+carregarBaseMaisRecente().finally(() => {
+  createRoot(document.getElementById("root")!).render(<App />);
+});

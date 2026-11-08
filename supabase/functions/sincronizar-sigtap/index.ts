@@ -172,6 +172,45 @@ function valor(v: string) {
   return Number.isFinite(n) ? n / 100 : 0;
 }
 
+const REGISTROS: Record<string, string> = {
+  "01": "BPA (Consolidado)",
+  "02": "BPA (Individualizado)",
+  "03": "AIH (Proc. Principal)",
+  "04": "AIH (Proc. Especial)",
+  "05": "AIH (Proc. Secundário)",
+  "06": "APAC (Proc. Principal)",
+  "07": "APAC (Proc. Secundário)",
+};
+
+function categoriaCompatibilidade(registroPrincipal: string, registroCompativel: string, tipo: string): string {
+  const principal = REGISTROS[registroPrincipal];
+  const compativel = REGISTROS[registroCompativel];
+  if (!principal || !compativel) {
+    throw new Critica(
+      "compatibilidade",
+      `Foi encontrado um modo de registro não reconhecido (${registroPrincipal} > ${registroCompativel}).`,
+      "O DATASUS incluiu um modo de registro novo. Revisar o dicionário de categorias da sincronização.",
+    );
+  }
+  const tipos: Record<string, string> = {
+    "1": "Compativel",
+    "2": "Excludente",
+    "3": "Concomitantes - APACs diferentes para o mesmo paciente",
+  };
+  if (!tipos[tipo]) {
+    throw new Critica(
+      "compatibilidade",
+      `Foi encontrado um tipo de compatibilidade não reconhecido (${tipo}).`,
+      "O DATASUS incluiu um tipo de vínculo novo. Revisar o dicionário de categorias da sincronização.",
+    );
+  }
+  return `${principal} x ${compativel} - ${tipos[tipo]}`;
+}
+
+function competenciaCurta(valor: string): string {
+  return valor.length === 6 ? `${valor.slice(4)}/${valor.slice(0, 4)}` : "";
+}
+
 // ---------------- Execução ----------------
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });

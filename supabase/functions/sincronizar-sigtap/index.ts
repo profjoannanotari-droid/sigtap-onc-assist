@@ -159,7 +159,11 @@ function campo(l: string, lay: Layout, c: string) {
 function idade(meses: string): string {
   const n = Number(meses);
   if (!Number.isFinite(n) || n >= 9999) return "";
-  if (n >= 12 && n % 12 === 0) return `${n / 12} Ano(s)`;
+  if (n >= 12) {
+    const anos = Math.floor(n / 12);
+    const meses = n % 12;
+    return meses > 0 ? `${anos} Ano(s) e ${meses} Mes(es)` : `${anos} Ano(s)`;
+  }
   return `${n} Mes(es)`;
 }
 

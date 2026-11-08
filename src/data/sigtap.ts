@@ -680,7 +680,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010111",
     "subgrupo": "030401",
     "descricao": "INTERNACAO PARA DOENTE (CRIANCA, ADOLESCENTE E ADULTO) FORANEO SOB RADIOTERAPIA EXTERNA (COBALTOTERAPIA OU COM ACELERADOR LINEAR).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "223119",
@@ -1287,7 +1287,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010340",
     "subgrupo": "030401",
     "descricao": "SEDAÇÃO/ANESTESIA PARA SE MANTER A NECESSÁRIA IMOBILIDADE DURANTE BRAQUITERAPIA GINECOLÓGICA, PROSTÁTICA OU, QUANDO INDICADA DE PELE OU PARTES MOLES, QUANDO BRAQUITERAPIA GINECOLÓGICA, MÁXIMO DE 04; DE PARTES MOLES, MÁXIMO DE 04;DE PRÓSTATA, MÁXIMO DE 2; DE PELE, MÁXIMO DE 4.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225151",
@@ -1302,7 +1302,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010359",
     "subgrupo": "030401",
     "descricao": "INTERNAÇÃO DE PACIENTE(CRIANÇA, ADOLESCENTE E ADULTO) FORÂNEO PARA RADIOTERAPIA ESTEREOTÁXICA DE SISTEMA NERVOSO CENTRAL EM DOSE ÚNICA (RADIOCIRURGIA) OU EM MÚLTIPLAS FRAÇÕES (DOSE FRACIONADA), ENCAMINHADO DE UM ESTADO PARA OUTRO POR MEIO DA CENTRAL NACIONAL DE REAGULAÇÃO DE ALTA COMPLEXIDADE (CNRAC) ADMITE REGISTRO E COBRANÇA CONCOMITANTES COM O PROCEDIMENTO 03.04.01.051-0- RADIOTERAPIA EXTEREOTÁXICA. EXCLUDENTE COM OS PROCEDIMENTOS 03.04.01.011-1 - INTERNAÇÃO PARA RADIOTERAPIA EXTERNA (COBALTOTERAPIA/ACELERADOR LINEAR) E 03.04.01.059-6- INTERNAÇÃO PARA BRAQUITERAPIA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "12 Ano(s)",
     "cbosCompativeis": [
       "225112",
@@ -1338,7 +1338,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010367",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA DA REGIÃO DE CABEÇA E PESCOÇO, INCLUINDO A IRRADIAÇÃO DO SÍTIO ANATÔMICO E DA RESPECTIVA CADEIA DE DRENAGEM LINFÁTICA REGIONAL (RETROFARÍNGEA, PARAFARÍNGEA, CERVICAL, SUPRACLAVICULAR).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -1438,7 +1438,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010375",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA DE CÂNCER DE ESÔFAGO, ESTÔMAGO, ALÇAS INTESTINAIS, RETO, SIGMOIDE, CANAL ANAL, PÂNCREAS, FÍGADO OU VIAS BILIARES. INCLUI IRRADIAÇÃO DE CADEIA DE DRENAGEM LINFÁTICA REGIONAL.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -1525,7 +1525,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010383",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA DE PULMÃO, TRAQUEIA, MESOTELIOMA DE PLEURA E CÂNCER EM MEDIASTINO, EXCETO LINFOMA. INCLUI IRRADIAÇÃO DE CADEIA DE DRENAGEM LINFÁTICA REGIONAL.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -1560,7 +1560,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010391",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA DE TUMORES PRIMÁRIOS DE OSSOS, CARTILAGENS, VASOS, PARTES MOLES OU NERVOS PERIFÉRICOS, POR LOCALIZAÇÃO, OU LESÃO BENIGNA DO CORPO CAROTÍDEO OU DO CORPO AÓRTICO. NÃO INCLUI A IRRADIAÇÃO DE CADEIA LINFÁTICA, QUANDO INDICADA. A BRAQUITERAPIA É APLICÁVEL APENAS EM CASO DE TUMOR DE PARTES MOLES. SE BRAQUITERAPIA DE TUMOR DE PARTES MOLES, AUTORIZAÇÃO EXCLUDENTE COM A AUTORIZAÇÃO DOS PROCEDIMENTOS 03.04.01.011-1 INTERNACÃO P/ RADIOTERAPIA EXTERNA (COBALTOTERAPIA/ACELERADOR LINEAR) E 03.04.01.017-0 NARCOSE DE CRIANÇA (POR PROCEDIMENTO).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -1635,7 +1635,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010405",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA TELETERAPIA OU BRAQUITERAPIA DE CÂNCER DE PELE, POR LOCALIZAÇÃO. NÃO INCLUI IRRADIAÇÃO DE CADEIA DE DRENAGEM LINFÁTICA REGIONAL. QUANDO USADA, A BRAQUITERAPIA É INDICADA EM CASO DE CÂNCER NÃO MELANÓTICO DE PELE EM INDIVÍDUOS COM IDADE MÍNIMA DE 30 ANOS. SE BRAQUITERAPIA, AUTORIZAÇÃO EXCLUDENTE COM A AUTORIZAÇÃO DOS PROCEDIMENTOS 03.04.01.011-1 INTERNAÇÃO P/ RADIOTERAPIA EXTERNA (COBALTOTERAPIA/ACELERADOR LINEAR) E 03.04.01.017-0 NARCOSE DE CRIANÇA (POR PROCEDIMENTO).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -1670,7 +1670,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010413",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA DA MAMA OU DO PLASTRÃO (LEITO) MAMÁRIO. INCLUIR A IRRADIAÇÃO DE CADEIA DE DRENAGEM LINFÁTICA REGIONAL (AXILAR, SUPRACLAVICULAR, CADEIA MAMÁRIA INTERNA), QUANDO INDICADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -1694,7 +1694,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010421",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA DE CÂNCER DE VULVA, VAGINA, CORPO DO ÚTERO, COLO DO ÚTERO, DE OVÁRIO OU DE TUBA UTERINA. INCLUI IRRADIAÇÃO DE CADEIA DE DRENAGEM LINFÁTICA REGIONAL PÉLVICA. NÃO INCLUI BRAQUITERAPIA. CONCOMITÂNCIA COM O PROCEDIMENTO 03.04.01.054-5 RADIOTERAPIA DE CADEIA LINFÁTICA SÓ PARA IRRADIAÇÃO DE CADEIA DE DRENAGEM LINFÁTICA DA REGIÃO PARA-AÓRTICA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -1740,7 +1740,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010430",
     "subgrupo": "030401",
     "descricao": "BRAQUITERAPIA INTERSTICIAL OU INTRACAVITÁRIA DE CÂNCER DO COLO UTERINO, CORPO UTERINO, VAGINA OU VULVA. PROCEDIMENTO REGISTRADO POR TRATAMENTO COMPLETO, INDEPENDENTEMENTE DO NÚMERO DE INSERÇÕES.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "12 Ano(s)",
     "cbosCompativeis": [
       "225330"
@@ -1771,7 +1771,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010448",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA DE CÂNCER DE PÊNIS. INCLUI A IRRADIAÇÃO DAS CADEIAS DE DRENAGEM LINFÁTICAS CORRESPONDENTES.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "12 Ano(s)",
     "cbosCompativeis": [
       "225330"
@@ -1791,7 +1791,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010456",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA DE PRÓSTATA. INCLUI A IRRADIAÇÃO DE CADEIA DE DRENAGEM LINFÁTICA REGIONAL, QUANDO INDICADA. EXCLUDENTE COM O PROCEDIMENTO 04.03.01.046-4 BRAQUITERAPIA DE PRÓSTATA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "40 Ano(s)",
     "cbosCompativeis": [
       "225330"
@@ -1807,7 +1807,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010464",
     "subgrupo": "030401",
     "descricao": "BRAQUITERAPIA INTERSTICIAL ISOLADA DE CÂNCER DE PRÓSTATA. PROCEDIMENTO REGISTRADO POR TRATAMENTO COMPLETO, INDEPENDENTEMENTE DO NÚMERO DE INSERÇÕES. EXCLUDENTE COM O PROCEDIMENTO 03.04.01.045-6 RADIOTERAPIA DE PRÓSTATA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "40 Ano(s)",
     "cbosCompativeis": [
       "225330"
@@ -1823,7 +1823,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010472",
     "subgrupo": "030401",
     "descricao": "RADIOTERAPIA DE CÂNCER DE URETRA, BEXIGA, URETER, RIM, ADRENAL (SUPRARRENAL) E NEUROBLASTOMA. INCLUI IRRADIAÇÃO DE CADEIA DE DRENAGEM LINFÁTICA REGIONAL, QUANDO INDICADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -1857,7 +1857,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010480",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA DE LESÃO(ÕES) PRIMÁRIA(S), MALIGNA(S) DE OLHO E ANEXOS. AUTORIZAÇÃO EXCLUDENTE COM AUTORIZAÇÃO DO PROCEDIMENTO 03.04.01.049-9 - BRAQUITERAPIA OFTÁLMICA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -1881,7 +1881,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010499",
     "subgrupo": "030401",
     "descricao": "BRAQUITERAPIA INTERSTICIAL OU SUPERFICIAL EM CÂNCER DE ÁREA OCULAR. INCLUI CIRURGIA PARA IMPLANTAÇÃO E RETIRADA DE PLACA RADIOATIVA EPISCLERAL. MÁXIMO DE DOIS, QUANDO DA BILATERALIDADE DO CÂNCER OCULAR. AUTORIZAÇÃO EXCLUDENTE COM AUTORIZAÇÃO DOS PROCEDIMENTOS 03.04.01.048-0 RADIOTERAPIA DE OLHOS E ANEXOS E 03.04.01.017-0 NARCOSE DE CRIANÇA (POR PROCEDIMENTO).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -1903,7 +1903,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010502",
     "subgrupo": "030401",
     "descricao": "RADIOTERAPIA DE TUMORES PRIMÁRIOS DO SISTEMA NERVOSO CENTRAL, INCLUSIVE LESÕES BENIGNAS OU DE COMPORTAMENTO INCERTO CENTRAL. INCLUI NEVRALGIA TRIGEMINAL, MENINGIOMA, SCHWANOMA E DOENÇAS DA REGIÃO SELAR. UTILIZA DOSE DE FINALIDADE RADICAL E TÉCNICA DE TELETERAPIA DIFERENTE DE RADIOTERAPIA ESTEREOTÁXICA. INCLUI IRRADIAÇÃO DE TODO NEUROEIXO. MÁXIMO DE DOIS SOMENTE EM CASO DE IRRADIAÇÃO DE TODO O NEUROEIXO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -1962,7 +1962,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010510",
     "subgrupo": "030401",
     "descricao": "RADIOTERAPIA ESTEREOTÁXICA, UTILIZANDO DOSE ÚNICA (RADIOCIRURGIA) OU EM MÚLTIPLAS FRAÇÕES (DOSE FRACIONADA). REQUER SISTEMA DE IMOBILIZAÇÃO E LOCALIZAÇÃO ESPECÍFICOS. INDICADA PARA TUMORES CRANIANOS MALIGNOS, BENIGNOS OU DE COMPORTAMENTO INCERTO, E DE NEVRALGIAS E MALFORMAÇÕES DE VASOS CRANIANOS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -2003,7 +2003,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010529",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA COM FINALIDADE PALIATIVA DE LESÕES METASTÁTICAS EM CRÂNIO TOTAL OU NEUROEIXO. EM CASOS DE CARCINOMA INDIFERENCIADO DE CÉLULAS PEQUENAS DE PULMÃO E DE LEUCEMIAS, PODE SER AUTORIZADA COM FINALIDADE PROFILÁTICA POR CONTA DO COMPORTAMENTO BIOLÓGICO PRÓPRIO DESTAS NEOPLASIAS MALIGNAS PRIMÁRIAS. A COMPROVAÇÃO CITO/HISTOPATOLÓGICA PODE SER APENAS DA NEOPLASIA NA SUA LOCALIZAÇÃO PRIMÁRIA. MÁXIMO DE DOIS SOMENTE EM CASO DE IRRADIAÇÃO DE TODO O NEUROEIXO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -2023,7 +2023,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010537",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA DE LESÃO(ÕES) POR LOCALIZAÇÃO ANATÔMICA, COM FINALIDADE PALIATIVA. PODERÁ SER REGISTRADO PARA A IRRADIAÇÃO DE LESÃO (ÕES) ÓSSEA (S) METASTÁTICA (S) OU MIELOMATOSA (S) OU DE OUTRA (S) LOCALIZAÇÃO (ÕES) NÃO LINFONODAL (AIS) E QUE NÃO DO SISTEMA NERVOSO CENTRAL. AUTORIZADO EM QUANTIDADE MÁXIMA DE DOIS, QUANDO TRATADAS DUAS LESÕES SIMULTANEAMENTE EM LOCALIZAÇÕES DISTINTAS. TAMBÉM NO MÁXIMO DE DOIS,PODERÁ SER AUTORIZADO PARA RADIOTERAPIA DE CONSOLIDAÇÃO (OU SEJA, SEM EVIDÊNCIA DE DOENÇA METASTÁTICA APÓS QUIMIOTERAPIA OU RESSECÇÃO CIRÚRGICA) EM PULMÃO TOTAL QUANDO INDICADA EM CASO DE METÁSTASE (S) PULMONAR (ES), E, COM FINALIDADE CURATIVA, EM CASO DE PLASMOCITOMA (LESÃO ÚNICA DE MIELOMA). SOMENTE EXCEPCIONAL E JUSTIFICADAMENTE PODERÁ SER AUTORIZADO O MÁXIMO DE TRÊS PARA TRÊS LESÕES SIMULTÂNEAS EM LOCALIZAÇÕES DISTINTAS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -2058,7 +2058,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010545",
     "subgrupo": "030401",
     "descricao": "RADIOTERAPIA EM CADEIA DE DRENAGEM LINFÁTICA REGIONAL OU À DISTÂNCIA COM FINALIDADE CURATIVA OU PALIATIVA, INCLUSIVE IRRADIAÇÃO DE CADEIA DE DRENAGEM LINFÁTICA TERAPÊUTICA OU PROFILÁTICA DE NEOPLASIA DE TESTÍCULO OU DO ESCROTO. A RADIOTERAPIA DE CADEIA LINFÁTICA ISOLADA SERÁ AUTORIZADA EM CASOS DE PROGRESSÃO OU RECIDIVA DE NEOPLASIA MALIGNA NÃO LINFOMATOSA NA ÁREA DE DRENAGEM LINFÁTICA REGIONAL OU À DISTÂNCIA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -2080,7 +2080,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010553",
     "subgrupo": "030401",
     "descricao": "CONSISTE NA RADIOTERAPIA DE DOENÇA (LINFOMA) DE HODGKIN OU LINFOMA NÃO HODGKIN, POR LOCALIZAÇÃO ANATÔMICA (CADEIAS LINFÁTICAS EM LADOS OPOSTOS DO DIAFRAGMA CONSTITUEM DIFERENTES LOCALIZAÇÕES) OU NA RADIOTERAPIA LOCALIZADA PARA CONSOLIDAÇÃO (OU SEJA, APÓS OBTIDA RESPOSTA COMPLETA OU DOENÇA RESIDUAL MÍNIMA COM A QUIMIOTERAPIA) EM CASO DE LEUCEMIA, INCLUINDO A IRRADIAÇÃO DE CLOROMAS E LESÕES FOCAIS RECIDIVADAS, POR LOCALIZAÇÃO. NÃO CORRESPONDE A RADIOTERAPIA PROFILÁTICA EM CRÂNIO TOTAL OU DO NEUROEIXO. MÁXIMO DE DOIS SOMENTE QUANDO EM DUAS DIFERENTES LOCALIZAÇÕES.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -2175,7 +2175,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010561",
     "subgrupo": "030401",
     "descricao": "RADIOTERAPIA EM CORPO INTEIRO PARA CONDICIONAMENTO DE TRANSPLANTE DE MEDULA ÓSSEA, RADIOTERAPIA DE CADEIA LINFÁTICA TOTAL EM CASOS DE DOENÇAS DO ENXERTO CONTRA O HOSPEDEIRO E RADIOTERAPIA TOTAL DE PELE DE PACIENTES COM LINFOMA NÃO HODGKIN CUTÂNEO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -2247,7 +2247,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010570",
     "subgrupo": "030401",
     "descricao": "RADIOTERAPIA EXTERNA OU BRAQUITERAPIA PROFILÁTICA OU TERAPÊUTICA DE QUELOIDE E GINECOMASTIA, POR LOCALIZAÇÃO. MÁXIMO DE TRÊS PARA QUELOIDE E, PELA BILATERALIDADE, MÁXIMO DE DOIS PARA GINECOMASTIA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -2264,7 +2264,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010588",
     "subgrupo": "030401",
     "descricao": "RADIOTERAPIA EM CASO DE DOENÇA INFLAMATÓRIA DE ARTICULAÇÕES, CISTO ÓSSEO ANEURISMÁTICO, OSSIFICAÇÃO HETEROTÓPICA, PTERÍGIO E EXOFTALMIA. MÁXIMO DE DOIS, QUANDO DA BILATERALIDADE DA LESÃO ARTICULAR OU OCULAR. TAMBÉM EM CASO DE OOFORECTOMIA BILATERAL ACTÍNICA PARA HORMONIOTERAPIA DO CARCINOMA DE MAMA, NO MÁXIMO DE UM.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225330"
@@ -2302,7 +2302,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304010596",
     "subgrupo": "030401",
     "descricao": "INTERNAÇÃO PARA BRAQUITERAPIA, DEVIDO A PROCEDIMENTOS INVASIVOS, ACESSÓRIOS DE RADIOPROTEÇÃO, INTERVALO ENTRE APLICAÇÕES OU CONDIÇÃO CLÍNICA QUE DEMANDE INTERNAÇÃO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -2365,7 +2365,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020010",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 1ª LINHA DO ADENOCARCINOMA DE COLON (ESTÁDIO IV OU DOENÇA RECIDIVADA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2390,7 +2390,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020028",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 2ª LINHA DO ADENOCARCINOMA DE COLON ( ESTÁDIO IV OU DOENÇA RECIDIVADA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2415,7 +2415,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020036",
     "subgrupo": "030402",
     "descricao": "HORMONIOTERAPIA PALIATIVA DO ADENOCARCINOMA DO ENDOMÉTRIO COM RECEPTOR TUMORAL HORMONAL POSITIVO - DOENÇA METASTÁTICA, RECIDIVADA OU LOCO-REGIONAL AVANÇADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2431,7 +2431,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020044",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DO ADENOCARCINOMA DE ESTÔMAGO (DOENÇA METASTÁTICA, LOCO-REGIONALMENTE AVANÇADA OU RECIDIVADA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2455,7 +2455,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020052",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DO ADENOCARCINOMA DE PÂNCREAS (ESTÁDIOS DE II A IV)",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2478,7 +2478,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020060",
     "subgrupo": "030402",
     "descricao": "CONSISTE NA HORMONIOTERAPIA COM USO DE ANTIANDROGÊNIO DE AÇÃO PERIFÉRICA DE PRIMEIRA GERAÇÃO. SEU USO PODE SER ISOLADO EM PACIENTES COM SUPRESSÃO ANDROGÊNICA CIRÚRGICA PRÉVIA OU ASSOCIADO AO ANÁLOGO DE LHRH, PARA TRATAMENTO DO ADENOCARCINOMA DE PRÓSTATA LOCO-REGIONALMENTE AVANÇADO, METASTÁTICO OU RECIDIVADO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2494,7 +2494,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020079",
     "subgrupo": "030402",
     "descricao": "CONSISTE NA TERAPIA DE PRIVAÇÃO ANDROGÊNICA (TPA) COM USO DE ANÁLOGOS DE LHRH, CONCOMITANTE OU NÃO À QUIMIOTERAPIA OU À HORMONIOTERAPIA COM ABIRATERONA, PARA TRATAMENTO DO ADENOCARCINOMA DE PRÓSTATA LOCO-REGIONALMENTE AVANÇADO, METASTÁTICO OU RECIDIVADO EM PACIENTES SEM SUPRESSÃO ANDROGÊNICA CIRÚRGICA PRÉVIA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2510,7 +2510,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020087",
     "subgrupo": "030402",
     "descricao": "CONSISTE NA QUIMIOTERAPIA PARA TRATAMENTO DE: (1) CÂNCER DE PRÓSTATA HORMÔNIO RESISTENTE, LOCO-REGIONALMENTE AVANÇADO, METASTÁTICO OU RECIDIVADO; OU (2) CÂNCER DE PRÓSTATA METASTÁTICO HORMÔNIO SENSÍVEL DE ALTO VOLUME (METÁSTASE VISCERAL OU 4 OU MAIS METÁSTASES ÓSSEAS, COM PELO MENOS UMA FORA DO ESQUELETO AXIAL), COM DOCETAXEL POR ATÉ 6 CICLOS. PODE SER CONCOMITANTE OU NÃO À TERAPIA DE PRIVAÇÃO ANDROGÊNICA (TPA), DEVENDO-SE REGISTRAR CONCOMITANTEMENTE O PROCEDIMENTO DE HORMONIOTERAPIA DO ADENOCARCINOMA DE PRÓSTATA AVANÇADO COM ANÁLOGOS DE LHRH EM PACIENTE SEM SUPRESSÃO ANDROGÊNICA CIRÚRGICA PRÉVIA. NO CÂNCER DE PRÓSTATA METASTÁTICO HORMÔNIO SENSÍVEL, PODE SER CONCOMITANTE À ABIRATERONA, DEVENDO-SE REGISTRAR CONCOMITANTEMENTE O PROCEDIMENTO DE HORMONIOTERAPIA DO CÂNCER DE PRÓSTATA METASTÁTICO HORMÔNIO SENSÍVEL COM ABIRATERONA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2526,7 +2526,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020095",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 1ª LINHA DO ADENOCARCINOMA OU CARCINOMA EPIDERMOIDE DO RETO -DOENÇA LOCO-REGIONALMENTE AVANÇADA, METASTÁTICA OU RECIDIVADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2543,7 +2543,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020109",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 2ª LINHA DO ADENOCARCINOMA OU CARCINOMA EPIDERMOIDE DO RETO DOENÇA LOCO-REGIONALMENTE AVANÇADA, METASTÁTICA OU RECIDIVADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2560,7 +2560,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020117",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE APUDOMA OU DE TUMOR NEUROENDÓCRINO, COM DOENÇA LOCO-REGIONAL AVANÇADA, INOPERÁVEL, METASTÁTICA OU RECIDIVADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2716,7 +2716,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020125",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALITIVA DO CARCINOMA DE ADRENAL (DOENÇA METASTÁTICA RECIDIVADA OU LOCO -REGIONAL AVANÇADA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2734,7 +2734,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020133",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 1ª LINHA DO CARCINOMA DE MAMA METASTATICO OU RECIDIVADO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -2759,7 +2759,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020141",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 2ª LINHA DO CARCINOMA DE MAMA METASTÁTICO OU RECIDIVADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -2784,7 +2784,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020150",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DO CARCINOMA DE NASOFARINGE - DOENÇA LOCO-REGIONALMENTE AVANÇADA OU RECIDIVADA OU EM ESTÁDIO IV.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2805,7 +2805,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020168",
     "subgrupo": "030402",
     "descricao": "TERAPIA ANTINEOPLÁSICA SISTÊMICA PALIATIVA DO CARCINOMA DE CÉLULAS RENAIS EM DOENÇA METASTÁTICA, RECIDIVADA OU LOCORREGIONALMENTE AVANÇADA,INDEPENDENTEMENTE DO SUBTIPO HISTOLÓGICO,COMPREENDENDO OS ESQUEMAS TERAPÊUTICOS CUJOS MEDICAMENTOS SÃO ADQUIRIDOS PELO ESTABELECIMENTO DE SAÚDE HABILITADO, INCLUSIVE O MALATO DE SUNITINIBE. O VALOR DO PROCEDIMENTO CONTEMPLA OS MEDICAMENTOS DO ESQUEMA E AS ATIVIDADES ASSISTENCIAIS E FARMACÊUTICAS CORRESPONDENTES. NÃO SE APLICA AO REGISTRO DE TRATAMENTO COM MEDICAMENTO DE AQUISIÇÃO CENTRALIZADA PELO MINISTÉRIO DA SAÚDE, QUE OBSERVARÁ O PROCEDIMENTO ESPECÍFICO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "5 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -2822,7 +2822,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020176",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DO CARCINOMA EPIDERMÓIDE OU ADENOCARCINOMA DE ESÔFAGO - DOENÇA METASTÁTICA, RECIDIVADA OU LOCO-REGIONALMENTE AVANÇADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2845,7 +2845,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020184",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DO COLO OU DO CORPO DO ÚTERO,VULVA E VAGINA - DOENÇA LOCO-REGIONALMENTE AVANÇADA, METASTÁTICA OU RECIDIVADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2876,7 +2876,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020192",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA DO CARCINOMA EPIDERMOIDE DE CANAL ANAL/MARGEM ANAL AVANÇADO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2895,7 +2895,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020206",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DO CARCINOMA EPIDERMÓIDE DE CABEÇA E PESCOÇO - DOENÇA LOCO-REGIONALMENTE AVANÇADA, METASTÁTICA OU RECIDIVADA",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2972,7 +2972,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020214",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 1ª LINHA DO CARCINOMA PULMONAR DE CÉLULAS NÃO PEQUENAS - PERFORMANCE STATUS DE 0 ATÉ 2.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -2993,7 +2993,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020222",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PRÉVIA À CIRURGIA OU CONCOMITANTE À RADIOTERAPIA DO CARCINOMA PULMONAR DE CÉLULAS NÃO PEQUENAS EM ESTÁDIO II OU III.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3014,7 +3014,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020230",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 1ª LINHA DO MELANOMA MALIGNO (DOENÇA METASTÁTICA, RECIDIVADA OU LOCO-REGIONAL AVANÇADA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3050,7 +3050,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020249",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE METÁSTASE DE TUMOR PRIMÁRIO DESCONHECIDO ( ADENOCARCINOMA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3066,7 +3066,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020257",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE METÁSTASE DE TUMOR PRIMÁRIO DESCONHECIDO(CARCINOMA EPIDERMÓIDE OU DE CÉLULAS ESCAMOSAS OU CARCINOMA NEUROENDÓCRINO).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3082,7 +3082,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020265",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE METÁSTASE DE TUMOR PRIMÁRIO DESCONHECIDO (METÁSTASE DE NEOPLASIA MALIGNA DE ORIGEM CELULAR NÃO IDENTIFICADA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3098,7 +3098,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020273",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 1ªLINHA DE NEOPLASIA MALIGNA EPITELIAL DE OVÁRIO OU DE TUBA UTERINA - ESTÁDIO IV OU RECIDIVA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3115,7 +3115,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020281",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 2ª LINHA DE NEOPLASIA MALIGNA EPITELIAL DE OVÁRIO OU DE TUBA UTERINA EM ESTÁDIO IV OU RECIDIVA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3132,7 +3132,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020290",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE SARCOMA DE PARTES MOLES - DOENÇA INOPERÁVEL, METASTÁTICA OU RECIDIVADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3165,7 +3165,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020303",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE SARCOMA ÓSSEO METASTATICO / RECIDIVADO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3193,7 +3193,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020311",
     "subgrupo": "030402",
     "descricao": "DOENÇA GASTROINTESTINAL - DOENÇA GASTROINTESTINAL OU INTRA-ABDOMINAL IRRESSECAVEL (PRIMÁRIA , METASTÁTICA OU RECIDIVADA) - OBRIGATÓRIO O EXAME COM RESULTADO POSITIVO DO ANTI-CD 117/C- KIT AO EXAME DE IMUNO-HISTOQUIMICA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3247,7 +3247,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020320",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE TUMOR DO SISTEMA NERVOSO CENTRAL ( ASTROCITOMA ANAPLÁSICO, GLIOMA DE ALTO GRAU, GLIOBLASTOMA MULTIFORME OU MEDULOBLASTOMA). ISOLADA OU PER OU PÓS RADIOTERAPIA. DOENÇA INOPERÁVEL (PRIMÁRIA OU RECIDIVADA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3280,7 +3280,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020338",
     "subgrupo": "030402",
     "descricao": "HORMONIOTERAPIA PALIATIVA DE 2ª LINHA DE CARCINOMA DE MAMA COM RECEPTOR HORMONAL TUMORAL POSITIVO PARA ESTROGÊNIO OU PROGESTERONA. DOENÇA ÓSSEA OU DE PARTES MOLES METASTÁTICA OU RECIDIVADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -3305,7 +3305,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020346",
     "subgrupo": "030402",
     "descricao": "HORMONIOTERAPIA PALIATIVA DE 1ª LINHA DO CARCINOMA DE MAMA RECEPTOR HORMONAL POSITIVO PARA ESTROGÊNIOS OU PROGESTERONA (DOENÇA METASTÁTICA OU RECIDIVADA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -3330,7 +3330,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020362",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DO CARCINOMA DA TIREOIDE EM ESTÁDIO DE IVA ATÉ IVC.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3346,7 +3346,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020370",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DO CARCINOMA DE PÊNIS- DOENÇA LOCO-REGIONALMENTE AVANÇADA, METASTÁTICA OU RECIDIVADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3366,7 +3366,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020389",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DO CARCINOMA DO FIGADO OU DO TRATO BILIAR INOPERÁVEL EM ESTÁGIO (UICC) II,III,OU IV OU RECIDIVADO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3392,7 +3392,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020397",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DO TIMOMA INVASIVO OU CARCINOMA TÍMICO INOPERÁVEL, EM ESTÁGIO III OU IV (MASAOKA) OU RECIDIVADO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3408,7 +3408,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020400",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DO CARCINOMA DE PELVE RENAL, URETER, BEXIGA URINÁRIA E URETRA. DOENÇA LOCO-REGIONALMENTE AVANÇADA, METASTÁTICA OU RECIDIVADA",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3436,7 +3436,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020419",
     "subgrupo": "030402",
     "descricao": "POLIQUIMIOTERAPIA PALIATIVA DO CARCINOMA DE MAMA HER-2POSITIVO METASTÁTICO COM EXAME IMUNO-HISTOQUÍMICO DE 2 CRUZES CONFIRMADO POR EXAME MOLECULAR OU DE 3 CRUZES, DE ACORDO COM CRITÉRIOS ESTABELECIDOS EM PCDT VIGENTE. EXCLUDENTE COM OS PROCEDIMENTOS 03.04.02.013-3 -QUIMIOTERAPIA DO CARCINOMA DE MAMAAVANÇADO -1ª LINHA, 03.04.02.034-6 -HORMONIOTERAPIA DO CARCINOMA DE MAMAAVANÇADO - 1ª LINHA E 03.04.02.042-7 -MONOQUIMIOTERAPIA DO CARCINOMA DEMAMA HER-2 POSITIVO - 1ª LINHA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225103",
@@ -3493,7 +3493,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020427",
     "subgrupo": "030402",
     "descricao": "MONOQUIMIOTERAPIA PALIATIVA DO CARCINOMA DE MAMA HER-2 POSITIVO METASTÁTICO, COM EXAME IMUNO-HISTOQUÍMICO DE 2 CRUZES CONFIRMADO POR EXAME MOLECULAR OU DE 3 CRUZES.EXCLUDENTE COM OS PROCEDIMENTOS 03.04.02.013-3 -QUIMIOTERAPIA DO CARCINOMA DE MAMAAVANÇADO -1ª LINHA E 03.04.02.041-9 -POLIQUIMIOTERAPIA DO CARCINOMA DEMAMA HER-2 POSITIVO - 1ª LINHA. COMPATÍVELCOM O PROCEDIMENTO 03.04.02.044-3 -BLOQUEIO COM DUPLO ANTI-HER-2DOCARCINOMA DE MAMA HER-2POSITIVOAVANÇADO/METASTÁTICO - 1ª LINHA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -3518,7 +3518,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020435",
     "subgrupo": "030402",
     "descricao": "POLIQUIMIOTERAPIA PALIATIVA COM DUPLO ANTI-HER-2 DO CARCINOMA DE MAMA HER-2 POSITIVO COM EXAME IMUNO-HISTOQUÍMICO DE 2 CRUZES CONFIRMADO POR EXAME MOLECULAR OU DE3 CRUZES. EXCLUDENTE COM OS PROCEDIMENTOS 03.04.02.013-3 -QUIMIOTERAPIA DO CARCINOMA DE MAMAAVANÇADO -1ª LINHA, 03.04.02.034-6 -HORMONIOTERAPIA DO CARCINOMA DE MAMAAVANÇADO - 1ª LINHA, 03.04.02.042-7 -MONOQUIMIOTERAPIA DO CARCINOMA DE MAMA HER-2 POSITIVO - 1ª LINHA,03.04.02.041-9 - POLIQUIMIOTERAPIA DOCARCINOMA DE MAMA HER-2 POSITIVO 1ªLINHA E 03.04.02.044-3 - QUIMIOTERAPIA COM DUPLO ANTI-HER-2 DO CARCINOMA DE MAMA HER-2 POSITIVO - 1ª LINHA. TOTAL QUATRO ASEIS CICLOS DE 3/3 SEMANAS (MÁXIMO DECINCO COMPETÊNCIAS MENSAIS).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -3543,7 +3543,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020443",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA COM DUPLO ANTI-HER-2 QUE SE SEGUE À POLIQUIMIOTERAPIA PALIATIVA COM DUPLO ANTI-HER-2 DO CARCINOMA DE MAMA HER-2 POSITIVO METASTÁTICO COM EXAME IMUNO-HISTOQUÍMICO DE 2 CRUZES CONFIRMADO POR EXAME MOLECULAR OU DE 3 CRUZES.EXCLUDENTE COM OS PROCEDIMENTOS 03.04.02.013-3 - QUIMIOTERAPIA DO CARCINOMA DE MAMA AVANÇADO -1ª LINHA,03.04.02.041-9 - POLIQUIMIOTERAPIA DO CARCINOMA DE MAMA HER-2 POSITIVO 1ªLINHA E 03.04.02.043-5 - POLIQUIMIOTERAPIACOM DUPLO ANTI-HER-2 DO CARCINOMA DEMAMA HER-2 POSITIVO - 1ª LINHA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -3568,7 +3568,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020451",
     "subgrupo": "030402",
     "descricao": "TRATAMENTO COM FINALIDADE PALIATIVA DO CÂNCER DE MAMA AVANÇADO OU METASTÁTICO RH POSITIVO E HER2 NEGATIVO. PROCEDIMENTO USADO APENAS QUANDO A CLASSE DE INIBIDORES DE CDK 4/6 É UTILIZADA COMO PRIMEIRA LINHA DE TRATAMENTO, CONFORME PROTOCOLO CLÍNICO E DIRETRIZES TERAPÊUTICAS DO MINISTÉRIO DA SAÚDE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -3593,7 +3593,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020460",
     "subgrupo": "030402",
     "descricao": "TRATAMENTO COM FINALIDADE PALIATIVA DO CÂNCER DE MAMA AVANÇADO OU METASTÁTICO, RH POSITIVO E HER-2 NEGATIVO COM O USO DE INIBIDORES DE CDK4/6. PROCEDIMENTO USADO APENAS QUANDO A CLASSE DE INIBIDORES DE CDK4/6 NÃO TIVER SIDO UTILIZADA COMO PRIMEIRA LINHA DE TRATAMENTO, CONFORME PROTOCOLO CLÍNICO E DIRETRIZES TERAPÊUTICAS DO MINISTÉRIO DA SAÚDE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -3618,7 +3618,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020478",
     "subgrupo": "030402",
     "descricao": "HORMONIOTERAPIA PALIATIVA DE PRIMEIRA LINHA DO CÂNCER DE MAMA RECEPTOR HORMONAL POSITIVO PARA ESTROGÊNIOS (DOENÇA METASTÁTICA OU RECIDIVADA NA MULHER EM PRÉ- E PÓS-MENOPAUSA) MEDIANTE O USO DE MEDICAMENTO ANTIESTROGÊNICO SUPRESSOR DOS RECEPTORES DE ESTROGÊNIO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -3643,7 +3643,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020486",
     "subgrupo": "030402",
     "descricao": "HORMONIOTERAPIA PALIATIVA DE SEGUNDA LINHA DO CÂNCER DE MAMA RECEPTOR HORMONAL POSITIVO PARA ESTROGÊNIOS (DOENÇA METASTÁTICA OU RECIDIVADA NA MULHER EM PRÉ- E PÓS-MENOPAUSA) MEDIANTE O USO DE MEDICAMENTO ANTIESTROGÊNICO SUPRESSOR DOS RECEPTORES DE ESTROGÊNIO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -3668,7 +3668,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020508",
     "subgrupo": "030402",
     "descricao": "PROCEDIMENTO DESTINADO AO REGISTRO DO TRATAMENTO ONCOLÓGICO DE PRIMEIRA LINHA (NÃO TRATADOS ANTERIORMENTE) EM PACIENTES COM ADENOCARCINOMA DE ESTÔMAGO E JUNÇÃO ESOFAGOGÁSTRICA EM ESTÁGIO AVANÇADO OU METASTÁTICO, QUE APRESENTEM SUPEREXPRESSÃO DO RECEPTOR 2 DO FATOR DE CRESCIMENTO EPIDÉRMICO HUMANO (HER2 POSITIVO) POR IMUNO-HISTOQUÍMICA 2POSITIVO CONFIRMADA POR EXAME MOLECULAR (FISH/ISH) POSITIVO OU IMUNO-HISTOQUÍMICA 3POSITIVO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3693,7 +3693,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020516",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 2ª LINHA DO MELANOMA MALIGNO (DOENÇA METASTÁTICA, RECIDIVADA OU LOCO-REGIONAL AVANÇADA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3729,7 +3729,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020524",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 2ª LINHA DO CARCINOMA PULMONAR DE CÉLULAS NÃO PEQUENAS LOCALMENTE AVANÇADO (ESTÁDIO III) SEM INDICAÇÃO DE TRATAMENTO COM FINALIDADE CURATIVA, METASTÁTICO (ESTÁDIO IV) OU RECIDIVADO. STATUS DE DESEMPENHO DE 0 ATÉ 1.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3750,7 +3750,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020532",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 3ª LINHA DO CARCINOMA PULMONAR DE CÉLULAS NÃO PEQUENAS LOCALMENTE AVANÇADO (ESTÁDIO III) SEM INDICAÇÃO DE TRATAMENTO COM FINALIDADE CURATIVA, METASTÁTICO (ESTÁDIO IV) OU RECIDIVADO. STATUS DE DESEMPENHO DE 0 ATÉ 1.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3771,7 +3771,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020540",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA PALIATIVA DE 2ª LINHA DO CARCINOMA PULMONAR INDIFERENCIADO DE CÉLULAS PEQUENAS - DOENÇA EXTENSA OU METASTÁTICA OU RECIDIVADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3792,7 +3792,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020559",
     "subgrupo": "030402",
     "descricao": "TRATAMENTO DOS SINTOMAS ASSOCIADOS A TUMOR NEUROENDÓCRINO GASTROENTEROPANCREÁTICO FUNCIONAL, INCLUINDO A SÍNDROME CARCINOIDE, COM ANÁLOGO DA SOMATOSTATINA DE LIBERAÇÃO PROLONGADA, EM DOSE FIXA, POR VIA SUBCUTÂNEA PROFUNDA, A CADA 28 DIAS. MEDICAMENTO DE AQUISIÇÃO CENTRALIZADA PELO MINISTÉRIO DA SAÚDE. O VALOR DO PROCEDIMENTO NÃO CONTEMPLA O CUSTO DO MEDICAMENTO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -3857,7 +3857,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020567",
     "subgrupo": "030402",
     "descricao": "CONSISTE NA HORMONIOTERAPIA COM ACETATO DE ABIRATERONA 1.000 MG/DIA POR VIA ORAL PARA TRATAMENTO DO CÂNCER DE PRÓSTATA METASTÁTICO HORMÔNIO SENSÍVEL, ASSOCIADA À TERAPIA DE PRIVAÇÃO ANDROGÊNICA (TPA) OU EM PACIENTE COM SUPRESSÃO ANDROGÊNICA CIRÚRGICA PRÉVIA, ISOLADA OU CONCOMITANTE AO PROCEDIMENTO 03.04.02.008-7 - QUIMIOTERAPIA DO CÂNCER DE PRÓSTATA HORMÔNIO RESISTENTE OU METASTÁTICO HORMÔNIO SENSÍVEL. INCLUI O FORNECIMENTO DO MEDICAMENTO PARA 30 DIAS E SUA DISPENSAÇÃO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -3874,7 +3874,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020575",
     "subgrupo": "030402",
     "descricao": "CONSISTE NA HORMONIOTERAPIA COM ACETATO DE ABIRATERONA 1.000 MG/DIA POR VIA ORAL, ASSOCIADA À TERAPIA DE PRIVAÇÃO ANDROGÊNICA (TPA), PARA TRATAMENTO DO CÂNCER DE PRÓSTATA METASTÁTICO HORMÔNIO RESISTENTE, VIRGEM DE QUIMIOTERAPIA OU COM USO PRÉVIO DE QUIMIOTERAPIA COM DOCETAXEL. INCLUI O FORNECIMENTO DO MEDICAMENTO PARA 30 DIAS E SUA DISPENSAÇÃO. NÃO SE APLICA AO CÂNCER DE PRÓSTATA NÃO METASTÁTICO HORMÔNIO RESISTENTE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -3891,7 +3891,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020583",
     "subgrupo": "030402",
     "descricao": "QUIMIOTERAPIA DE SEGUNDA LINHA COM MALATO DE SUNITINIBE 50 MG/DIA POR VIA ORAL, EM CICLOS DE 6 SEMANAS (4 SEMANAS DE TRATAMENTO E 2 SEMANAS DE PAUSA), COM AJUSTE DE DOSE CONFORME TOLERÂNCIA, EM PACIENTE ADULTO COM TUMOR DO ESTROMA GASTROINTESTINAL (GIST) AVANÇADO OU METASTÁTICO, APÓS FALHA AO MESILATO DE IMATINIBE POR PROGRESSÃO DE DOENÇA OU INTOLERÂNCIA. INCLUI O FORNECIMENTO DO MEDICAMENTO E SUA DISPENSAÇÃO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -3945,7 +3945,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304020591",
     "subgrupo": "030402",
     "descricao": "TRATAMENTO SISTÊMICO DE PRIMEIRA LINHA DO CARCINOMA RENAL DE CÉLULAS CLARAS METASTÁTICO OU IRRESSECÁVEL COM CLORIDRATO DE PAZOPANIBE. NOS PACIENTES COM 18 ANOS OU MAIS, INDICADO AO QUE APRESENTAR PERSISTÊNCIA DE EVENTOS ADVERSOS DE GRAU IGUAL OU SUPERIOR A 3, SEGUNDO O COMMON TERMINOLOGY CRITERIA FOR ADVERSE EVENTS (CTCAE), APÓS REDUÇÃO DE DOSE DO MALATO DE SUNITINIBE. NOS PACIENTES MENORES DE 18 ANOS, A ESCOLHA ENTRE O CLORIDRATO DE PAZOPANIBE E O MALATO DE SUNITINIBE COMPETE AO PROFISSIONAL ASSISTENTE, NOS TERMOS DO PCDT VIGENTE. MEDICAMENTO DE AQUISIÇÃO CENTRALIZADA PELO MINISTÉRIO DA SAÚDE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "5 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -3962,7 +3962,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030015",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 1ª LINHA PARA CONTROLE TEMPORÁRIO DE DOENÇA LINFOPROLIFERATIVA RARA (LINFOPATIA ANGIOIMUNOBLÁSTICA, NEOPLASIA IMUNOPROLIFERATIVA ANGIOCENTRICA, HISTIOCITOSE MALIGNA, DOENÇAS IMUNOPROLIFERATIVAS MALIGNAS ; OUTRAS NEOPLASIAS MALÍGNAS E AS NÃO ESPECIFICADAS DOS TECIDOS LINFÁTICOS, HEMATOPOIÉTICO E TECIDOS CORRELATOS; TUMORES DE COMPORTAMENTO INCERTO OU DESCONHECIDO DE MASTÓCITOS E CÉLULAS HISTIOCITICAS).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -3986,7 +3986,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030023",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 2ª LINHA PARA CONTROLE TEMPORÁRIO DE DOENÇA LINFOPROLIFERATIVA RARA (LINFOPATIA ANGIOIMUNOBLÁSTICA, NEOPLASIA IMUNOPROLIFERATIVA ANGIOCENTRICA, HISTIOCITOSE MALIGNA DOENCAS IMUNOPROLIFERATIVAS MALIGNAS, OUTRAS NEOPLASIAS MALIGNAS E AS NÃO ESPECIFICADAS DOS TECIDOS LINFÁTICOS, HEMATOPOIETICO E TECIDOS CORRELATOS; TUMORES DE COMPORTAMENTO INCERTO OU DESCONHECIDO DE MASTÓCITOS E CÉLULAS HISTIOCÍTICAS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4010,7 +4010,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030031",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 1ª LINHA PARA CONTROLE TEMPORÁRIO DE DOENÇA MIELOPROLIFERATIVA RARA (POLICITEMIA VERA; ANEMIA REFRATÁRIA COM EXCESSO DE BLASTOS ; DOENÇA MIELOPROLIFERATICA CRÔNICA; TROMBOCITEMIA ESSENCIAL/HEMORRÁGICA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4031,7 +4031,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030040",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 2ª LINHA PARA CONTROLE TEMPORÁRIO DE DOENÇA MIELOPROLIFERATIVA RARA, POLICETEMIA VERA, ANEMIA REFRATARIA COM EXCESSOS DE BLASTOS OU COM EXCESSO DE BLASTOS EM TRANSFORMAÇÃO, DOENCA MIELOPROLIFERATIVA CRÔNICA, TROMBOCITEMIA ESSENCIAL/ HEMORRÁGICA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4052,7 +4052,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030058",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 1ª LINHA PARA CONTROLE TEMPORÁRIO DE LEUCEMIA LINFOCÍTICA CRÔNICA, LEUCEMIA PRÓ-LINFOCITICA, LEUCEMIA DE CÉLULAS T DO ADULTO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4072,7 +4072,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030066",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 2ªLINHA PARA CONTROLE TEMPORÁRIO DE LEUCEMIA LINFOCITICA CRÔNICA, LEUCEMIA PRÓ- LINFOCITICA, LEUCEMIA DE CÉLULAS T DO ADULTO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4091,7 +4091,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030074",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA PARA CONTROLE TEMPORARIO DE LEUCEMIA MIELOIDE CRONICA EM QUALQUER FASE COM A FINALIDADE DE REDUÇÃO DO NÚMERO DE GLOBULOS BRANCOS AO HEMOGRAMA, NAO CONSISTINDO EM LINHA TERAPÊUTICA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4109,7 +4109,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030082",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA PARA CONTROLE TEMPORÁRIO DA LEUCEMIA MIELÓIDE CRÔNICA EM FASE BLÁSTICA - CROMOSSOMA PHILADELPHIA OU BCR-ABL POSITIVO - COM OU SEM FASE CRÔNICA OU DE TRANSFORMAÇÃO ANTERIOR.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4127,7 +4127,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030090",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE PRIMEIRA LINHA PARA CONTROLE TEMPORÁRIO DE LEUCEMIA MIELÓIDE CRÔNICA EM FASE BLASTICA - CROMOSSOMA PHILADELFIA OU BCR-ABL POSITIVO - SEM TRATAMENTO ANTERIOR EM FASE CRÔNICA OU DE TRANSFORMAÇÃO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4145,7 +4145,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030104",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA PARA CONTROLE TEMPORÁRIO DA LEUCEMIA MIELÓIDE CRÔNICA EM FASE BLÁSTICA - CROMOSSOMA PHILADELFIA OU BCR-ABL POSITIVO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4163,7 +4163,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030112",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE PRIMEIRA LINHA PARA CONTROLE TEMPORÁRIO DA LEUCEMIA MIELÓIDE CRÔNICA EM FASE CRÔNICA CROMOSSOMA PHILADELPHIA OU BCR-ABL POSITIVO - PARA CONTROLE SANGUINEO E CITOGENÉTICO OU MOLECULAR. ESTE PROCEDIMENTO SE APLICA A AUTORIZAÇÃO INICIAL PARA ENTRADA NO SISTEMA; E A ADEQUAÇÃO DA AUTORIZAÇÃO PARA O PROCEDIMENTO 03.04.03.015-5 - QUIMIOTERAPIA DA LEUCEMIA MIELÓIDE CRÔNICA EM FASE TRANSFORMAÇÃO SEM FASE CRÔNICA ANTERIOR - PRIMEIRA LINHA QUANDO TENHA SIDO UTILIZADO PARA LEUCEMIA MIELÓIDE CRÔNICA EM FASE CRÔNICA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4181,7 +4181,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030120",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA PARA CONTROLE TEMPORÁRIO DE LEUCEMIA MIELÓIDE CRÔNICA EM FASE CRÔNICA. CROMOSSOMA PHILADELPHIA OU BCR-ABL POSITIVO. ESTE PROCEDIMENTO SE APLICA A AUTORIZAÇÃO PARA ENTRADA NO SISTEMA DE PLANEJAMENTO TERAPÊUTICO INICIAL; CASO O PACIENTE APRESENTE INTOLERÂNCIA OU TOXICIDADE A UM DOS MEDICAMENTOS DA TERCEIRA LINHA, RECOMENDA-SE REALIZAR A TROCA ENTRE MEDICAMENTOS DE TERCEIRA LINHA, SE O PERFIL METABÓLICO DO PACIENTE E PERFIL DE MUTAÇÃO ASSIM O PERMITIR.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4199,7 +4199,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030139",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA PARA CONTROLE TEMPORÁRIO DE LEUCEMIA MIELÓIDE CRÔNICA EM FASE DE TRANSFORMAÇÃO CROMOSSOMA PHILADELPHIA OU BCR-ABL POSITIVO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4217,7 +4217,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030147",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA PARA CONTROLE TEMPORÁRIO DA LEUCEMIA MIELÓIDE CRÔNICA EM FASE DE TRANSFORMAÇÃO - CROMOSSOMA PHILADELPHIA OU BCR-ABL POSITIVO, COM OU SEM FASE CRÔNICA ANTERIOR. CASO O PACIENTE APRESENTE TOXICIDADE A UM DOS MEDICAMENTOS DA SEGUNDA LINHA, É POSSÍVEL REALIZAR A TROCA PARA OUTRO MEDICAMENTO DE SEGUNDA LINHA, SE O PERFIL DE MUTAÇÃO ASSIM O PERMITIR.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4235,7 +4235,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030155",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE PRIMEIRA LINHA PARA CONTROLE TEMPORÁRIO DA LEUCEMIA MIELÓIDE CRÔNICA EM FASE DE TRANSFORMAÇÃO CROMOSSOMA PHILADELPHIA BCR-ABL POSITIVO - SEM TRATAMENTO ANTERIOR EM FASE CRÔNICA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4253,7 +4253,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030163",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE1ª LINHA PARA CONTROLE TEMPORÁRIO DE LINFOMA NÃO HODGKIN DE BAIXO GRAU (LINFOMAS DE CÉLULAS T CUTÂNEAS E PERIFÉRICAS; DOENCA DE SEZARY; LINFOMA DE LINFÓCITO PEQUENO; LINFOMA FOLICULAR COM PREDOMÍNIO DE CÉLULAS PEQUENAS E CLIVADAS; LINFOMA FOLICULAR MISTO DE CÉLULAS PEQUENAS E GRANDES; LINFOMA DE CÉLULAS T PERIFÉRICO ; LINFOMA NAO HODGKIN DE OUTROS TIPOS E TIPOS NÃO ESPECIFICADOS), ESTÁDIOS I E II COM DOENÇA MACICA OU EXTENSA E SINTOMAS CONSTITUCIONAIS ESTÁDIO III E IV ; E RECIDIVA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4288,7 +4288,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030171",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 2ª LINHA PARA CONTROLE TEMPORÁRIO DE LINFOMA NÃO HODGKIN DE BAIXO GRAU (LINFOMAS DE CÉLULAS T CUTÂNEAS E PERIFÉRICAS; DOENCA DE SEZARY; LINFOMA DE LINFÓCITO PEQUENO; LINFOMA FOLICULAR COM PREDOMÍNIO DE CÉLULAS PEQUENAS E CLIVADAS; LINFOMA FOLICULAR MISTO DE CÉLULAS PEQUENAS E GRANDES; LINFOMA DE CÉLULAS T PERIFÉRICO ; LINFOMA NÃO HODGKIN DE OUTROS TIPOS E TIPOS NÃO ESPECIFICADOS), ESTÁDIOS I E II COM DOENÇA MACICA OU EXTENSA E SINTOMAS CONSTITUCIONAIS ESTÁDIO III E IV ; E RECIDIVA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4323,7 +4323,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030180",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 1ª LINHA PARA CONTROLE TEMPORÁRIO DE NEOPLASIA DE CÉLULAS PLASMÁTICAS (MACROGLOBULINEMIA DE WALDENSTROM, MIELOMA MÚLTIPLO, LEUCEMIA PLASMOCITÁRIA, PLASMOCITOMA EXTRA-MEDULAR, GAMOPATIA MONOCLONAL). SEM INDICAÇÃO DE TRANSPLANTE AUTÓLOGO DE CÉLULAS TRONCO HEMATOPOÉTICAS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4344,7 +4344,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030198",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 2ª LINHA PARA CONTROLE TEMPORÁRIO DE NEOPLASIA DE CÉLULAS PLASMÁTICAS (MACROGLOBULINEMIA DE WALDENSTROM, MIELOMA MÚLTIPLO, LEUCEMIA PLASMOCITÁRIA, PLASMOCITOMA EXTRA-MEDULAR, GAMOPATIA MONOCLONAL).TAMBÉM SE APLICA A AUTORIZAÇÃO INICIAL PARA ENTRADA NO SISTEMA OU SEJA COMO 1ª LINHA, SE HÁ INDICAÇÃO DE TRANSPLANTE AUTÓLOGO DE CÉLULAS TRONCO HEMATOPÉTICAS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4365,7 +4365,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030201",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 2ª LINHA CONTÍNUA PARA CONTROLE TEMPORÁRIO DA TRICOLEUCEMIA (LEUCEMIA DE CELULAS PILOSAS OU LEUCEMIA DE CÉLULAS CABELUDAS).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4382,7 +4382,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030210",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 1ª LINHA PARA CONTROLE TEMPORÁRIO DA TRICOLEUCEMIA (LEUCEMIA DE CÉLULAS PILOSAS OU LEUCEMIA DE CÉLULAS CABELUDAS) - PROCEDIMENTO ÚNICO E EXCLUSIVO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4399,7 +4399,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030228",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA PARA CONTROLE TEMPORÁRIO DA LEUCEMIA MIELÓIDE CRÔNICA EM FASE CRÔNICA CROMOSSOMA PHILADELPHIA OU BCR-ABL POSITIVO. CASO O PACIENTE APRESENTE TOXICIDADE A UM DOS MEDICAMENTOS DA SEGUNDA LINHA, É POSSÍVEL REALIZAR A TROCA PARA OUTRO MEDICAMENTO DE SEGUNDA LINHA, SE O PERFIL DE MUTAÇÃO ASSIM O PERMITIR.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4417,7 +4417,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030236",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 1º LINHA PARA CONTROLE TEMPORÁRIO DO LINFOMA FOLICULAR. MARCADORES CELULARES POSITIVOS PARA LINFOMA FOLICULAR E RESULTADO DE EXAME SOROLOGOCO INCOMPATIVEL COM HEPATITE TIPO B E TIPO C ATIVA E NEGATIVO PARA HIV. EXCLUDENTE COM O PROCEDIEMNTO 03.04.03.016-3 - QUIMIOTERAPIA PARA CONTROLE TEMPORÁRIO DE LINFOMA NÃO HODGKIN DE BAIXO GRAU DE MALIGNIDADE - 1ª LINHA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4443,7 +4443,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030244",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 2º LINHA PARA CONTROLE TEMPORÁRIO DO LINFOMA FOLICULAR. MARCADORES CELULARES POSITIVOS PARA LINFOMA FOLICULAR E RESULTADO DE EXAME SOROLOGOCO INCOMPATIVEL COM HEPATITE TIPO B E TIPO C ATIVA E NEGATIVO PARA HIV. EXCLUDENTE COM O PROCEDIEMNTO 03.04.03.017-1 - QUIMIOTERAPIA PARA CONTROLE TEMPORÁRIO DE LINFOMA NÃO HODGKIN DE BAIXO GRAU DE MALIGNIDADE - 2ª LINHA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4469,7 +4469,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030252",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 1ª LINHA PARA CONTROLE TEMPORÁRIO DE MIELOMA MÚLTIPLO, SEM E COM INDICAÇÃO DE TRANSPLANTE AUTÓLOGO DE CÉLULAS-TRONCO HEMATOPOÉTICAS. EXCLUDENTE COM O PROCEDIMENTO 03.04.03.018-0 - QUIMIOTERAPIA DE NEOPLASIA DE CÉLULAS PLASMÁTICAS - 1ª LINHA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4486,7 +4486,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304030260",
     "subgrupo": "030403",
     "descricao": "QUIMIOTERAPIA DE 2ª LINHA PARA CONTROLE TEMPORÁRIO DE MIELOMA MÚLTIPLO. EXCLUDENTE COM O PROCEDIMENTO 03.04.03.019-8 - QUIMIOTERAPIA DE NEOPLASIA DE CÉLULAS PLASMÁTICAS - 2ª LINHA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4503,7 +4503,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040010",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA CONCOMITANTE A RADIOTERAPIA DO ADENOCARCINOMA DE RETO (ESTÁDIOS II E III OU DUKES B E C).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4519,7 +4519,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040029",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PRÉVIA A CIRURGIA OU A RADIOTERAPIA DO CARCINOMA DE MAMA EM ESTÁDIO I A III.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -4544,7 +4544,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040045",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA CONCOMITANTE A RADIOTERAPIA DO CARCINOMA EPIDERMÓIDE / ADENOCARCINOMA DO COLO ÚTERINO EM ESTÁDIOS DE IB2 ATÉ IVA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4563,7 +4563,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040053",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PRÉVIA DO CARCINOMA EPIDERMÓIDE DE RETO/ CANAL ANAL/ MARGEM ANAL (ESTÁDIOS II E III).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4584,7 +4584,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040061",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PRÉVIA A CIRURGIA OU CONCOMITANTE A RADIOTERAPIA DO CARCINOMA EPIDERMÓIIDE DA CABEÇA E DO PESCOÇO (SEIO PARA-NASAL/ LARINGE / HIPOFARINGE/ OROFARINGE /CAVIDADE ORAL)- ESTÁDIO III OU IV).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4657,7 +4657,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040070",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PRÉVIA A CIRURGIA OU RADIOTERAPIA DO CARCINOMA DE BEXIGA EM ESTÁDIO II ATÉ IV SEM METÁSTASE À DISTÂNCIA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4682,7 +4682,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040088",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PRÉVIA A CIRURGIA OU CONCOMITANTE A RADIOTERAPIA DE CARCINOMA DE NASOFARINGE EM ESTÁDIO DE III ATÉ IVB.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4703,7 +4703,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040096",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PRÉVIA À CIRURGIA OU CONCOMITANTE À RADIOTERAPIA DO CARCINOMA PULMONAR DE CÉLULAS NÃO PEQUENAS EM ESTÁDIO II OU III.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4724,7 +4724,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040100",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA ISOLADA OU COMBINADA A RADIOTERAPIA (CONCOMITANTE OU SEQUENCIAL) DO CARCINOMA PULMONAR INDIFERENCIADO DE CÉLULAS PEQUENAS (DOENÇA LIMITADA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4745,7 +4745,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040118",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA CONCOMITANTE A RADIOTERAPIA DO CARCINOMA EPIDERMÓIDE / ADENOCARCINOMA DE ESÔFAGO EM ESTÁDIO DE I ATE IVA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4767,7 +4767,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040126",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PREVIA A CIRURGIA OU RADIOTERAPIA DO CARCINOMA EPIDERMOIDE DE VULVA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4787,7 +4787,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040134",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PRÉVIA DE 2ª LINHA DE NEOPLASIA MALIGNA EPITELIAL DE OVÁRIO OU DA TUBA UTERINA ESTADIO III OU IV COM DOENÇA RESIDUAL) PÓS-OPERATÓRIO (SEM CITOREDUÇÃO NA 1ª CIRURGIA PARA DIAGNÓSTICO E ESTADIAMENTO).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4804,7 +4804,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040142",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PRÉVIA DE 1ª LINHA DE NEOPLASIA MALIGNA EPITELIAL DE OVÁRIO OU DA TUBA UTERINA ESTÁDIO III OU IV COM DOENÇA RESIDUAL PÓS-OPERATÓRIO (SEM CITOREDUÇÃO NA 1ª CIRURGIA PARA DIAGNÓSTICO E ESTADIAMENTO).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4821,7 +4821,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040150",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PRÉVIA DE 2ª LINHA DE OSTEOSSARCOMA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4849,7 +4849,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040169",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PRÉVIA DE OSTEOSSARCOMA OU OUTRO SARCOMA ÓSSEO .",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4877,7 +4877,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040177",
     "subgrupo": "030404",
     "descricao": "QUIMIOTERAPIA PRÉVIA À CIRURGIA DE ADENOCARCINOMA DE ESTÔMAGO EM ESTÁDIO DE II ATÉ III C.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4901,7 +4901,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040185",
     "subgrupo": "030404",
     "descricao": "POLIQUIMIOTERAPIA PRÉVIA A CIRURGIADO CARCINOMA DE MAMA HER-2 POSITIVO EM DOENÇA INICIAL OU LOCALMENTE AVANÇADA (ESTÁDIOS I A III)COM EXAME IMUNO-HISTOQUÍMICO DE 2 CRUZES CONFIRMADO POR EXAME MOLECULAR OU DE 3 CRUZES.MÁXIMO DE 06 MESES. EXCLUDENTE COM OPROCEDIMENTO 03.04.04.002-9 - QUIMIOTERAPIA DO CARCINOMA DE MAMA (PRÉVIA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -4925,7 +4925,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040193",
     "subgrupo": "030404",
     "descricao": "HORMONIOTERAPIA PRÉVIA A CIRURGIAOU A RADIOTERAPIA EM CASO DE MULHERES NA PÓS MENOPAUSA (NATURAL OU INDUZIDA), RECEPTORES HORMONAIS POSITIVOS E HER-2 NEGATIVO, QUE NÃORECEBERAM QUIMIOTERAPIA. A DURAÇÃO DA HORMONIOTERAPIA PRÉVIA É DE NO MÁXIMO 06 (SEIS) MESES.PROCEDIMENTOS EXCLUDENTES COM OS PROCEDIMENTOS 03.04.04.002-9 QUIMIOTERAPIA DOCARCINOMA DE MAMA (PRÉVIA) E 03.04.04.018-5 -POLIQUIMIOTERAPIA DO CARCINOMA DE MAMA HER-2POSITIVO (PRÉVIA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -4950,7 +4950,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304040207",
     "subgrupo": "030404",
     "descricao": "CONSISTE NA HORMONOTERAPIA PRÉVIA OU CONCOMITANTE À RADIOTERAPIA EXTERNA DO ADENOCARCINOMA DE PRÓSTATA DE RISCO INTERMEDIÁRIO OU ALTO. QUANDO PREVIA, DURAÇÃO MÁXIMA DE 3 (TRÊS) MESES; QUANDO CONCOMITANTE, DURAÇÃO MÁXIMA DE 6 (SEIS) MESES. SEM SUPRESSÃO ANDROGÊNICA CIRÚRGICA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -4966,7 +4966,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050016",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA ADJUVANTE A RESSECÇÃO TRANS- URETRAL DO CARCINOMA SUPERFICIAL DE BEXIGA (ESTÁDIO 0 OU 1), QUE CONSISTE DA INSTILAÇÃO DE MEDICAMENTO LOCALMENTE IRRITANTE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -4990,7 +4990,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050024",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA ADJUVANTE DE ADENOCARCINOMA DE COLON EM ESTADIO II ALTO RISCO OUEM ESTADIO III.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5015,7 +5015,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050032",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA ADJUVANTE DE ADENOCARCINOMA DE RETO EM ESTADIOS II OU III /DUKES B OU C.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5032,7 +5032,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050040",
     "subgrupo": "030405",
     "descricao": "HORMONIOTERAPIA ADJUVANTE DO CARCINOMA DE MAMA EM ESTÁDIO I CLÍNICO/PATOLÓGICO, COM RECEPTOR HORMONAL OBRIGATORIAMENTE POSITIVO PARA ESTROGÊNIOS OU PROGESTERONA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5055,7 +5055,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050067",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA ADJUVANTE DO CARCINOMA DE MAMA EM ESTÁDIO III CLÍNICO / PATOLÓGICO. INCOMPATÍVEL COM A AUTORIZAÇÃO ANTERIOR DO PROCEDIMENTO 0304040029 - QUIMIOTERAPIA DO CARCINOMA DE MAMA (PRÉVIA).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5080,7 +5080,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050075",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA ADJUVANTE DO CARCINOMA DE MAMA EM ESTÁDIO II CLÍNICO OU PATOLÓGICO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5103,7 +5103,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050113",
     "subgrupo": "030405",
     "descricao": "HORMONIOTERAPIA ADJUVANTE DO CARCINOMA DE MAMA EM ESTÁDIO III CLÍNICO/PATOLÓGICO COM RECEPTOR HORMONAL OBRIGATORIAMENTE POSITIVO PARA ESTROGENIOS OU PROGESTERONA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5128,7 +5128,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050121",
     "subgrupo": "030405",
     "descricao": "HORMONIOTERAPIA ADJUVANTE DO CARCINOMA DE MAMA EM ESTADIO II CLINICO/PATOLOGICO COM OU SEM LIFONODOS AXILARES ACOMETIDOS MAS COM RECEPTOR HORMONAL OBRIGATORIAMENTE POSITIVO PARA ESTROGENIOS OU PROGESTERONA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5151,7 +5151,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050130",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA ADJUVANTE DO CARCINOMA DE MAMA EM ESTÁDIO I CLÍNICO / PATOLÓGICO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5176,7 +5176,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050172",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA ADJUVANTE DO CARCINOMA PULMONAR DE CÉLULAS NÃO PEQUENAS EM ESTÁDIO DE II OU III.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5197,7 +5197,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050180",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA ADJUVANTE DE CARCINOMA PULMONAR INDIFERENCIADO DE CÉLULAS PEQUENAS (DOENÇA LIMITADA)",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5218,7 +5218,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050202",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA ADJUVANTE DE NEOPLASIA MALIGNA EPITELIAL DE OVÁRIO OU DA TUBA UTERINA EM ESTÁDIO I A OU I B COM GRAU G3 OU G4/ ESTÁDIO I C OU II / ESTÁDIO III OU ESTÁDIO IV SEM DOENÇA RESIDUAL PÓS-OPERATÓRIA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5235,7 +5235,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050210",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA ADJUVANTE DO OSTEOSSARCOMA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5263,7 +5263,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050229",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA ADJUVANTE DE SARCOMA DE PARTES MOLES DE EXTREMIDADES TUMOR COM MAIS DE 5 CM E COM GRAU HISTOPATOLÓGICO G2 OU G3 EM ESTÁDIO DE II B A IV SEM METÁSTASE À DISTÂNCIA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5280,7 +5280,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050253",
     "subgrupo": "030405",
     "descricao": "QUIMIOTERAPIA PÓS OPERATÓRIA DO ADENOCARCINOMA DO ESTÔMAGO EM ESTÁDIO DE II ATÉ III C.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5304,7 +5304,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050261",
     "subgrupo": "030405",
     "descricao": "POLIQUIMIOTERAPIA ADJUVANTE PÓS-CIRURGIA DO CARCINOMA DE MAMA HER-2 POSITIVO EM ESTÁDIO I CLÍNICO OU PATOLÓGICO COM EXAME IMUNO-HISTOQUÍMICO DE 2 CRUZES CONFIRMADO POR EXAME MOLECULAR OU DE 3 CRUZES. TOTAL QUATRO A SEISCICLOS DE 3/3 SEMANAS (MÁXIMO DE CINCO COMPETÊNCIAS MENSAIS). EXCLUDENTE COM O PROCEDIMENTO 03.04.05.013-0 - QUIMIOTERAPIA DO CARCINOMA DE MAMA EM ESTÁDIO I.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5327,7 +5327,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050270",
     "subgrupo": "030405",
     "descricao": "POLIQUIMIOTERAPIA ADJUVANTE PÓS-CIRURGIA DO CARCINOMA DE MAMA HER-2 POSITIVO EMESTÁDIO II CLÍNICO OU PATOLÓGICO COM EXAME IMUNO-HISTOQUÍMICO DE 2 CRUZES CONFIRMADO POR EXAMEMOLECULAR OU DE 3 CRUZES. TOTAL QUATRO A SEISCICLOS DE 3/3 SEMANAS (MÁXIMO DE CINCOCOMPETÊNCIAS MENSAIS). EXCLUDENTE COM OPROCEDIMENTO 03.04.05.007-5 - QUIMIOTERAPIA DOCARCINOMA DE MAMA EM ESTÁDIO II.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5350,7 +5350,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050288",
     "subgrupo": "030405",
     "descricao": "POLIQUIMIOTERAPIA ADJUVANTE PÓS-CIRURGIA DO CARCINOMA DE MAMA HER-2 POSITIVO EM ESTÁDIO III CLÍNICO OU PATOLÓGICO COM EXAME IMUNO-HISTOQUÍMICO DE 2 CRUZES CONFIRMADO POR EXAME MOLECULAR OU DE 3 CRUZES. TOTAL QUATRO A SEIS CICLOS DE 3/3 SEMANAS (MÁXIMO DE CINCO COMPETÊNCIAS MENSAIS). EXCLUDENTE COM O PROCEDIMENTO 03.04.05.006-7- QUIMIOTERAPIA DO CARCINOMA DE MAMA EM ESTÁDIO III.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5374,7 +5374,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050296",
     "subgrupo": "030405",
     "descricao": "MONOQUIMIOTERAPIA COM ANTI-HER2, SUBSEQUENTE OU NÃO À POLIQUIMIOTERAPIA NEOADJUVANTE OU ADJUVANTE DO CARCINOMA DE MAMA HER-2POSITIVO EM ESTÁDIO I CLÍNICO OU PATOLÓGICO, COM EXAME IMUNO-HISTOQUÍMICO DE 2 CRUZES CONFIRMADO POREXAME MOLECULAR OU DE 3 CRUZES.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5397,7 +5397,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050300",
     "subgrupo": "030405",
     "descricao": "MONOQUIMIOTERAPIA COM ANTI-HER2, SUBSEQUENTE OU NÃO À POLIQUIMIOTERAPIA NEOADJUVANTE OU ADJUVANTE DO CARCINOMA DE MAMA HER-2 POSITIVO EM ESTÁDIO II CLÍNICO OU PATOLÓGICO, COM EXAME IMUNO-HISTOQUÍMICO DE 2 CRUZES CONFIRMADO POR EXAME MOLECULAR OU DE 3 CRUZES. DURAÇÃO MÁXIMA DE ATÉ 12 (DOZE) MESES DE TRATAMENTO, CONSIDERANDO O USO NEOADJUVANTE E/OU ADJUVANTE, CONFORME PROTOCOLO CLÍNICO E DIRETRIZES TERAPÊUTICAS DO MINISTÉRIO DA SAÚDE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5420,7 +5420,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050318",
     "subgrupo": "030405",
     "descricao": "MONOQUIMIOTERAPIA COM ANTI-HER2, SUBSEQUENTE OU NÃO À POLIQUIMIOTERAPIA NEOADJUVANTE OU ADJUVANTE DO CARCINOMA DE MAMA HER-2 POSITIVO EM ESTÁDIO III CLÍNICO OU PATOLÓGICO, COM EXAME IMUNO-HISTOQUÍMICO DE 2 CRUZES CONFIRMADO POR EXAME MOLECULAR OU DE 3 CRUZES. DURAÇÃO MÁXIMA DE ATÉ 12 (DOZE) MESES DE TRATAMENTO, CONSIDERANDO O USO NEOADJUVANTE E/OU ADJUVANTE, CONFORME PROTOCOLO CLÍNICO E DIRETRIZES TERAPÊUTICAS DO MINISTÉRIO DA SAÚDE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -5497,7 +5497,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050342",
     "subgrupo": "030405",
     "descricao": "CONSISTE NA HORMONOTERAPIA PÓS-RADIOTERAPIA EXTERNA DE ADENOCARCINOMA DE PRÓSTATA DE RISCO INTERMEDIARIA OU ALTO. DURAÇÃO MÁXIMA DE 36 (TRINTA E SEIS)MESES, INCLUINDO OS 6 (SEIS) MESES DE HORMONOTERAPIA CONCOMITANTE À RADIOTERAPIA EXTERNA, SE HOUVE. SEM SUPRESSÃO CIRÚRGICA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5513,7 +5513,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304050350",
     "subgrupo": "030405",
     "descricao": "TRATAMENTO, COM FINALIDADE ADJUVANTE, DO CÂNCER DE MAMA HER-2 POSITIVO OPERADO EM ESTÁDIO III COM DOENÇA RESIDUAL NA PEÇA CIRÚRGICA APÓS TRATAMENTO NEOADJUVANTE BASEADO EM TAXANO E TRASTUZUMABE. EXCLUDENTE COM OS PROCEDIMENTOS 03.04.05.006-7 QUIMIOTERAPIA DO CARCINOMA DE MAMA EM ESTÁDIO III, 03.04.05.028-8 POLIOQUIMIOTERAPIA DO CARCINOMA DE MAMA HER-2 POSITIVO EM ESTÁDIO III(ADJUVANTE), 03.04.05.031-8 MONOQUIMIOTERAPIA DO CARCINOMA DE MAMAHER-2 POSITIVO EM ESTÁDIO III (ADJUVANTE). ESTE PROCEDIMENTO PODE SER UTILIZADO DE FORMA CONTÍNUA EM UM MÁXIMO DE 13 COMPETÊNCIAS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "16 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5538,7 +5538,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060011",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 1ª LINHA DA DOENÇA DE HODGKIN EM ESTÁDIO DE I A IV.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5561,7 +5561,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060038",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 2ª LINHA DA DOENÇA DE HODGKIN EM ESTÁDIO DE I A IV.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5584,7 +5584,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060046",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE TERCEIRA LINHA DA DOENÇA DE HODGKIN EM ESTÁDIO DE I A IV.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5607,7 +5607,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060070",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 1ª LINHA DE LEUCEMIA AGUDA/MIELODISPLASIA/LINFOMA NÃO HODGKIN TIPO BURKITT. INCLUI ANTIMICROBIANO PROFILÁTICO E QUIMIOTERAPIA INTRATECAL. COMPATÍVEL COM O PROCEDIMENTO SECUNDÁRIO 03.04.08.001-2 FATOR ESTIMULANTE DE COLÔNIAS DE GRANULÓCITOS/MACRÓFAGOS. PODE SER AUTORIZADO EM CONJUNTO COM UM DOS PROCEDIMENTOS PRINCIPAIS 03.04.08.003-9 INTERNAÇÃO PARA QUIMIOTERAPIA DE LEUCEMIAS AGUDAS/CRONICAS AGUDIZADAS OU 03.04.08.002-0 - INTERNAÇÃO PARA QUIMIOTERAPIA DE ADMINISTRAÇÃO CONTÍNUA",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5630,7 +5630,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060089",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 1ª RECAIDA DE LEUCEMIA AGUDA/ MIELODISPLASIA /LINFOMA NAO HODGKIN LINFOBLÁSTICO/ LINFOMA NÃO HODGHIN TIPO BURKITT - INCLUI OS ANTIBIÓTICOS PROFILÁTICOS E TERAPÊUTICOS E A QUIMIOTERAPIA INTRA-TECAL.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5657,7 +5657,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060097",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 2ª RECAIDA DE LEUCEMIA AGUDA/ MIELODISPLASIA /LINFOMA NAO HODGKIN LINFOBLÁSTICO/ LINFOMA NAO HODGHIN TIPO BURKITT - INCLUIDO OS ANTIBIÓTICOS PROFILÁTICOS E TERAPÊUTICOS E A QUIMIOTERAPIA INTRA-TECAL.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5684,7 +5684,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060100",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 3ª RECAIDA DE LEUCEMIA AGUDA/ MIELODISPLASIA /LINFOMA NAO HODGKIN LINFOBLÁSTICO/ LINFOMA NÃO HODGKIN TIPO BURKITT - INCLUIDO OS ANTIBIÓTICOS PROFILÁTICOS E TERAPÊUTICOS E A QUIMIOTERAPIA INTRA-TECAL.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5711,7 +5711,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060119",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 2ª LINHA DE LINFOMA NAO HODGKIN DE GRAUS DE MALIGNIDADE INTERMEDIÁRIO OU ALTO. GRAU INTERMEDIÁRIO - LINFOMA FOLICULAR DE CÉLULAS GRANDES, LINFOMA DIFUSO DE CÉLULAS PEQUENAS E CLIVADAS, LINFOMA DIFUSO MISTO DE CÉLULAS CLIVADAS PEQUENA E GRANDES, LINFOMA DIFUSO DE GRANDES CÉLULAS CLIVADAS OU NÃO. GRAU ALTO - LINFOMA DE GRANDES CÉLULAS IMUNOBLÁSTICO, LINFOMA DE CÉLULAS PEQUENAS E NAO CLIVADAS. ESTÁDIO DE I A IV.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5736,7 +5736,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060127",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 3ª LINHA DE LINFOMA NÃO HODGKIN DE GRAUS DE MALIGNIDADE INTERMEDIÁRIO OU ALTO. GRAU INTERMEDIÁRIO - LINFOMA FOLICULAR DE CÉLULAS GRANDES, LINFOMA DIFUSO DE CÉLULAS PEQUENAS E CLIVADAS, LINFOMA DIFUSO MISTO DE CÉLULAS CLIVADAS PEQUENAS E GRANDES, LINFOMA DIFUSO DE GRANDES CELULAS CLIVADAS OU NÃO. GRAU ALTO - LINFOMA DE GRANDES CÉLULAS IMUNOBLÁSTICO, LINFOMA DE CÉLULAS PEQUENAS E NÃO CLIVADAS. ESTÁDIO DE I A IV.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5761,7 +5761,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060135",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 1ª LINHA DE LINFOMA NÃO HODGKIN DE GRAUS DE MALIGNIDADE INTERMEDIÁRIO OU ALTO. GRAU INTERMEDIÁRIO: LINFOMA FOLICULAR DE CÉLULAS GRANDES, LINFOMA DIFUSO DE CÉLULAS PEQUENAS E CLIVADAS, LINFOMA DIFUSO MISTO DE CÉLULAS CLIVADAS PEQUENAS E GRANDES, LINFOMA DIFUSO DE GRANDES CÉLULAS CLIVADAS OU NÃO. GRAU ALTO: LINFOMA DE GRANDES CÉLULAS IMUNOBLÁSTICO, LINFOMA DE CÉLULAS PEQUENAS E NÃO CLIVADAS. ESTÁDIO DE I A IV. EXCLUDENTE COM O PROCEDIMENTO 03.04.06.022-4 QUIMIOTERAPIA DE LINFOMA DIFUSO DE GRANDES CÉLULAS B – 1ª LINHA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5786,7 +5786,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060151",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE TUMOR GERMINATIVO EXTRA-GONADAL.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5807,7 +5807,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060160",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE TUMOR OVARIANO DE CÉLULAS GERMINATIVAS EM ESTÁDIO DE II ATÉ IV (DISGERMINOMA, TERATOMA MISTO, TUMOR DO SEIO ENDODERMICO, CARCINOMA EMBRIONÁRIO, CORIOCARCINOMA NÃO GESTACIONAL OU TUMOR DE CÉLULAS GERMNATIVAS MISTO).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5823,7 +5823,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060178",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE NEOPLASIA TROFOBLÁSTICA GESTACIONAL - CORIOMA/MOLA HIDATIFORME - PERSISTENTE/INVASIVA/CORIOCARCINOMA DE BAIXO RISCO",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5840,7 +5840,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060186",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE NEOPLASIA TROFOBLASTICA GESTACIONAL - CORIOCARCINOMA DE BAIXO RISCO PERSISTENTE / ALTO RISCO / RECIDIVA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5856,7 +5856,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060208",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 1ª LINHA DE TUMOR GERMINATIVO DE TESTÍCULO EM ESTÁDIO I COM INVASÃO VASCULAR OU PREDOMÍNIO DE CARCINOMA EMBRIONÁRIO OU EM ESTÁDIO II OU III - TUMOR SEMINOMATOSO E TUMOR NÃO SEMINOMATOSO (CARCINOMA EMBRIONÁRIO / TERATOMA MADURO OU NÃO COM TRANSFORMAÇÃO MALIGNA/ CORIOCARCINOMA/ TUMOR DO SEIO ENDODÉRMICO E TUMOR DE CÉLULAS GERMINATIVAS MISTO).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5874,7 +5874,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060216",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 2ª LINHA DE TUMOR GERMINATIVO DE TESTÍCULO EM ESTÁDIO I COM INVASÃO VASCULAR OU PREDOMÍNIO DE CARCINOMA EMBRIONÁRIO OU EM ESTÁDIO II OU III - TUMOR SEMINOMATOSO E TUMOR NAO SEMINOMATOSO (CARCINOMA EMBRIONÁRIO / TERATOMA MADURO OU NÃO COM TRANSFORMAÇÃO MALIGNA/ COREOCARCINOMA/ TUMOR DO SEIO ENDODÉRMICO E TUMOR DE CÉLULAS GERMINATIVAS MISTO).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -5892,7 +5892,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060224",
     "subgrupo": "030406",
     "descricao": "QUIMIOTERAPIA CURATIVA DE 1ª LINHA DO LINFOMA DIFUSO DE GRANDES CÉLULAS B, MARCADORES CELULARES POSITIVOS E RESULTADO DE EXAME SOROLÓGICO INCOMPATÍVEL COM HEPATITE TIPO B E TIPO C ATIVA, E NEGATIVO PARA HIV.EXCLUDENTE COM O PROCEDIMENTO 03.04.06.013-5 QUIMIOTERAPIA DE LINFOMA NÃO HODGKIN DE GRAU INTERMEDIÁRIO OU ALTO- 1ª LINHA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5910,7 +5910,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060232",
     "subgrupo": "030406",
     "descricao": "FASE DE INDUÇÃO, CONSOLIDAÇÃO OU INTENSIFICAÇÃO DA QUIMIOTERAPIA CURATIVA DE 1ª LINHA DE LEUCEMIA LINFOIDE/LINFOBLÁSTICA AGUDA LINFOMA LINFOBLÁSTICO,LEUCEMIA MIELOIDE AGUDA E LEUCEMIA PROMIELOCITICA AGUDA INCLUI ANTIMICROBIANO PROFILÁTICO E QUIMIOTERAPIA INTRATECAL. COMPATÍVEL COM O PROCEDIMENTO SECUNDÁRIO 03.04.08.001-2 FATOR ESTIMULANTE DE COLONIAS DE GRANULÓCITOS/MACRÓFAGOS. PODE SER AUTORIZADO EM CONJUNTO COM UM DOS OS PROCEDIMENTOS PRINCIPAIS 03.04.08.003-9 INTERNAÇÃO PARA QUIMIOTERAPIA DE LEUCEMIAS AGUADAS/CRÔNICAS AGUDIZADAS OU 03.04.08.002-0 INTERNAÇÃO PARA QUIMIOTERAPIA DE ADMINISTRAÇÃO CONTÍNUA. MÁXIMO DE 6 MESES.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -5930,7 +5930,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304060240",
     "subgrupo": "030406",
     "descricao": "FASE DE MANUTENÇÃO DA QUIMIOTERAPIA CURATIVA DE 1ª LINHA DE LEUCEMIALINFOIDE/LINFOBLÁSTICA AGUDA, LINFOMA LINFOBLÁSTICO, LEUCEMIA MIELOIDE AGUDA E LEUCEMIA PROMIELOCITICA AGUDA INCLUI ANTIMICROBIANO PROFILÁTICO E QUIMIOTERAPIA INTRATECAL. COMPATÍVEL COM O PROCEDIMENTO SECUNDÁRIO 03.04.08.001-2 FATOR ESTIMULANTE DE COLONIAS DE GRANULÓCITOS/MACRÓFAGOS.O ESQUEMA/PROTOCOLO TERAPEUTICO DETERMINARÁ A DURAÇÃO DESTA FASE.MÁXIMO DE 30 MESES.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121",
@@ -7350,7 +7350,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304080012",
     "subgrupo": "030408",
     "descricao": "PROCEDIMENTO EXCLUSIVAMENTE SECUNDÁRIO COMPATÍVEL COM OS PROCEDIMENTOS DA QUIMIOTERAPIA CURATIVA DO ADULTO E DE QUIMIOTERAPIA DE TUMORES NA INFÂNCIA E ADOLESCÊNCIA. PARA AS FINALIDADES PRÉVIA, ADJUVANTE E PALIATIVA NO ADULTO, AUTORIZAR DE ACORDO COM OS PROTOCOLOS CLÍNICOS PUBLICADOS PELO MINISTÉRIO DA SAÚDE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -7721,7 +7721,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304080020",
     "subgrupo": "030408",
     "descricao": "INTERNAÇÃO DE CRIANÇA, ADOLESCENTE E ADULTO PARA QUIMIOTERAPIA DE ADMINISTRAÇÃO ENDOVENOSA CONTÍNUA DE 24 HORAS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -8050,7 +8050,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304080039",
     "subgrupo": "030408",
     "descricao": "INTERNACAO PARA QUIMIOTERAPIA DE CRIANÇA, ADOLESCENTE E ADULTO COM LEUCEMIA AGUDA, LINFOMA LINFOBLÁSTICO, LINFOMA DE BURKITT OU LEUCEMIA CRÔNICA AGUDIZADA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -8099,7 +8099,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304080047",
     "subgrupo": "030408",
     "descricao": "INTERNAÇÃO PARA QUIMIOTERAPIA INTRA-ARTERIAL DE TUMORES MALIGNOS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121"
@@ -8124,7 +8124,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304080055",
     "subgrupo": "030408",
     "descricao": "QUIMIOTERAPIA INTRA-TECAL DE CRIANCA, ADOLESCENTE E ADULTO PARA PREVENÇÃO OU TRATAMENTO DE INVASÃO MENINGEA SECUNDÁRIA POR CÉLULAS NEOPLASICAS MALIGNAS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -8142,7 +8142,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304080063",
     "subgrupo": "030408",
     "descricao": "QUIMIOTERAPIA INTRACAVITARIA DE ADULTO COM TUMOR MALIGNO PRIMÁRIO OU SECUNDÁRIO EM PLEURA, PERICADIO OU PERITÔNIO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "19 Ano(s)",
     "cbosCompativeis": [
       "225121"
@@ -8161,7 +8161,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304080071",
     "subgrupo": "030408",
     "descricao": "PROCEDIMENTO PRINCIPAL PARA MIELOMA MÚLTIPLO (C90.0); METÁSTASE ÓSSEA (C75.9) DE CARCINOMA DE MAMA TRATADO EXCLUSIVAMENTE COM OOFORECTOMIA BILATERAL (CIRÚRGICA OU ACTÍNICA) OU DE ADENOCARCINOMA DE PRÓSTATA TRATADO EXCLUSIVAMENTE COM ORQUIECTOMIA BILATERAL (CIRÚRGICA); OU HIPERCALCEMIA PARANEOPLÁSICA (C80). PROCEDIMENTO SECUNDÁRIO PARA MIELOMA MÚLTIPLO (C90.0) OU METÁSTASE ÓSSEA (C79.5) COMPATÍVEL COM OS PROCEDIMENTOS PRINCIPAIS DE QUIMIOTERAPIA/HORMONIOTERAPIA PALIATIVA, QUIMIOTERAPIA PARA CONTROLE TEMPORÁRIO DE DOENÇA, QUIMIOTERAPIA CURATIVA E QUIMIOTERAPIA DE TUMORES DE CRIANÇA E ADOLESCENTE. PROCEDIMENTO PRINCIPAL OU SECUNDÁRIO, EM CASO DE HIPERCALCEMIA MALIGNA, PARANEOPLÁSICA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -8198,7 +8198,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304080098",
     "subgrupo": "030408",
     "descricao": "HORMONIOTERAPIA DO CÂNCER DE MAMA RECEPTOR HORMONAL POSITIVO PARA ESTROGÊNIOS EM MULHERES PRÉ-MENOPAUSA MEDIANTE USO DE MEDICAMENTO ANTIESTROGÊNICO ANÁLOGO SINTÉTICO DO HORMÔNIO LIBERADOR DO HORMÔNIO LUTEINIZANTE (LHRH)/HORMÔNIO LIBERADOR DA GONADOTROFINA (GNRH).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225121",
@@ -8223,7 +8223,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090018",
     "subgrupo": "030409",
     "descricao": "IODOTERAPIA PÓS OPERATÓRIA COM 150 MCI DE IODO 131 DE CARCINOMA DIFERENCIADO DA TIREOIDE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225315"
@@ -8239,7 +8239,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090026",
     "subgrupo": "030409",
     "descricao": "IODOTERAPIA PÓS OPERATORIA COM 100 MCI DE IODO 131 DE CARCINOMA DIFERENCIADO DA TIREÓIDE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225315"
@@ -8255,7 +8255,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090034",
     "subgrupo": "030409",
     "descricao": "IODOTERAPIA PÓS OPERATÓRIA COM 200 MCI DE IODO 131 DE CARCINOMA DIFERENCIADO DA TIREÓIDE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225315"
@@ -8271,7 +8271,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090042",
     "subgrupo": "030409",
     "descricao": "IODOTERAPIA PÓS-OPERATÓRIA COM 250 MCI DE IODO 131 DE CARCINOMA DIFERENCIADO DE TIREÓIDE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225315"
@@ -8287,7 +8287,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090050",
     "subgrupo": "030409",
     "descricao": "IODOTERAPIA PÓS-OPERATÓRIA COM 30mCi DE IODO DE IODO 131 PARA CASO DE CARCINOMA DIFERENCIADO DE TIROIDE CLASSIFICADO COM DE BAIXO RISCO OU DE RISCO INDETERMINADO , CONFORME PROTOCOLO CLÍNICO E DIRETRES TERAPÊUTICAS DO MINITÉRIO DA SAÚDE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225315"
@@ -8303,7 +8303,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090069",
     "subgrupo": "030409",
     "descricao": "IODOTERAPIA PÓS- OPERATÓRIA COM 50mCi DE IODO131 PARA CASO DE CARCINOMA DIFERENCIADO DA TIREOÍDE CLASSIFICADO COM DE BAIXO RISCO OU DE RISCO OU DE RISCO INTERMEDIÁRIO, CONFORME O PROTOCOLO cLÍNICO E DIRETRIZES TERAPÊUTICAS DO MINISTÉRIO DA SAÚDE..",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "225315"
@@ -8319,7 +8319,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090077",
     "subgrupo": "030409",
     "descricao": "CONSISTE NA IODOTERAPIA DE CARCINOMA DIFERENCIADO DA TIREOIDE COM ATIVIDADE DE 30 MCI, PRECEDIDA DE PREPARO COM TSH HUMANO RECOMBINANTE (ALFATIROTROPINA), EM DUAS DOSES DE 0,9 MG POR VIA INTRAMUSCULAR COM INTERVALO DE 24 HORAS, EM PACIENTES COM INDICAÇÃO DE IODO RADIOATIVO E CONTRAINDICAÇÃO À INDUÇÃO DE HIPOTIREOIDISMO ENDÓGENO OU INCAPACIDADE DE PRODUÇÃO DO TSH ENDÓGENO. INCLUI O FORNECIMENTO DO MEDICAMENTO (2 FRASCOS-AMPOLA DE 1,1 MG), DE AQUISIÇÃO DESCENTRALIZADA, E A SUA DISPENSAÇÃO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225315"
@@ -8335,7 +8335,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090085",
     "subgrupo": "030409",
     "descricao": "CONSISTE NA IODOTERAPIA DE CARCINOMA DIFERENCIADO DA TIREOIDE COM ATIVIDADE DE 50 MCI, PRECEDIDA DE PREPARO COM TSH HUMANO RECOMBINANTE (ALFATIROTROPINA), EM DUAS DOSES DE 0,9 MG POR VIA INTRAMUSCULAR COM INTERVALO DE 24 HORAS, EM PACIENTES COM INDICAÇÃO DE IODO RADIOATIVO E CONTRAINDICAÇÃO À INDUÇÃO DE HIPOTIREOIDISMO ENDÓGENO OU INCAPACIDADE DE PRODUÇÃO DO TSH ENDÓGENO. INCLUI O FORNECIMENTO DO MEDICAMENTO (2 FRASCOS-AMPOLA DE 1,1 MG), DE AQUISIÇÃO DESCENTRALIZADA, E A SUA DISPENSAÇÃO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225315"
@@ -8351,7 +8351,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090093",
     "subgrupo": "030409",
     "descricao": "CONSISTE NA IODOTERAPIA DE CARCINOMA DIFERENCIADO DA TIREOIDE COM ATIVIDADE DE 100 MCI, PRECEDIDA DE PREPARO COM TSH HUMANO RECOMBINANTE (ALFATIROTROPINA), EM DUAS DOSES DE 0,9 MG POR VIA INTRAMUSCULAR COM INTERVALO DE 24 HORAS, EM PACIENTES COM INDICAÇÃO DE IODO RADIOATIVO E CONTRAINDICAÇÃO À INDUÇÃO DE HIPOTIREOIDISMO ENDÓGENO OU INCAPACIDADE DE PRODUÇÃO DO TSH ENDÓGENO. INCLUI O FORNECIMENTO DO MEDICAMENTO (2 FRASCOS-AMPOLA DE 1,1 MG), DE AQUISIÇÃO DESCENTRALIZADA, E A SUA DISPENSAÇÃO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225315"
@@ -8367,7 +8367,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090107",
     "subgrupo": "030409",
     "descricao": "CONSISTE NA IODOTERAPIA DE CARCINOMA DIFERENCIADO DA TIREOIDE COM ATIVIDADE DE 150 MCI, PRECEDIDA DE PREPARO COM TSH HUMANO RECOMBINANTE (ALFATIROTROPINA), EM DUAS DOSES DE 0,9 MG POR VIA INTRAMUSCULAR COM INTERVALO DE 24 HORAS, EM PACIENTES COM INDICAÇÃO DE IODO RADIOATIVO E CONTRAINDICAÇÃO À INDUÇÃO DE HIPOTIREOIDISMO ENDÓGENO OU INCAPACIDADE DE PRODUÇÃO DO TSH ENDÓGENO. INCLUI O FORNECIMENTO DO MEDICAMENTO (2 FRASCOS-AMPOLA DE 1,1 MG), DE AQUISIÇÃO DESCENTRALIZADA, E A SUA DISPENSAÇÃO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225315"
@@ -8383,7 +8383,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090115",
     "subgrupo": "030409",
     "descricao": "CONSISTE NA IODOTERAPIA DE CARCINOMA DIFERENCIADO DA TIREOIDE COM ATIVIDADE DE 200 MCI, PRECEDIDA DE PREPARO COM TSH HUMANO RECOMBINANTE (ALFATIROTROPINA), EM DUAS DOSES DE 0,9 MG POR VIA INTRAMUSCULAR COM INTERVALO DE 24 HORAS, EM PACIENTES COM INDICAÇÃO DE IODO RADIOATIVO E CONTRAINDICAÇÃO À INDUÇÃO DE HIPOTIREOIDISMO ENDÓGENO OU INCAPACIDADE DE PRODUÇÃO DO TSH ENDÓGENO. INCLUI O FORNECIMENTO DO MEDICAMENTO (2 FRASCOS-AMPOLA DE 1,1 MG), DE AQUISIÇÃO DESCENTRALIZADA, E A SUA DISPENSAÇÃO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225315"
@@ -8399,7 +8399,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304090123",
     "subgrupo": "030409",
     "descricao": "CONSISTE NA IODOTERAPIA DE CARCINOMA DIFERENCIADO DA TIREOIDE COM ATIVIDADE DE 250 MCI, PRECEDIDA DE PREPARO COM TSH HUMANO RECOMBINANTE (ALFATIROTROPINA), EM DUAS DOSES DE 0,9 MG POR VIA INTRAMUSCULAR COM INTERVALO DE 24 HORAS, EM PACIENTES COM INDICAÇÃO DE IODO RADIOATIVO E CONTRAINDICAÇÃO À INDUÇÃO DE HIPOTIREOIDISMO ENDÓGENO OU INCAPACIDADE DE PRODUÇÃO DO TSH ENDÓGENO. INCLUI O FORNECIMENTO DO MEDICAMENTO (2 FRASCOS-AMPOLA DE 1,1 MG), DE AQUISIÇÃO DESCENTRALIZADA, E A SUA DISPENSAÇÃO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "225315"
@@ -8415,7 +8415,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304100013",
     "subgrupo": "030410",
     "descricao": "TRATAMENTO CLÍNICO DE PACIENTE INTERNADO POR INTERCORRÊNCIA DEVIDA AO CANCER OU AO SEU TRATAMENTO. ENTENDE-SE POR INTERCORRÊNCIA CLÍNICA A COMPLICAÇÃO AGUDA, PREVISÍVEL OU NÃO, DEVIDA A NEOPLASIA MALÍGNA OU AO SEU TRATAMENTO E QUE NECESSITA DE INTERNAÇÃO, NA MODALIDADE HOSPITALAR OU EM HOSPITAL DIA, PARA CONTROLE DA COMPLICAÇÃO.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "223119",
@@ -9038,7 +9038,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "304100021",
     "subgrupo": "030410",
     "descricao": "TRATAMENTO CLÍNICO DE PACIENTE INTERNADO NA MODALIDADE HOSPITALAR POR COMPLICAÇÃO AGUDA OU CRÔNICA DEVIDA À NEOPLASIA MALIGNA OU AO SEU TRATAMENTO, INCLUSIVE A PROGRESSÃO TUMORAL OU COMPLICAÇÃO PROGRESSIVA. A AUTORIZAÇÃO DESTE PROCEDIMENTO PODE SEGUIR-SE À DO PROCEDIMENTO 03.04.10.001-3 - TRATAMENTO DE INTERCORRÊNCIAS CLÍNICAS DE PACIENTE ONCOLÓGICO, SE O CONTROLE DA COMPLICAÇÃO INTERCORRENTE EXIGIR MAIOR PERMANÊNCIA HOSPITALAR.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "223119",
@@ -9660,7 +9660,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "605010030",
     "subgrupo": "060501",
     "descricao": "PROCEDIMENTO PARA REGISTRO, MONITORAMENTO E ACOMPANHAMENTO ASSISTENCIAL DA DISPENSAÇÃO DE MESILATO DE IMATINIBE 100 MG, COM QUANTIDADE MÁXIMA MENSAL DE ATÉ 248 COMPRIMIDOS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "223405"
@@ -9715,7 +9715,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "605010048",
     "subgrupo": "060501",
     "descricao": "PROCEDIMENTO PARA REGISTRO E ACOMPANHAMENTO ASSISTENCIAL DO USO DE ANTICORPO MONOCLONAL ANTI-HER2 (TRASTUZUMABE).",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "223405"
@@ -9749,7 +9749,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "605010056",
     "subgrupo": "060501",
     "descricao": "PROCEDIMENTO PARA REGISTRO, MONITORAMENTO E ACOMPANHAMENTO ASSISTENCIAL DA DISPENSAÇÃO DE DASATINIBE 20 MG, COM QUANTIDADE MÁXIMA MENSAL DE 62 COMPRIMIDOS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "223405"
@@ -9765,7 +9765,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "605010064",
     "subgrupo": "060501",
     "descricao": "PROCEDIMENTO PARA REGISTRO, MONITORAMENTO E ACOMPANHAMENTO ASSISTENCIAL DA DISPENSAÇÃO DE DASATINIBE 100 MG, COM QUANTIDADE MÁXIMA MENSAL DE 31 COMPRIMIDOS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "223405"
@@ -9781,7 +9781,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "605010072",
     "subgrupo": "060501",
     "descricao": "PROCEDIMENTO PARA REGISTRO, MONITORAMENTO E ACOMPANHAMENTO ASSISTENCIAL DA DISPENSAÇÃO DE NILOTINIBE 200 MG, COM QUANTIDADE MÁXIMA MENSAL DE 124 CÁPSULAS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "223405"
@@ -9797,7 +9797,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "605010080",
     "subgrupo": "060501",
     "descricao": "PROCEDIMENTO PARA REGISTRO, MONITORAMENTO E ACOMPANHAMENTO ASSISTENCIAL DA DISPENSAÇÃO DE MESILATO DE IMATINIBE 400 MG, COM QUANTIDADE MÁXIMA MENSAL DE 62 COMPRIMIDOS.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "223405"
@@ -9852,7 +9852,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "605010099",
     "subgrupo": "060501",
     "descricao": "PROCEDIMENTO SECUNDÁRIO DESTINADO AO REGISTRO, MONITORAMENTO E ACOMPANHAMENTO ASSISTENCIAL DA DISPENSAÇÃO DO PERTUZUMABE, DE AQUISIÇÃO CENTRALIZADA PELO MINISTÉRIO DA SAÚDE, NO ÂMBITO DO COMPONENTE DA ASSISTÊNCIA FARMACÊUTICA EM ONCOLOGIA (AF-ONCO), REGISTRADO EM MILIGRAMAS EFETIVAMENTE DISPENSADOS AO PACIENTE.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "0 Mes(es)",
     "cbosCompativeis": [
       "223405"
@@ -9876,7 +9876,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "605010137",
     "subgrupo": "060501",
     "descricao": "PROCEDIMENTO DESTINADO AO REGISTRO, AO MONITORAMENTO E AO ACOMPANHAMENTO ASSISTENCIAL DA DISPENSAÇÃO DE RITUXIMABE, POR MILIGRAMA.",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "223405"
@@ -9899,7 +9899,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "605010145",
     "subgrupo": "060501",
     "descricao": "PROCEDIMENTO DESTINADO AO REGISTRO, AO MONITORAMENTO E AO ACOMPANHAMENTO ASSISTENCIAL DA DISPENSAÇÃO DE ACETATO DE LANREOTIDA 120 MG EM SERINGA PREENCHIDA",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "18 Ano(s)",
     "cbosCompativeis": [
       "223405"
@@ -9963,7 +9963,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "605010153",
     "subgrupo": "060501",
     "descricao": "PROCEDIMENTO DESTINADO AO REGISTRO, AO MONITORAMENTO E À RASTREABILIDADE DA DISPENSAÇÃO DO CLORIDRATO DE PAZOPANIBE 200 MG",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "5 Ano(s)",
     "cbosCompativeis": [
       "223405"
@@ -9979,7 +9979,7 @@ const procedimentos: Procedimento[] = [
     "codigo": "605010161",
     "subgrupo": "060501",
     "descricao": "PROCEDIMENTO DESTINADO AO REGISTRO, AO MONITORAMENTO E À RASTREABILIDADE DA DISPENSAÇÃO DO CLORIDRATO DE PAZOPANIBE 400 MG",
-    "idadeMaxima": "1571 Mes(es)",
+    "idadeMaxima": "130 Ano(s) e 11 Mes(es)",
     "idadeMinima": "5 Ano(s)",
     "cbosCompativeis": [
       "223405"

@@ -24,6 +24,7 @@ describe("Subgrupo 0605 — Assistência Farmacêutica em Oncologia", () => {
 
   it("mostra a quantidade mensal e o procedimento principal no sentido inverso", () => {
     const vinculos = getCompatibilidades("0605010030");
+    expect(vinculos).toHaveLength(4);
     const paliativo = vinculos.find((v) => v.codigo === "304020311");
     expect(paliativo?.quantidade).toBe(248);
     expect(paliativo?.categoria).toContain("Secundário) x APAC (Proc. Principal)");

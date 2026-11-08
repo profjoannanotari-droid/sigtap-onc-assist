@@ -249,6 +249,17 @@ Deno.serve(async (req) => {
     }
     ftp.fechar();
 
+    if (diagnostico) {
+      const todos = unzipSync(zip);
+      const decDiagnostico = new TextDecoder("latin1");
+      const amostras: Record<string, string> = {};
+      for (const [nome, conteudo] of Object.entries(todos)) {
+        if (!/compat|descric|forma_organizacao|sub_grupo/i.test(nome)) continue;
+        amostras[nome] = decDiagnostico.decode(conteudo).split(/\r?\n/).slice(0, 8).join("\n");
+      }
+      return json({ competencia, arquivos: Object.keys(todos), amostras });
+    }
+
     let arquivos: Record<string, Uint8Array>;
     try {
       arquivos = unzipSync(zip, { filter: (f) => ARQUIVOS_NECESSARIOS.includes(f.name.toLowerCase().split("/").pop()!) });

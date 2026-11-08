@@ -19792,7 +19792,7 @@ function normalizar(codigo: string): string {
 // As categorias do SIGTAP (Excludente, Concomitantes, Compativel Principal×Secundário)
 // são simétricas no nível Principal×Principal, então podem ser espelhadas diretamente.
 // Para Principal×Secundário invertemos para Secundário×Principal apenas no rótulo.
-const indiceReverso: Record<string, Compatibilidade[]> = (() => {
+function construirIndiceReverso(): Record<string, Compatibilidade[]> {
   const idx: Record<string, Compatibilidade[]> = {};
   // Cache de nomes oficiais quando o procedimento "A" aparece como chave em outro registro
   const nomesPorCodigo: Record<string, string> = {};

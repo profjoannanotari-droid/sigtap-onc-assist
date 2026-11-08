@@ -426,11 +426,15 @@ Deno.serve(async (req) => {
       lista.sort((a, b) => String(a.codigo).localeCompare(String(b.codigo)) || String(a.categoria).localeCompare(String(b.categoria)));
     }
 
-    if (procedimentos.length < MINIMO_ESPERADO_0304) {
+    const total0304 = procedimentos.filter((p) => String(p.codigo).startsWith("304")).length;
+    const total0605 = procedimentos.filter((p) => String(p.codigo).startsWith("605")).length;
+    const semDescricao0605 = procedimentos.filter((p) => String(p.codigo).startsWith("605") && !p.descricao).length;
+    const totalVinculos = Object.values(compatibilidades).reduce((s, lista) => s + lista.length, 0);
+    if (total0304 < MINIMO_ESPERADO_0304 || total0605 < MINIMO_ESPERADO_0605 || semDescricao0605 > 0 || vinculos0605 === 0) {
       throw new Critica(
         "validacao",
-        `Apenas ${procedimentos.length} procedimentos do subgrupo 0304 foram lidos (esperado: pelo menos ${MINIMO_ESPERADO_0304}).`,
-        "As posições das colunas podem ter mudado. A base não foi substituída; revisar a leitura do arquivo.",
+        `A leitura ficou incompleta: ${total0304} procedimentos 0304, ${total0605} medicamentos 0605, ${semDescricao0605} descrições 0605 ausentes e ${vinculos0605} vínculos com 0605.`,
+        "As posições das colunas ou o conteúdo do pacote podem ter mudado. A base não foi substituída; revisar a leitura dos procedimentos, descrições e compatibilidades.",
       );
     }
 
@@ -439,14 +443,17 @@ Deno.serve(async (req) => {
       arquivo: alvo.nome,
       total_procedimentos: procedimentos.length,
       procedimentos,
+      compatibilidades,
+      versao_importador: VERSAO_IMPORTADOR,
+      created_at: new Date().toISOString(),
     });
     if (error) throw new Critica("gravacao", `Falha ao gravar a base: ${error.message}.`, "Problema no armazenamento; nova tentativa automática amanhã.");
 
     return await finalizar(
       "sucesso",
-      `Competência ${competencia} importada do DATASUS: ${procedimentos.length} procedimentos do subgrupo 0304.`,
+      `Competência ${competencia} importada do DATASUS: ${total0304} procedimentos 0304 e ${total0605} medicamentos 0605, com descrições e ${totalVinculos} vínculos de compatibilidade.`,
       competencia,
-      { arquivo: alvo.nome, total: procedimentos.length },
+      { arquivo: alvo.nome, total: procedimentos.length, total0304, total0605, totalVinculos, vinculos0605 },
     );
   } catch (e) {
     ftp.fechar();

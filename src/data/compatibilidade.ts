@@ -1,5 +1,7 @@
 // Compatibilidade de Procedimentos - SIGTAP Competência 11/2026 — subgrupos 0304 e 0605
 
+import { buscarPorCodigo } from "./sigtap";
+
 export interface Compatibilidade {
   categoria: string;
   codigo: string;

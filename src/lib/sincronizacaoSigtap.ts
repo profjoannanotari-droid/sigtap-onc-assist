@@ -9,7 +9,7 @@ export interface RegistroSincronizacao {
   status: "sucesso" | "sem_novidade" | "falha" | "executando";
   competencia: string | null;
   mensagem: string;
-  detalhes: { etapa?: string; ajuste?: string; arquivo?: string; total?: number } | null;
+  detalhes: { etapa?: string; ajuste?: string; arquivo?: string; total?: number; total0304?: number; total0605?: number; totalVinculos?: number; vinculos0605?: number } | null;
   created_at: string;
 }
 

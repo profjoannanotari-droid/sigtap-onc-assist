@@ -11,7 +11,7 @@ import { executarSincronizacao, ultimasSincronizacoes, type RegistroSincronizaca
 import { atualizacaoInfo } from "@/data/atualizacao";
 import type { Procedimento } from "@/data/sigtap";
 
-interface Base { competencia: string; arquivo: string; total_procedimentos: number; procedimentos: Procedimento[]; created_at: string }
+interface Base { competencia: string; arquivo: string; total_procedimentos: number; procedimentos: Procedimento[]; compatibilidades?: Record<string, unknown[]>; created_at: string }
 interface Diff { competencia: string; anterior: string | null; data: string; arquivo: string; total: number; novos: string[]; alterados: string[]; excluidos: string[] }
 
 const ordem = (c: string) => { const [m, a] = c.split("/"); return Number(a) * 100 + Number(m); };

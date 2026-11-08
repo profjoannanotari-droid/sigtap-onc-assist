@@ -215,8 +215,8 @@ export default function AnaliseProcedimentos() {
           ? "Análise Específica — Recorte de Filtros"
           : "Análise de Procedimentos por Forma de Organização",
         subtitulo: especifico
-          ? `Cobertura de CID-10 no subgrupo 0304 para o recorte: ${descricaoFiltros}`
-          : "Cobertura de CID-10 no subgrupo 0304 (Tratamento em Oncologia) e identificação de lacunas",
+          ? `Cobertura de CID-10 nos subgrupos 0304 e 0605 para o recorte: ${descricaoFiltros}`
+          : "Cobertura de CID-10 nos subgrupos 0304 e 0605 e identificação de lacunas",
         badges: [
           `Competência ${competencia}`,
           `${filtradas.length} CIDs listados`,

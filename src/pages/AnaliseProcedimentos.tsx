@@ -276,7 +276,7 @@ export default function AnaliseProcedimentos() {
             <Grid3x3 className="w-6 h-6" /> Análise de Procedimentos
           </h1>
           <p className="text-primary-foreground/80 text-xs sm:text-sm mt-1">
-            Cobertura de CID-10 pelas formas de organização do subgrupo 0304 e relatório de lacunas
+            Cobertura de CID-10 pelas formas de organização dos subgrupos 0304 e 0605 e relatório de lacunas
           </p>
         </div>
       </header>

@@ -247,7 +247,7 @@ export default function AnaliseProcedimentos() {
               l.codigo,
               l.descricao,
               l.faltantes.length === formasOrganizacao.length
-                ? "TODAS (sem procedimento no 0304/0605)"
+                ? "TODAS (sem procedimento no 0304/0605/0605)"
                 : l.faltantes.map((c) => formasOrganizacao.find((f) => f.codigo === c)?.curto).join(", ") || "—",
             ]),
           },
@@ -440,7 +440,7 @@ export default function AnaliseProcedimentos() {
                     <TableCell className="text-xs align-top">
                       <span className="block leading-snug break-words">{l.descricao}</span>
                       {l.totalProcedimentos === 0 && (
-                        <Badge variant="destructive" className="mt-1 text-[10px]">sem procedimento no 0304</Badge>
+                        <Badge variant="destructive" className="mt-1 text-[10px]">sem procedimento no 0304/0605</Badge>
                       )}
                     </TableCell>
                     {formasOrganizacao.map((f) => (

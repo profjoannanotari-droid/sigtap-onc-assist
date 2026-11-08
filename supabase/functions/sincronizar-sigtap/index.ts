@@ -416,7 +416,7 @@ Deno.serve(async (req) => {
       const item = {
         categoria,
         codigo: compativel,
-        nome: nomes.get(compativel) ?? compativel,
+        nome: nomesProcedimentos.get(compativel) ?? compativel,
         quantidade: Number(campo(l, layComp, "QT_PERMITIDA")) || 0,
         desde: competenciaCurta(campo(l, layComp, "DT_COMPETENCIA")),
       };

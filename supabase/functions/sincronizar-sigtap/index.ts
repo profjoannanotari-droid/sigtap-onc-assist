@@ -346,32 +346,49 @@ Deno.serve(async (req) => {
     const layP = lerLayout(txt["tb_procedimento_layout.txt"], "tb_procedimento", ["CO_PROCEDIMENTO", "NO_PROCEDIMENTO", "TP_SEXO", "VL_IDADE_MINIMA", "VL_IDADE_MAXIMA", "VL_SH", "VL_SA"]);
     const layC = lerLayout(txt["rl_procedimento_cid_layout.txt"], "rl_procedimento_cid", ["CO_PROCEDIMENTO", "CO_CID"]);
     const layO = lerLayout(txt["rl_procedimento_ocupacao_layout.txt"], "rl_procedimento_ocupacao", ["CO_PROCEDIMENTO", "CO_OCUPACAO"]);
+    const layD = lerLayout(txt["tb_descricao_layout.txt"], "tb_descricao", ["CO_PROCEDIMENTO", "DS_PROCEDIMENTO"]);
+    const layComp = lerLayout(txt["rl_procedimento_compativel_layout.txt"], "rl_procedimento_compativel", [
+      "CO_PROCEDIMENTO_PRINCIPAL", "CO_REGISTRO_PRINCIPAL", "CO_PROCEDIMENTO_COMPATIVEL",
+      "CO_REGISTRO_COMPATIVEL", "TP_COMPATIBILIDADE", "QT_PERMITIDA", "DT_COMPETENCIA",
+    ]);
 
     const cids = new Map<string, string[]>();
     for (const l of txt["rl_procedimento_cid.txt"].split(/\r?\n/)) {
       const c = campo(l, layC, "CO_PROCEDIMENTO");
-      if (!c.startsWith("0304")) continue;
+      if (!noRecorte(c)) continue;
       const k = c.replace(/^0+/, "");
       (cids.get(k) ?? cids.set(k, []).get(k)!).push(campo(l, layC, "CO_CID"));
     }
     const cbos = new Map<string, string[]>();
     for (const l of txt["rl_procedimento_ocupacao.txt"].split(/\r?\n/)) {
       const c = campo(l, layO, "CO_PROCEDIMENTO");
-      if (!c.startsWith("0304")) continue;
+      if (!noRecorte(c)) continue;
       const k = c.replace(/^0+/, "");
       (cbos.get(k) ?? cbos.set(k, []).get(k)!).push(campo(l, layO, "CO_OCUPACAO"));
     }
+    const descricoes = new Map<string, string>();
+    for (const l of txt["tb_descricao.txt"].split(/\r?\n/)) {
+      const c = campo(l, layD, "CO_PROCEDIMENTO");
+      if (!noRecorte(c)) continue;
+      const descricao = campo(l, layD, "DS_PROCEDIMENTO").replace(/\s*\|\|\s*/g, " ").replace(/\s+/g, " ").trim();
+      descricoes.set(c.replace(/^0+/, ""), descricao);
+    }
 
-    const procedimentos: unknown[] = [];
+    const nomes = new Map<string, string>();
+    const procedimentos: Record<string, unknown>[] = [];
     for (const l of txt["tb_procedimento.txt"].split(/\r?\n/)) {
       const c = campo(l, layP, "CO_PROCEDIMENTO");
-      if (!c.startsWith("0304")) continue;
+      if (c.length !== 10) continue;
       const codigo = c.replace(/^0+/, "");
+      const nome = campo(l, layP, "NO_PROCEDIMENTO");
+      nomes.set(codigo, nome);
+      if (!noRecorte(c)) continue;
       const sa = valor(campo(l, layP, "VL_SA"));
       const sh = valor(campo(l, layP, "VL_SH"));
       procedimentos.push({
         codigo,
-        nome: campo(l, layP, "NO_PROCEDIMENTO"),
+        nome,
+        descricao: descricoes.get(codigo) ?? "",
         valor: sa > 0 ? sa : sh,
         cbosCompativeis: [...new Set(cbos.get(codigo) ?? [])].sort(),
         cidsCompativeis: [...new Set(cids.get(codigo) ?? [])].sort(),
@@ -380,6 +397,33 @@ Deno.serve(async (req) => {
         sexo: sexo(campo(l, layP, "TP_SEXO")),
         subgrupo: c.slice(0, 6),
       });
+    }
+
+    const compatibilidades: Record<string, Record<string, unknown>[]> = {};
+    let vinculos0605 = 0;
+    for (const l of txt["rl_procedimento_compativel.txt"].split(/\r?\n/)) {
+      const principal10 = campo(l, layComp, "CO_PROCEDIMENTO_PRINCIPAL");
+      const compativel10 = campo(l, layComp, "CO_PROCEDIMENTO_COMPATIVEL");
+      if (!noRecorte(principal10)) continue;
+      const principal = principal10.replace(/^0+/, "");
+      const compativel = compativel10.replace(/^0+/, "");
+      if (noRecorte(compativel10) && compativel10.startsWith("0605")) vinculos0605++;
+      const categoria = categoriaCompatibilidade(
+        campo(l, layComp, "CO_REGISTRO_PRINCIPAL"),
+        campo(l, layComp, "CO_REGISTRO_COMPATIVEL"),
+        campo(l, layComp, "TP_COMPATIBILIDADE"),
+      );
+      const item = {
+        categoria,
+        codigo: compativel,
+        nome: nomes.get(compativel) ?? compativel,
+        quantidade: Number(campo(l, layComp, "QT_PERMITIDA")) || 0,
+        desde: competenciaCurta(campo(l, layComp, "DT_COMPETENCIA")),
+      };
+      (compatibilidades[principal] ??= []).push(item);
+    }
+    for (const lista of Object.values(compatibilidades)) {
+      lista.sort((a, b) => String(a.codigo).localeCompare(String(b.codigo)) || String(a.categoria).localeCompare(String(b.categoria)));
     }
 
     if (procedimentos.length < MINIMO_ESPERADO_0304) {

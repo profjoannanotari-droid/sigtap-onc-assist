@@ -22,7 +22,7 @@ export default function Compatibilidade() {
             <Link2 className="w-6 h-6" /> Compatibilidade entre Procedimentos
           </h1>
           <p className="text-primary-foreground/80 text-xs sm:text-sm mt-1">
-            Vínculos, concomitâncias e limites de quantidade entre procedimentos do subgrupo 0304
+            Vínculos, concomitâncias e limites de quantidade dos subgrupos 0304 e 0605 (Assistência Farmacêutica em Oncologia)
           </p>
         </div>
       </header>

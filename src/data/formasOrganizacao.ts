@@ -10,4 +10,7 @@ export const formasOrganizacao = [
   { codigo: "030408", curto: "30408", nome: "PROCEDIMENTOS ESPECIAIS" },
   { codigo: "030409", curto: "30409", nome: "MEDICINA NUCLEAR" },
   { codigo: "030410", curto: "30410", nome: "GERAIS EM ONCOLOGIA" },
+  { codigo: "060501", curto: "60501", nome: "COMPRA CENTRALIZADA" },
+  { codigo: "060502", curto: "60502", nome: "NEGOCIAÇÃO NACIONAL" },
+  { codigo: "060503", curto: "60503", nome: "COMPRA DESCENTRALIZADA" },
 ];

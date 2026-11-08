@@ -56,7 +56,7 @@ export function SeletorCompetencia({ bases, base, competencia, onChange, onRecar
     try {
       const snap = await parseProcedimentosXLS(file);
       if (snap.totalProcedimentos === 0) {
-        toast({ title: "Arquivo sem procedimentos 0304", description: "Verifique se é a TABELA_PROCEDIMENTO do SIGTAP.", variant: "destructive" });
+        toast({ title: "Arquivo sem procedimentos 0304 ou 0605", description: "Verifique se é a TABELA_PROCEDIMENTO do SIGTAP.", variant: "destructive" });
         return;
       }
       salvarCompetenciaUpload(novaComp, snap);

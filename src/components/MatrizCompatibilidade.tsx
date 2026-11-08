@@ -1,4 +1,4 @@
-// Verificação de compatibilidade entre procedimentos (SIGTAP 0304)
+// Verificação de compatibilidade entre procedimentos (SIGTAP 0304 e 0605)
 // Filtros por categoria de compatibilidade, forma de organização, sexo, idade,
 // limite de quantidade e vigência. Exporta relatório em PDF.
 import { useMemo, useState } from "react";

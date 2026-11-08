@@ -1,4 +1,4 @@
-// Parser browser-side da TABELA_PROCEDIMENTO_SIGTAP (.xls/.xlsx) para o subgrupo 0304.
+// Parser browser-side da TABELA_PROCEDIMENTO_SIGTAP (.xls/.xlsx) para os subgrupos 0304 e 0605.
 // Extrai apenas os campos usados na comparação entre competências.
 import * as XLSX from "xlsx";
 

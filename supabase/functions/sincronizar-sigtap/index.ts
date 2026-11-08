@@ -381,7 +381,7 @@ Deno.serve(async (req) => {
       if (c.length !== 10) continue;
       const codigo = c.replace(/^0+/, "");
       const nome = campo(l, layP, "NO_PROCEDIMENTO");
-      nomes.set(codigo, nome);
+      nomesProcedimentos.set(codigo, nome);
       if (!noRecorte(c)) continue;
       const sa = valor(campo(l, layP, "VL_SA"));
       const sh = valor(campo(l, layP, "VL_SH"));

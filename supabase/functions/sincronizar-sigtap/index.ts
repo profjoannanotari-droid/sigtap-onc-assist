@@ -175,22 +175,24 @@ Deno.serve(async (req) => {
   const forcar = body.forcar === true;
   const sb = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
-  // trava: impede duas execuções simultâneas
-  const { data: emCurso } = await sb
-    .from("sigtap_sincronizacao")
-    .select("id")
-    .eq("status", "executando")
-    .gte("created_at", new Date(Date.now() - 15 * 60_000).toISOString())
-    .limit(1);
-  if (emCurso && emCurso.length) return json({ status: "executando", mensagem: "Já existe uma sincronização em andamento." });
+  // trava: impede duas execuções simultâneas (a inspeção técnica não grava histórico)
+  if (!diagnostico) {
+    const { data: emCurso } = await sb
+      .from("sigtap_sincronizacao")
+      .select("id")
+      .eq("status", "executando")
+      .gte("created_at", new Date(Date.now() - 15 * 60_000).toISOString())
+      .limit(1);
+    if (emCurso && emCurso.length) return json({ status: "executando", mensagem: "Já existe uma sincronização em andamento." });
+  }
 
-  const { data: reg } = await sb
+  const { data: reg } = diagnostico ? { data: null } : await sb
     .from("sigtap_sincronizacao")
     .insert({ status: "executando", mensagem: "Sincronização iniciada." })
     .select("id")
     .single();
   const finalizar = async (status: string, mensagem: string, competencia: string | null, detalhes: unknown) => {
-    await sb.from("sigtap_sincronizacao").update({ status, mensagem, competencia, detalhes }).eq("id", reg!.id);
+    if (reg?.id) await sb.from("sigtap_sincronizacao").update({ status, mensagem, competencia, detalhes }).eq("id", reg.id);
     return json({ status, mensagem, competencia, detalhes });
   };
 

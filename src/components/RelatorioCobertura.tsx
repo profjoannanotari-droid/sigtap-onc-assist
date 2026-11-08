@@ -128,7 +128,7 @@ export function RelatorioCobertura({ linhas }: { linhas: LinhaCobertura[] }) {
       )
       .join("");
     const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Cobertura CID x Formas de Organização</title></head><body style="font-family:Arial,sans-serif;color:#1e293b">
-<h1 style="color:#0891b2">Cobertura de CID-10 por formas de organização (SIGTAP 0304)</h1>
+<h1 style="color:#0891b2">Cobertura de CID-10 por formas de organização (SIGTAP 0304 e 0605)</h1>
 <p>Objetivo: identificar CIDs oncológicos sem código de procedimento disponível para tratar o paciente em cada forma de organização.</p>
 <p><em>Gerado em ${new Date().toLocaleString("pt-BR")} — ${linhas.length} CIDs analisados.</em></p>
 <h2>Resumo por quantidade de formas atendidas</h2>

@@ -148,14 +148,14 @@ export default function AnaliseProcedimentos() {
           `pelas formas de organização dos subgrupos 0304 e 0605 (SIGTAP). ` +
           `${filtradas.length} CIDs correspondem ao recorte, de um total de ${matriz.length} CIDs oncológicos da base. ` +
           `Lacunas dentro do recorte: ${resumoEscopo.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} sem código`).join("; ")}. ` +
-          `${filtradas.filter((l) => l.totalProcedimentos === 0).length} CIDs do recorte não possuem qualquer procedimento do subgrupo 0304. ` +
+          `${filtradas.filter((l) => l.totalProcedimentos === 0).length} CIDs do recorte não possuem qualquer procedimento dos subgrupos 0304 e 0605. ` +
           `A análise deve tratar exclusivamente deste recorte, suas implicações assistenciais e de faturamento, sem generalizar para toda a tabela.`
         : `Análise de cobertura de CID-10 por forma de organização do subgrupo 0304 (SIGTAP). ` +
           `${matriz.length} CIDs oncológicos analisados contra ${procedimentosBase.length} procedimentos da competência ${competencia}. ` +
           `Filtro: ${descricaoFiltros}. ` +
           `${filtradas.length} CIDs listados. ` +
           `Lacunas por forma: ${resumoPorForma.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} CIDs sem código`).join("; ")}. ` +
-          `${semNenhum.length} CIDs não possuem qualquer procedimento do subgrupo 0304. ` +
+          `${semNenhum.length} CIDs não possuem qualquer procedimento dos subgrupos 0304 e 0605. ` +
           `Confronto com a fonte oficial ${fonteCidOficial.nome} (universo ${fonteCidOficial.universo} códigos, escopo ${fonteCidOficial.escopo}): ` +
           `${cidsAusentesSigtap.length} códigos oncológicos oficiais sequer constam da tabela SIGTAP ` +
           `(${ausentesPorGrupo.map((g) => `${g.nome}: ${g.qtd}`).join("; ")}).`;

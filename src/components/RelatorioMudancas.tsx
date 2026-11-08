@@ -127,7 +127,7 @@ export function RelatorioMudancas() {
                   titulo: "Mudanças no cadastro dos procedimentos",
                   texto:
                     "Não houve inclusão, exclusão ou alteração de valor, nome, CIDs, CBOs, faixa etária ou sexo " +
-                    "nos procedimentos do subgrupo 0304 nesta competência.",
+                    "nos procedimentos dos subgrupos 0304 e 0605 nesta competência.",
                 },
               ])),
           ...(totalCompat > 0

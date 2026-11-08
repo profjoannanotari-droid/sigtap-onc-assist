@@ -242,7 +242,7 @@ export default function AuditoriaCompatibilidades() {
               { chave: "Competência atual", valor: atualizacaoInfo.competencia },
               { chave: "Competência anterior", valor: atualizacaoInfo.competenciaAnterior },
               { chave: "Data da atualização", valor: atualizacaoInfo.dataAtualizacao },
-              { chave: "Procedimentos no subgrupo 0304", valor: String(atualizacaoInfo.totalProcedimentos) },
+              { chave: "Procedimentos nos subgrupos 0304 e 0605", valor: String(atualizacaoInfo.totalProcedimentos) },
               { chave: "Procedimentos adicionados", valor: String(resumoMudancas.adicionados) },
               { chave: "Procedimentos removidos", valor: String(resumoMudancas.removidos) },
               { chave: "Mudanças de valor SUS", valor: String(resumoMudancas.valorAlterado) },

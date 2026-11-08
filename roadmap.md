@@ -7,4 +7,5 @@
 - [x] Incluir subgrupo 0605 com descrições, valores, CIDs, CBOs e compatibilidades oficiais
 - [x] Atualizar automaticamente procedimentos e compatibilidades dos subgrupos 0304 e 0605
 - [x] Corrigir margens e comportamento em telas estreitas
-- [x] Validar contagens, códigos solicitados e relatório- Sincronização automática SIGTAP via DATASUS (função diária em sa-east-1) com crítica de falha — concluído; DATASUS bloqueia canal de dados FTP no momento
+- [x] Validar contagens, códigos solicitados e relatório
+- [x] Sincronização automática SIGTAP via DATASUS (função diária em sa-east-1) com crítica de falha — importação 11/2026 validada

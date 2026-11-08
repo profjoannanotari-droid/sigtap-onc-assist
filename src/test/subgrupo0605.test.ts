@@ -27,7 +27,7 @@ describe("Subgrupo 0605 — Assistência Farmacêutica em Oncologia", () => {
     const paliativo = vinculos.find((v) => v.codigo === "304020311");
     expect(paliativo?.quantidade).toBe(248);
     expect(paliativo?.categoria).toContain("Secundário) x APAC (Proc. Principal)");
-    expect(paliativo?.nome).toContain("IMATINIBE");
+    expect(paliativo?.nome).toBe("QUIMIOTERAPIA DO TUMOR DO ESTROMA GASTROINTESTINAL AVANÇADO");
   });
 
   it("inclui os medicamentos na pesquisa por CID-10", () => {

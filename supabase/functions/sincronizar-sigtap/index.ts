@@ -374,7 +374,7 @@ Deno.serve(async (req) => {
       descricoes.set(c.replace(/^0+/, ""), descricao);
     }
 
-    const nomes = new Map<string, string>();
+    const nomesProcedimentos = new Map<string, string>();
     const procedimentos: Record<string, unknown>[] = [];
     for (const l of txt["tb_procedimento.txt"].split(/\r?\n/)) {
       const c = campo(l, layP, "CO_PROCEDIMENTO");

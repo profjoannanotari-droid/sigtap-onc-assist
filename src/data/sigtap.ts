@@ -46,6 +46,9 @@ export const indicacoes = [
   { codigo: "030408", nome: "Procedimentos especiais de quimioterapia" },
   { codigo: "030409", nome: "Iodoterapia do carcinoma diferenciado da tireoide" },
   { codigo: "030410", nome: "Intercorrências e tratamento clínico oncológico" },
+  { codigo: "060501", nome: "Assistência farmacêutica em oncologia — Compra centralizada" },
+  { codigo: "060502", nome: "Assistência farmacêutica em oncologia — Negociação nacional" },
+  { codigo: "060503", nome: "Assistência farmacêutica em oncologia — Compra descentralizada" },
 ];
 
 export const cidsOnco: CID[] = [

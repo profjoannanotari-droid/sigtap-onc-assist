@@ -15,8 +15,16 @@ const ARQUIVOS_NECESSARIOS = [
   "rl_procedimento_cid_layout.txt",
   "rl_procedimento_ocupacao.txt",
   "rl_procedimento_ocupacao_layout.txt",
+  "tb_descricao.txt",
+  "tb_descricao_layout.txt",
+  "rl_procedimento_compativel.txt",
+  "rl_procedimento_compativel_layout.txt",
 ];
+const SUBGRUPOS = ["0304", "0605"];
+const VERSAO_IMPORTADOR = 2;
 const MINIMO_ESPERADO_0304 = 100;
+const MINIMO_ESPERADO_0605 = 1;
+const noRecorte = (codigo: string) => SUBGRUPOS.some((s) => codigo.startsWith(s));
 
 function comPrazo<T>(p: Promise<T>, ms: number, oQue: string): Promise<T> {
   return Promise.race([

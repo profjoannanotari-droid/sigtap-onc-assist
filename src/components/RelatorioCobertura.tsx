@@ -143,7 +143,7 @@ ${secoes}</body></html>`;
       const amostra = linhasDetalhe;
       await gerarRelatorioPDF({
         titulo: "Cobertura de CID-10 por formas de organização",
-        subtitulo: "Distribuição dos CIDs oncológicos conforme o número de formas de organização do subgrupo 0304 com código disponível",
+        subtitulo: "Distribuição dos CIDs oncológicos conforme o número de formas de organização dos subgrupos 0304 e 0605 com código disponível",
         badges: [`${linhas.length} CIDs`, `${totalFormas} formas`, `Gerado em ${new Date().toLocaleDateString("pt-BR")}`],
         contextoIA: {
           tipo: "auditoria",

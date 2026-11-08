@@ -34,7 +34,7 @@ export function RelatorioMudancas() {
   const narrativa = useMemo(() => {
     const partes: string[] = [];
     partes.push(
-      `A tabela SIGTAP do subgrupo 0304 (Tratamento em Oncologia) foi atualizada da competência ` +
+      `A tabela SIGTAP dos subgrupos 0304 e 0605 (Oncologia e Assistência Farmacêutica) foi atualizada da competência ` +
         `${atualizacaoInfo.competenciaAnterior} para ${atualizacaoInfo.competencia} (${atualizacaoInfo.mesNome}), ` +
         `em ${atualizacaoInfo.dataAtualizacao}, totalizando ${atualizacaoInfo.totalProcedimentos} procedimentos.`,
     );

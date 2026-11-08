@@ -47,8 +47,8 @@ export function HistoricoAtualizacoes() {
       await gerarRelatorioPDF({
         titulo: `Auditoria da competência ${base.competencia}`,
         subtitulo: anterior
-          ? `Comparação com a competência ${anterior.competencia} · subgrupo 0304 (Oncologia)`
-          : "Primeira competência registrada no sistema · subgrupo 0304 (Oncologia)",
+          ? `Comparação com a competência ${anterior.competencia} · subgrupos 0304 e 0605`
+          : "Primeira competência registrada no sistema · subgrupos 0304 e 0605",
         badges: [
           origemRotulo[base.origem],
           `${base.procedimentos.length} procedimentos`,

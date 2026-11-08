@@ -322,7 +322,7 @@ export function MatrizCompatibilidade() {
 
 
       await gerarRelatorioPDF({
-        titulo: "Compatibilidade entre procedimentos — SIGTAP 0304",
+        titulo: "Compatibilidade entre procedimentos — SIGTAP 0304 e 0605",
         subtitulo:
           "Vínculos de compatibilidade, concomitância e limites de quantidade entre procedimentos oncológicos",
         badges,

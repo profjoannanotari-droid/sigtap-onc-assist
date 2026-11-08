@@ -42,7 +42,7 @@ function SlotUpload({ rotulo, competencia, setCompetencia, snap, setSnap }: Slot
     try {
       const s = await parseProcedimentosXLS(f);
       if (s.totalProcedimentos === 0) {
-        toast({ title: "Arquivo sem procedimentos do subgrupo 0304", variant: "destructive" });
+        toast({ title: "Arquivo sem procedimentos dos subgrupos 0304 ou 0605", variant: "destructive" });
         return;
       }
       setSnap(s);

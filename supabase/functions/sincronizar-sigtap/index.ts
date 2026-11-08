@@ -252,12 +252,32 @@ Deno.serve(async (req) => {
     if (diagnostico) {
       const todos = unzipSync(zip);
       const decDiagnostico = new TextDecoder("latin1");
-      const amostras: Record<string, string> = {};
-      for (const [nome, conteudo] of Object.entries(todos)) {
-        if (!/compat|descric|forma_organizacao|sub_grupo/i.test(nome)) continue;
-        amostras[nome] = decDiagnostico.decode(conteudo).split(/\r?\n/).slice(0, 8).join("\n");
+      const textos = Object.fromEntries(Object.entries(todos).map(([n, v]) => [n.toLowerCase(), decDiagnostico.decode(v)]));
+      const layouts = Object.fromEntries(Object.entries(textos).filter(([n]) => /_(layout)\.txt$/.test(n) && /compat|descric|forma_organizacao|sub_grupo|tb_procedimento/.test(n)));
+      const linhas0605 = (prefixo: string) => (textos[prefixo] ?? "").split(/\r?\n/).filter((l) => l.startsWith("0605"));
+      const compat0605 = linhas0605("rl_procedimento_compativel.txt");
+      const tipos: Record<string, number> = {};
+      for (const l of compat0605) {
+        const k = `${l.slice(10, 12)}>${l.slice(22, 24)} tipo=${l.slice(24, 25)}`;
+        tipos[k] = (tipos[k] ?? 0) + 1;
       }
-      return json({ competencia, arquivos: Object.keys(todos), amostras });
+      return json({
+        competencia,
+        layouts,
+        totais0605: {
+          procedimentos: linhas0605("tb_procedimento.txt").length,
+          descricoes: linhas0605("tb_descricao.txt").length,
+          compatibilidades: compat0605.length,
+          formas: linhas0605("tb_forma_organizacao.txt").length,
+        },
+        amostras0605: {
+          procedimentos: linhas0605("tb_procedimento.txt").slice(0, 3),
+          descricoes: linhas0605("tb_descricao.txt").slice(0, 1).map((l) => l.slice(0, 800)),
+          compatibilidades: compat0605.slice(0, 5),
+          formas: linhas0605("tb_forma_organizacao.txt").slice(0, 5),
+        },
+        tiposCompatibilidade0605: tipos,
+      });
     }
 
     let arquivos: Record<string, Uint8Array>;

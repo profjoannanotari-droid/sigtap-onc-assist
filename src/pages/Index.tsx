@@ -237,7 +237,7 @@ export default function Index() {
 
       <footer className="border-t border-border mt-8">
         <div className="container mx-auto px-4 py-4 text-center text-xs text-muted-foreground">
-          NotariSIGTAP-QT • Base SIGTAP - Subgrupo 0304 • Dados ilustrativos para demonstração
+          NotariSIGTAP-QT • Base SIGTAP - Subgrupos 0304 e 0605 • Competência 11/2026
         </div>
       </footer>
     </div>

@@ -113,7 +113,7 @@ export function ResultsTable({ resultados, cid, cidDescricao, indicacao }: Resul
         </div>
         <h3 className="text-lg font-semibold text-foreground mb-2">Nenhum procedimento encontrado</h3>
         <p className="text-muted-foreground max-w-md">
-          Não foram encontrados procedimentos compatíveis com o CID <strong>{cid}</strong> para a indicação <strong>{indicacaoNome}</strong> no subgrupo 0304 do SIGTAP.
+          Não foram encontrados procedimentos compatíveis com o CID <strong>{cid}</strong> para a indicação <strong>{indicacaoNome}</strong> nos subgrupos 0304 e 0605 do SIGTAP.
         </p>
       </div>
     );

@@ -1,6 +1,7 @@
 // Integração com a sincronização automática da Tabela Unificada (DATASUS).
 import { supabase } from "@/integrations/supabase/client";
 import { aplicarBaseNuvem, type Procedimento } from "@/data/sigtap";
+import { aplicarCompatibilidadesNuvem, type Compatibilidade } from "@/data/compatibilidade";
 import { atualizacaoInfo } from "@/data/atualizacao";
 
 export interface RegistroSincronizacao {

@@ -65,7 +65,7 @@ export default function PesquisarCid() {
             { chave: "Descrição", valor: cid.descricao },
           ]},
           ...(procs.length === 0
-            ? [{ tipo: "paragrafo" as const, texto: "Nenhum procedimento SIGTAP do subgrupo 0304 está relacionado a este CID na base atual." }]
+            ? [{ tipo: "paragrafo" as const, texto: "Nenhum procedimento SIGTAP dos subgrupos 0304 e 0605 está relacionado a este CID na base atual." }]
             : secoes),
         ],
         nomeArquivo: `cid_${cid.codigo.replace(/\./g, "_")}`,

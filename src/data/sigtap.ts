@@ -10034,11 +10034,11 @@ export function filtrarProcedimentos(texto: string): Procedimento[] {
     p.nome.toLowerCase().includes(textoLower)
   ).slice(0, 20);
 }
-// Substitui a base em memória por uma competência mais nova baixada automaticamente do DATASUS.
-// Mantém a descrição da base compilada quando o código já existia.
-export function aplicarBaseNuvem(novos: Omit<Procedimento, "descricao">[]) {
+// Substitui os dois subgrupos em memória por uma competência baixada do DATASUS.
+// Mantém a descrição compilada apenas quando o arquivo oficial não trouxer esse campo.
+export function aplicarBaseNuvem(novos: (Omit<Procedimento, "descricao"> & { descricao?: string })[]) {
   const desc = new Map(procedimentos.map((p) => [p.codigo, p.descricao]));
-  const fora0304 = procedimentos.filter((p) => !p.subgrupo.startsWith("0304"));
-  const lista: Procedimento[] = novos.map((p) => ({ ...p, descricao: desc.get(p.codigo) ?? "" }));
-  procedimentos.splice(0, procedimentos.length, ...lista, ...fora0304);
+  const foraDoRecorte = procedimentos.filter((p) => !p.subgrupo.startsWith("0304") && !p.subgrupo.startsWith("0605"));
+  const lista: Procedimento[] = novos.map((p) => ({ ...p, descricao: p.descricao || desc.get(p.codigo) || "" }));
+  procedimentos.splice(0, procedimentos.length, ...lista, ...foraDoRecorte);
 }

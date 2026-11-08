@@ -33,6 +33,7 @@ describe("Cruzamento CIDs ↔ Procedimentos SIGTAP 0304", () => {
     const indicacoesValidas = new Set([
       "030401", "030402", "030403", "030404", "030405",
       "030406", "030407", "030408", "030409", "030410",
+      "060501", "060502", "060503",
     ]);
     const inconsistentes = cidsOnco
       .filter((c) => buscarProcedimentos(c.codigo).length > 0)

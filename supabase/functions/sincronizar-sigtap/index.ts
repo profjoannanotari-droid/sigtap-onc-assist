@@ -236,7 +236,7 @@ Deno.serve(async (req) => {
     competencia = `${alvo.mes}/${alvo.ano}`;
 
     const { data: existente } = await sb.from("sigtap_bases").select("arquivo").eq("competencia", competencia).maybeSingle();
-    if (existente && existente.arquivo === alvo.nome) {
+    if (!diagnostico && !forcar && existente && existente.arquivo === alvo.nome) {
       ftp.fechar();
       return await finalizar("sem_novidade", `Competência ${competencia} já está atualizada (${alvo.nome}).`, competencia, null);
     }

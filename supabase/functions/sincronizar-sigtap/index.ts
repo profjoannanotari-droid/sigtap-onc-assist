@@ -170,6 +170,9 @@ Deno.serve(async (req) => {
   const json = (b: unknown, s = 200) =>
     new Response(JSON.stringify(b), { status: s, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
+  const body = await req.json().catch(() => ({})) as { diagnostico?: boolean; forcar?: boolean };
+  const diagnostico = body.diagnostico === true;
+  const forcar = body.forcar === true;
   const sb = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
   // trava: impede duas execuções simultâneas

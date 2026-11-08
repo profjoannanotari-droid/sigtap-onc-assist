@@ -1,4 +1,4 @@
-// Sincronização automática da Tabela Unificada SIGTAP (DATASUS) — subgrupo 0304.
+// Sincronização automática da Tabela Unificada SIGTAP (DATASUS) — subgrupos 0304 e 0605.
 // Fonte oficial: ftp://ftp2.datasus.gov.br/pub/sistemas/tup/downloads/
 // Cada execução registra em sigtap_sincronizacao: sucesso, sem_novidade ou falha (com crítica para ajuste).
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";

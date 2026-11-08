@@ -19830,7 +19830,16 @@ function construirIndiceReverso(): Record<string, Compatibilidade[]> {
     }
   }
   return idx;
-})();
+}
+
+let indiceReverso = construirIndiceReverso();
+
+/** Substitui os vínculos pela competência baixada e refaz também o índice reverso. */
+export function aplicarCompatibilidadesNuvem(novas: Record<string, Compatibilidade[]>) {
+  for (const codigo of Object.keys(compatibilidades)) delete compatibilidades[codigo];
+  Object.assign(compatibilidades, novas);
+  indiceReverso = construirIndiceReverso();
+}
 
 export function getCompatibilidades(codigoProcedimento: string): Compatibilidade[] {
   const norm = normalizar(codigoProcedimento);

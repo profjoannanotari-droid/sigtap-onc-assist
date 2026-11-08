@@ -60,7 +60,7 @@ export function HistoricoAtualizacoes() {
           resumoDados:
             `Auditoria da competência ${base.competencia}` +
             (anterior ? ` frente à competência ${anterior.competencia}` : "") +
-            `. ${base.procedimentos.length} procedimentos no subgrupo 0304, ` +
+            `. ${base.procedimentos.length} procedimentos nos subgrupos 0304 e 0605, ` +
             `${diffs.length} alteração(ões) de cadastro e ${compat.length} procedimento(s) com ` +
             `${totalVinculos} mudança(s) nas regras de compatibilidade.`,
           publicoAlvo: "Auditoria e faturamento em oncologia (SUS)",

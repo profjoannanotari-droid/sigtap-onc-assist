@@ -218,7 +218,7 @@ export default function AuditoriaCompatibilidades() {
       const resumo =
         `Atualização SIGTAP da competência ${atualizacaoInfo.competenciaAnterior} para ${atualizacaoInfo.competencia} ` +
         `(${atualizacaoInfo.mesNome}), aplicada em ${atualizacaoInfo.dataAtualizacao}. ` +
-        `Total de ${atualizacaoInfo.totalProcedimentos} procedimentos do subgrupo 0304 (oncologia). ` +
+        `Total de ${atualizacaoInfo.totalProcedimentos} procedimentos dos subgrupos 0304 e 0605. ` +
         `Mudanças detectadas: ${resumoMudancas.adicionados} novo(s), ${resumoMudancas.removidos} removido(s), ` +
         `${resumoMudancas.valorAlterado} com valor alterado, ${resumoMudancas.cidsAlterado} com CIDs alterados, ` +
         `${resumoMudancas.cbosAlterado} com CBOs alterados, ${resumoMudancas.compatAlterado} relação(ões) de compatibilidade modificada(s).`;

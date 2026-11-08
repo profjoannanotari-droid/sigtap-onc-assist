@@ -145,7 +145,7 @@ export default function AnaliseProcedimentos() {
 
       const resumo = especifico
         ? `Análise ESPECÍFICA do recorte solicitado nos filtros (${descricaoFiltros}) sobre a cobertura de CID-10 ` +
-          `pelas formas de organização do subgrupo 0304 (SIGTAP). ` +
+          `pelas formas de organização dos subgrupos 0304 e 0605 (SIGTAP). ` +
           `${filtradas.length} CIDs correspondem ao recorte, de um total de ${matriz.length} CIDs oncológicos da base. ` +
           `Lacunas dentro do recorte: ${resumoEscopo.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} sem código`).join("; ")}. ` +
           `${filtradas.filter((l) => l.totalProcedimentos === 0).length} CIDs do recorte não possuem qualquer procedimento do subgrupo 0304. ` +

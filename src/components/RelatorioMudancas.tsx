@@ -93,7 +93,7 @@ export function RelatorioMudancas() {
               { chave: "Competência atual", valor: atualizacaoInfo.competencia },
               { chave: "Competência anterior", valor: atualizacaoInfo.competenciaAnterior },
               { chave: "Data da atualização", valor: atualizacaoInfo.dataAtualizacao },
-              { chave: "Procedimentos no subgrupo 0304", valor: String(atualizacaoInfo.totalProcedimentos) },
+              { chave: "Procedimentos nos subgrupos 0304 e 0605", valor: String(atualizacaoInfo.totalProcedimentos) },
               { chave: "Procedimentos incluídos", valor: String(resumoMudancas.adicionados) },
               { chave: "Procedimentos excluídos", valor: String(resumoMudancas.removidos) },
               { chave: "Valores alterados", valor: String(resumoMudancas.valorAlterado) },

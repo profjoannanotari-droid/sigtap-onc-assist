@@ -148,7 +148,7 @@ ${secoes}</body></html>`;
         contextoIA: {
           tipo: "auditoria",
           resumoDados:
-            `Estudo de cobertura assistencial: ${linhas.length} CIDs oncológicos avaliados contra as ${totalFormas} formas de organização do subgrupo 0304 do SIGTAP. ` +
+            `Estudo de cobertura assistencial: ${linhas.length} CIDs oncológicos avaliados contra as ${totalFormas} formas de organização dos subgrupos 0304 e 0605 do SIGTAP. ` +
             `Distribuição: ${grupos.map((g) => `${g.qtd} formas: ${g.linhas.length} CIDs`).join("; ")}. ` +
             `O objetivo é identificar em quais CIDs não existe código de procedimento para tratar o paciente.`,
           publicoAlvo: "Gestão, auditoria e faturamento em oncologia (SUS)",

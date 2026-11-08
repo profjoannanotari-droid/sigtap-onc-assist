@@ -119,7 +119,7 @@ export default function ComparadorCompetencias() {
       const r = resultado.resumo;
       const resumoTxt =
         `Comparação SIGTAP entre competência ${ant} (${snapA.totalProcedimentos} proc.) e ${dep} (${snapB.totalProcedimentos} proc.) ` +
-        `do subgrupo 0304. Mudanças: ${r.adicionados} adicionado(s), ${r.removidos} removido(s), ${r.valorAlterado} com valor alterado, ` +
+        `dos subgrupos 0304 e 0605. Mudanças: ${r.adicionados} adicionado(s), ${r.removidos} removido(s), ${r.valorAlterado} com valor alterado, ` +
         `${r.cidsAlterado} com CIDs alterados, ${r.cbosAlterado} com CBOs alterados, ${r.idadeAlterado} com faixa etária alterada, ` +
         `${r.sexoAlterado} com sexo alterado, ${r.nomeAlterado} com nome alterado.`;
       const linhas = filtradas.map((d) => {

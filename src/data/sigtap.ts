@@ -20,6 +20,7 @@ export interface Procedimento {
 }
 
 export const cbosNomes: Record<string, string> = {
+  "223405": "Farmacêutico",
   "225112": "Médico Neurologista",
   "225121": "Médico Oncologista Clínico",
   "225122": "Médico Cancerologista Pediátrico",

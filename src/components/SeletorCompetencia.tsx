@@ -62,7 +62,7 @@ export function SeletorCompetencia({ bases, base, competencia, onChange, onRecar
       salvarCompetenciaUpload(novaComp, snap);
       onRecarregar();
       onChange(novaComp);
-      toast({ title: `Competência ${novaComp} importada`, description: `${snap.totalProcedimentos} procedimentos do subgrupo 0304.` });
+      toast({ title: `Competência ${novaComp} importada`, description: `${snap.totalProcedimentos} procedimentos dos subgrupos 0304 e 0605.` });
       setNovaComp("");
     } catch (e) {
       toast({ title: "Falha ao ler o arquivo", description: (e as Error).message, variant: "destructive" });

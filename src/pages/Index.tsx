@@ -187,7 +187,7 @@ export default function Index() {
           </div>
           <div className="flex items-center gap-2 whitespace-nowrap">
             <Shield className="w-4 h-4" />
-            <span>Subgrupo 0304 · {atualizacaoInfo.totalProcedimentos} procedimentos</span>
+            <span>Subgrupos 0304 e 0605 · {atualizacaoInfo.totalProcedimentos} procedimentos</span>
           </div>
         </div>
       </div>

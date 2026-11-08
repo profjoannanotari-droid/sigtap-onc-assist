@@ -48,7 +48,7 @@ export async function parseProcedimentosXLS(file: File): Promise<SnapshotCompete
     if (!raw || !raw.includes(" - ")) continue;
     const [codFull, ...nomeParts] = raw.split(" - ");
     const codFullT = codFull.trim();
-    if (!codFullT.startsWith("0304")) continue;
+    if (!codFullT.startsWith("0304") && !codFullT.startsWith("0605")) continue;
     const codigo = codFullT.replace(/^0+/, "");
     const nome = nomeParts.join(" - ").trim();
     const valAmb = toFloat(row[8]);

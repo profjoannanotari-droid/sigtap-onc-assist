@@ -47,7 +47,7 @@ export default function PesquisarCid() {
         grupos.get(p.subgrupo)!.push(p);
       });
       const resumo = `CID-10 ${cid.codigo} - ${cid.descricao}. ${procs.length} procedimento(s) SIGTAP relacionado(s), ` +
-        `distribuídos em ${grupos.size} indicação(ões) terapêutica(s) do subgrupo 0304.`;
+        `distribuídos em ${grupos.size} forma(s) de organização dos subgrupos 0304 e 0605.`;
       const secoes = Array.from(grupos.entries()).map(([subgrupo, lista]) => ({
         tipo: "tabela" as const,
         titulo: `${subgrupo} · ${nomeIndicacao(subgrupo)}`,

@@ -60,7 +60,7 @@ export function ResultsTable({ resultados, cid, cidDescricao, indicacao }: Resul
       const totalValor = filtrados.reduce((s, p) => s + p.valor, 0);
       const cbosUnicos = Array.from(new Set(filtrados.flatMap((p) => p.cbosCompativeis)));
       const comLimite = filtrados.filter((p) => extrairLimitesCobranca(p.descricao || "").length > 0);
-      const resumo = `${filtrados.length} procedimentos do subgrupo 0304 (SIGTAP) compatíveis com o CID ${cid} (${cidDescricao}) para a indicação "${indicacaoNome}". ` +
+      const resumo = `${filtrados.length} procedimentos dos subgrupos 0304 e 0605 (SIGTAP) compatíveis com o CID ${cid} (${cidDescricao}) para a indicação "${indicacaoNome}". ` +
         `Soma de valores: R$ ${totalValor.toFixed(2)}. ${cbosUnicos.length} CBO(s) habilitados. ` +
         `${comLimite.length} procedimento(s) com regras explícitas de tempo/quantidade de cobrança.`;
 

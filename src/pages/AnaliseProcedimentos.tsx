@@ -247,7 +247,7 @@ export default function AnaliseProcedimentos() {
               l.codigo,
               l.descricao,
               l.faltantes.length === formasOrganizacao.length
-                ? "TODAS (sem procedimento no 0304/0605/0605)"
+                ? "TODAS (sem procedimento no 0304/0605)"
                 : l.faltantes.map((c) => formasOrganizacao.find((f) => f.codigo === c)?.curto).join(", ") || "—",
             ]),
           },

@@ -19823,7 +19823,7 @@ function construirIndiceReverso(): Record<string, Compatibilidade[]> {
       idx[codB].push({
         categoria: categoriaInvertida,
         codigo: codA,
-        nome: nomesPorCodigo[codA] || codA,
+        nome: nomesPorCodigo[codA] || buscarPorCodigo(codA)?.nome || codA,
         quantidade: item.quantidade,
         desde: item.desde,
       });

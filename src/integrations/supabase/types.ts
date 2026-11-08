@@ -77,24 +77,30 @@ export type Database = {
       sigtap_bases: {
         Row: {
           arquivo: string
+          compatibilidades: Json
           competencia: string
           created_at: string
           procedimentos: Json
           total_procedimentos: number
+          versao_importador: number
         }
         Insert: {
           arquivo: string
+          compatibilidades?: Json
           competencia: string
           created_at?: string
           procedimentos: Json
           total_procedimentos: number
+          versao_importador?: number
         }
         Update: {
           arquivo?: string
+          compatibilidades?: Json
           competencia?: string
           created_at?: string
           procedimentos?: Json
           total_procedimentos?: number
+          versao_importador?: number
         }
         Relationships: []
       }

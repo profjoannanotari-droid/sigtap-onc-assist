@@ -187,7 +187,7 @@ export default function Index() {
           </div>
           <div className="flex items-center gap-2 whitespace-nowrap">
             <Shield className="w-4 h-4" />
-            <span>Subgrupo 0304 · {atualizacaoInfo.totalProcedimentos} procedimentos</span>
+            <span>Subgrupos 0304 e 0605 · {atualizacaoInfo.totalProcedimentos} procedimentos</span>
           </div>
         </div>
       </div>
@@ -237,7 +237,7 @@ export default function Index() {
 
       <footer className="border-t border-border mt-8">
         <div className="container mx-auto px-4 py-4 text-center text-xs text-muted-foreground">
-          NotariSIGTAP-QT • Base SIGTAP - Subgrupo 0304 • Dados ilustrativos para demonstração
+          NotariSIGTAP-QT • Base SIGTAP - Subgrupos 0304 e 0605 • Competência 11/2026
         </div>
       </footer>
     </div>

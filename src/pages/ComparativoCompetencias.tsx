@@ -96,7 +96,7 @@ export default function ComparativoCompetencias() {
     try {
       await gerarRelatorioPDF({
         titulo: "Comparativo entre competências SIGTAP",
-        subtitulo: `${baseA.competencia} → ${baseB.competencia} · subgrupo 0304 (Oncologia)`,
+        subtitulo: `${baseA.competencia} → ${baseB.competencia} · subgrupos 0304 e 0605 (Oncologia e Assistência Farmacêutica)`,
         badges: [
           `${diffProcs.length} mudanças em procedimentos`,
           `${diffCids.length} CIDs com cobertura alterada`,

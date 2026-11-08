@@ -1,12 +1,13 @@
 // Auto-gerado pelo script de atualização SIGTAP — não editar manualmente.
-// Comparação entre competência anterior (08/2026) e atual (09/2026).
+// Comparação entre competência anterior (10/2026) e atual (11/2026).
 
 export const atualizacaoInfo = {
-  competencia: "09/2026",
-  competenciaAnterior: "08/2026",
-  mesNome: "Setembro/2026",
-  dataAtualizacao: "15/09/2026",
-  totalProcedimentos: 190,
+  competencia: "11/2026",
+  competenciaAnterior: "10/2026",
+  mesNome: "Novembro/2026",
+  dataAtualizacao: "08/11/2026",
+  totalProcedimentos: 216,
+  versaoImportador: 2,
 } as const;
 
 export interface MudancaProcedimento {

@@ -1,4 +1,4 @@
-// Sincronização automática da Tabela Unificada SIGTAP (DATASUS) — subgrupo 0304.
+// Sincronização automática da Tabela Unificada SIGTAP (DATASUS) — subgrupos 0304 e 0605.
 // Fonte oficial: ftp://ftp2.datasus.gov.br/pub/sistemas/tup/downloads/
 // Cada execução registra em sigtap_sincronizacao: sucesso, sem_novidade ou falha (com crítica para ajuste).
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
@@ -15,8 +15,16 @@ const ARQUIVOS_NECESSARIOS = [
   "rl_procedimento_cid_layout.txt",
   "rl_procedimento_ocupacao.txt",
   "rl_procedimento_ocupacao_layout.txt",
+  "tb_descricao.txt",
+  "tb_descricao_layout.txt",
+  "rl_procedimento_compativel.txt",
+  "rl_procedimento_compativel_layout.txt",
 ];
+const SUBGRUPOS = ["0304", "0605"];
+const VERSAO_IMPORTADOR = 2;
 const MINIMO_ESPERADO_0304 = 100;
+const MINIMO_ESPERADO_0605 = 1;
+const noRecorte = (codigo: string) => SUBGRUPOS.some((s) => codigo.startsWith(s));
 
 function comPrazo<T>(p: Promise<T>, ms: number, oQue: string): Promise<T> {
   return Promise.race([
@@ -151,7 +159,11 @@ function campo(l: string, lay: Layout, c: string) {
 function idade(meses: string): string {
   const n = Number(meses);
   if (!Number.isFinite(n) || n >= 9999) return "";
-  if (n >= 12 && n % 12 === 0) return `${n / 12} Ano(s)`;
+  if (n >= 12) {
+    const anos = Math.floor(n / 12);
+    const meses = n % 12;
+    return meses > 0 ? `${anos} Ano(s) e ${meses} Mes(es)` : `${anos} Ano(s)`;
+  }
   return `${n} Mes(es)`;
 }
 
@@ -164,30 +176,74 @@ function valor(v: string) {
   return Number.isFinite(n) ? n / 100 : 0;
 }
 
+const REGISTROS: Record<string, string> = {
+  "01": "BPA (Consolidado)",
+  "02": "BPA (Individualizado)",
+  "03": "AIH (Proc. Principal)",
+  "04": "AIH (Proc. Especial)",
+  "05": "AIH (Proc. Secundário)",
+  "06": "APAC (Proc. Principal)",
+  "07": "APAC (Proc. Secundário)",
+};
+
+function categoriaCompatibilidade(registroPrincipal: string, registroCompativel: string, tipo: string): string {
+  const principal = REGISTROS[registroPrincipal];
+  const compativel = REGISTROS[registroCompativel];
+  if (!principal || !compativel) {
+    throw new Critica(
+      "compatibilidade",
+      `Foi encontrado um modo de registro não reconhecido (${registroPrincipal} > ${registroCompativel}).`,
+      "O DATASUS incluiu um modo de registro novo. Revisar o dicionário de categorias da sincronização.",
+    );
+  }
+  const tipos: Record<string, string> = {
+    "1": "Compativel",
+    "2": "Excludente",
+    "3": "Concomitantes - APACs diferentes para o mesmo paciente",
+  };
+  if (!tipos[tipo]) {
+    throw new Critica(
+      "compatibilidade",
+      `Foi encontrado um tipo de compatibilidade não reconhecido (${tipo}).`,
+      "O DATASUS incluiu um tipo de vínculo novo. Revisar o dicionário de categorias da sincronização.",
+    );
+  }
+  return `${principal} x ${compativel} - ${tipos[tipo]}`;
+}
+
+function competenciaCurta(valor: string): string {
+  return valor.length === 6 ? `${valor.slice(4)}/${valor.slice(0, 4)}` : "";
+}
+
 // ---------------- Execução ----------------
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   const json = (b: unknown, s = 200) =>
     new Response(JSON.stringify(b), { status: s, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 
+  const body = await req.json().catch(() => ({})) as { diagnostico?: boolean; forcar?: boolean };
+  const diagnostico = body.diagnostico === true;
+  const forcar = body.forcar === true;
   const sb = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 
-  // trava: impede duas execuções simultâneas
-  const { data: emCurso } = await sb
-    .from("sigtap_sincronizacao")
-    .select("id")
-    .eq("status", "executando")
-    .gte("created_at", new Date(Date.now() - 15 * 60_000).toISOString())
-    .limit(1);
-  if (emCurso && emCurso.length) return json({ status: "executando", mensagem: "Já existe uma sincronização em andamento." });
+  // trava: impede duas execuções simultâneas (a inspeção técnica não grava histórico)
+  if (!diagnostico) {
+    const { data: emCurso } = await sb
+      .from("sigtap_sincronizacao")
+      .select("id")
+      .eq("status", "executando")
+      .gte("created_at", new Date(Date.now() - 15 * 60_000).toISOString())
+      .limit(1);
+    if (emCurso && emCurso.length) return json({ status: "executando", mensagem: "Já existe uma sincronização em andamento." });
+  }
 
-  const { data: reg } = await sb
+  const { data: reg } = diagnostico ? { data: null } : await sb
     .from("sigtap_sincronizacao")
     .insert({ status: "executando", mensagem: "Sincronização iniciada." })
     .select("id")
     .single();
   const finalizar = async (status: string, mensagem: string, competencia: string | null, detalhes: unknown) => {
-    await sb.from("sigtap_sincronizacao").update({ status, mensagem, competencia, detalhes }).eq("id", reg!.id);
+    if (reg?.id) await sb.from("sigtap_sincronizacao").update({ status, mensagem, competencia, detalhes }).eq("id", reg.id);
     return json({ status, mensagem, competencia, detalhes });
   };
 
@@ -232,8 +288,8 @@ Deno.serve(async (req) => {
     const alvo = candidatos[0];
     competencia = `${alvo.mes}/${alvo.ano}`;
 
-    const { data: existente } = await sb.from("sigtap_bases").select("arquivo").eq("competencia", competencia).maybeSingle();
-    if (existente && existente.arquivo === alvo.nome) {
+    const { data: existente } = await sb.from("sigtap_bases").select("arquivo, versao_importador").eq("competencia", competencia).maybeSingle();
+    if (!diagnostico && !forcar && existente && existente.arquivo === alvo.nome && existente.versao_importador >= VERSAO_IMPORTADOR) {
       ftp.fechar();
       return await finalizar("sem_novidade", `Competência ${competencia} já está atualizada (${alvo.nome}).`, competencia, null);
     }
@@ -245,6 +301,37 @@ Deno.serve(async (req) => {
       throw new Critica("download", `Falha ao baixar ${alvo.nome}: ${(e as Error).message}.`, "Nova tentativa automática no próximo dia.");
     }
     ftp.fechar();
+
+    if (diagnostico) {
+      const todos = unzipSync(zip);
+      const decDiagnostico = new TextDecoder("latin1");
+      const textos = Object.fromEntries(Object.entries(todos).map(([n, v]) => [n.toLowerCase(), decDiagnostico.decode(v)]));
+      const layouts = Object.fromEntries(Object.entries(textos).filter(([n]) => /_(layout)\.txt$/.test(n) && /compat|descric|forma_organizacao|sub_grupo|tb_procedimento/.test(n)));
+      const linhas0605 = (prefixo: string) => (textos[prefixo] ?? "").split(/\r?\n/).filter((l) => l.startsWith("0605"));
+      const compat0605 = linhas0605("rl_procedimento_compativel.txt");
+      const tipos: Record<string, number> = {};
+      for (const l of compat0605) {
+        const k = `${l.slice(10, 12)}>${l.slice(22, 24)} tipo=${l.slice(24, 25)}`;
+        tipos[k] = (tipos[k] ?? 0) + 1;
+      }
+      return json({
+        competencia,
+        layouts,
+        totais0605: {
+          procedimentos: linhas0605("tb_procedimento.txt").length,
+          descricoes: linhas0605("tb_descricao.txt").length,
+          compatibilidades: compat0605.length,
+          formas: linhas0605("tb_forma_organizacao.txt").length,
+        },
+        amostras0605: {
+          procedimentos: linhas0605("tb_procedimento.txt").slice(0, 3),
+          descricoes: linhas0605("tb_descricao.txt").slice(0, 1).map((l) => l.slice(0, 800)),
+          compatibilidades: compat0605.slice(0, 5),
+          formas: linhas0605("tb_forma_organizacao.txt").slice(0, 5),
+        },
+        tiposCompatibilidade0605: tipos,
+      });
+    }
 
     let arquivos: Record<string, Uint8Array>;
     try {
@@ -263,32 +350,49 @@ Deno.serve(async (req) => {
     const layP = lerLayout(txt["tb_procedimento_layout.txt"], "tb_procedimento", ["CO_PROCEDIMENTO", "NO_PROCEDIMENTO", "TP_SEXO", "VL_IDADE_MINIMA", "VL_IDADE_MAXIMA", "VL_SH", "VL_SA"]);
     const layC = lerLayout(txt["rl_procedimento_cid_layout.txt"], "rl_procedimento_cid", ["CO_PROCEDIMENTO", "CO_CID"]);
     const layO = lerLayout(txt["rl_procedimento_ocupacao_layout.txt"], "rl_procedimento_ocupacao", ["CO_PROCEDIMENTO", "CO_OCUPACAO"]);
+    const layD = lerLayout(txt["tb_descricao_layout.txt"], "tb_descricao", ["CO_PROCEDIMENTO", "DS_PROCEDIMENTO"]);
+    const layComp = lerLayout(txt["rl_procedimento_compativel_layout.txt"], "rl_procedimento_compativel", [
+      "CO_PROCEDIMENTO_PRINCIPAL", "CO_REGISTRO_PRINCIPAL", "CO_PROCEDIMENTO_COMPATIVEL",
+      "CO_REGISTRO_COMPATIVEL", "TP_COMPATIBILIDADE", "QT_PERMITIDA", "DT_COMPETENCIA",
+    ]);
 
     const cids = new Map<string, string[]>();
     for (const l of txt["rl_procedimento_cid.txt"].split(/\r?\n/)) {
       const c = campo(l, layC, "CO_PROCEDIMENTO");
-      if (!c.startsWith("0304")) continue;
+      if (!noRecorte(c)) continue;
       const k = c.replace(/^0+/, "");
       (cids.get(k) ?? cids.set(k, []).get(k)!).push(campo(l, layC, "CO_CID"));
     }
     const cbos = new Map<string, string[]>();
     for (const l of txt["rl_procedimento_ocupacao.txt"].split(/\r?\n/)) {
       const c = campo(l, layO, "CO_PROCEDIMENTO");
-      if (!c.startsWith("0304")) continue;
+      if (!noRecorte(c)) continue;
       const k = c.replace(/^0+/, "");
       (cbos.get(k) ?? cbos.set(k, []).get(k)!).push(campo(l, layO, "CO_OCUPACAO"));
     }
+    const descricoes = new Map<string, string>();
+    for (const l of txt["tb_descricao.txt"].split(/\r?\n/)) {
+      const c = campo(l, layD, "CO_PROCEDIMENTO");
+      if (!noRecorte(c)) continue;
+      const descricao = campo(l, layD, "DS_PROCEDIMENTO").replace(/\s*\|\|\s*/g, " ").replace(/\s+/g, " ").trim();
+      descricoes.set(c.replace(/^0+/, ""), descricao);
+    }
 
-    const procedimentos: unknown[] = [];
+    const nomesProcedimentos = new Map<string, string>();
+    const procedimentos: Record<string, unknown>[] = [];
     for (const l of txt["tb_procedimento.txt"].split(/\r?\n/)) {
       const c = campo(l, layP, "CO_PROCEDIMENTO");
-      if (!c.startsWith("0304")) continue;
+      if (c.length !== 10) continue;
       const codigo = c.replace(/^0+/, "");
+      const nome = campo(l, layP, "NO_PROCEDIMENTO");
+      nomesProcedimentos.set(codigo, nome);
+      if (!noRecorte(c)) continue;
       const sa = valor(campo(l, layP, "VL_SA"));
       const sh = valor(campo(l, layP, "VL_SH"));
       procedimentos.push({
         codigo,
-        nome: campo(l, layP, "NO_PROCEDIMENTO"),
+        nome,
+        descricao: descricoes.get(codigo) ?? "",
         valor: sa > 0 ? sa : sh,
         cbosCompativeis: [...new Set(cbos.get(codigo) ?? [])].sort(),
         cidsCompativeis: [...new Set(cids.get(codigo) ?? [])].sort(),
@@ -299,11 +403,42 @@ Deno.serve(async (req) => {
       });
     }
 
-    if (procedimentos.length < MINIMO_ESPERADO_0304) {
+    const compatibilidades: Record<string, Record<string, unknown>[]> = {};
+    let vinculos0605 = 0;
+    for (const l of txt["rl_procedimento_compativel.txt"].split(/\r?\n/)) {
+      const principal10 = campo(l, layComp, "CO_PROCEDIMENTO_PRINCIPAL");
+      const compativel10 = campo(l, layComp, "CO_PROCEDIMENTO_COMPATIVEL");
+      if (!noRecorte(principal10)) continue;
+      const principal = principal10.replace(/^0+/, "");
+      const compativel = compativel10.replace(/^0+/, "");
+      if (noRecorte(compativel10) && compativel10.startsWith("0605")) vinculos0605++;
+      const categoria = categoriaCompatibilidade(
+        campo(l, layComp, "CO_REGISTRO_PRINCIPAL"),
+        campo(l, layComp, "CO_REGISTRO_COMPATIVEL"),
+        campo(l, layComp, "TP_COMPATIBILIDADE"),
+      );
+      const item = {
+        categoria,
+        codigo: compativel,
+        nome: nomesProcedimentos.get(compativel) ?? compativel,
+        quantidade: Number(campo(l, layComp, "QT_PERMITIDA")) || 0,
+        desde: competenciaCurta(campo(l, layComp, "DT_COMPETENCIA")),
+      };
+      (compatibilidades[principal] ??= []).push(item);
+    }
+    for (const lista of Object.values(compatibilidades)) {
+      lista.sort((a, b) => String(a.codigo).localeCompare(String(b.codigo)) || String(a.categoria).localeCompare(String(b.categoria)));
+    }
+
+    const total0304 = procedimentos.filter((p) => String(p.codigo).startsWith("304")).length;
+    const total0605 = procedimentos.filter((p) => String(p.codigo).startsWith("605")).length;
+    const semDescricao0605 = procedimentos.filter((p) => String(p.codigo).startsWith("605") && !p.descricao).length;
+    const totalVinculos = Object.values(compatibilidades).reduce((s, lista) => s + lista.length, 0);
+    if (total0304 < MINIMO_ESPERADO_0304 || total0605 < MINIMO_ESPERADO_0605 || semDescricao0605 > 0 || vinculos0605 === 0) {
       throw new Critica(
         "validacao",
-        `Apenas ${procedimentos.length} procedimentos do subgrupo 0304 foram lidos (esperado: pelo menos ${MINIMO_ESPERADO_0304}).`,
-        "As posições das colunas podem ter mudado. A base não foi substituída; revisar a leitura do arquivo.",
+        `A leitura ficou incompleta: ${total0304} procedimentos 0304, ${total0605} medicamentos 0605, ${semDescricao0605} descrições 0605 ausentes e ${vinculos0605} vínculos com 0605.`,
+        "As posições das colunas ou o conteúdo do pacote podem ter mudado. A base não foi substituída; revisar a leitura dos procedimentos, descrições e compatibilidades.",
       );
     }
 
@@ -312,14 +447,17 @@ Deno.serve(async (req) => {
       arquivo: alvo.nome,
       total_procedimentos: procedimentos.length,
       procedimentos,
+      compatibilidades,
+      versao_importador: VERSAO_IMPORTADOR,
+      created_at: new Date().toISOString(),
     });
     if (error) throw new Critica("gravacao", `Falha ao gravar a base: ${error.message}.`, "Problema no armazenamento; nova tentativa automática amanhã.");
 
     return await finalizar(
       "sucesso",
-      `Competência ${competencia} importada do DATASUS: ${procedimentos.length} procedimentos do subgrupo 0304.`,
+      `Competência ${competencia} importada do DATASUS: ${total0304} procedimentos 0304 e ${total0605} medicamentos 0605, com descrições e ${totalVinculos} vínculos de compatibilidade.`,
       competencia,
-      { arquivo: alvo.nome, total: procedimentos.length },
+      { arquivo: alvo.nome, total: procedimentos.length, total0304, total0605, totalVinculos, vinculos0605 },
     );
   } catch (e) {
     ftp.fechar();

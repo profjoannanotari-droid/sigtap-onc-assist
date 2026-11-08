@@ -11,7 +11,7 @@ import { executarSincronizacao, ultimasSincronizacoes, type RegistroSincronizaca
 import { atualizacaoInfo } from "@/data/atualizacao";
 import type { Procedimento } from "@/data/sigtap";
 
-interface Base { competencia: string; arquivo: string; total_procedimentos: number; procedimentos: Procedimento[]; created_at: string }
+interface Base { competencia: string; arquivo: string; total_procedimentos: number; procedimentos: Procedimento[]; compatibilidades?: Record<string, unknown[]>; created_at: string }
 interface Diff { competencia: string; anterior: string | null; data: string; arquivo: string; total: number; novos: string[]; alterados: string[]; excluidos: string[] }
 
 const ordem = (c: string) => { const [m, a] = c.split("/"); return Number(a) * 100 + Number(m); };
@@ -97,7 +97,7 @@ export default function Atualizacoes() {
           <Card><CardHeader className="pb-2"><CardTitle className="text-sm text-muted-foreground">Status da última busca</CardTitle></CardHeader>
             <CardContent className="space-y-1">{ultima ? <><StatusBadge s={ultima.status} /><p className="text-xs text-muted-foreground">{fmt(ultima.created_at)}</p></> : <p className="text-sm">Nenhuma busca registrada</p>}</CardContent></Card>
           <Card><CardHeader className="pb-2"><CardTitle className="text-sm text-muted-foreground">Competência em uso</CardTitle></CardHeader>
-            <CardContent><p className="text-2xl font-bold">{atualizacaoInfo.competencia}</p><p className="text-xs text-muted-foreground">{atualizacaoInfo.totalProcedimentos} procedimentos</p></CardContent></Card>
+            <CardContent><p className="text-2xl font-bold">{atualizacaoInfo.competencia}</p><p className="text-xs text-muted-foreground">{atualizacaoInfo.totalProcedimentos} procedimentos nos subgrupos 0304 e 0605</p></CardContent></Card>
           <Card><CardHeader className="pb-2"><CardTitle className="text-sm text-muted-foreground">Última busca bem-sucedida</CardTitle></CardHeader>
             <CardContent><p className="text-base font-semibold">{ultimoSucesso ? fmt(ultimoSucesso.created_at) : "—"}</p><p className="text-xs text-muted-foreground">{ultimoSucesso?.competencia ?? ""}</p></CardContent></Card>
           <Card className={falhasSeguidas ? "border-destructive" : ""}><CardHeader className="pb-2"><CardTitle className="text-sm text-muted-foreground">Falhas seguidas</CardTitle></CardHeader>

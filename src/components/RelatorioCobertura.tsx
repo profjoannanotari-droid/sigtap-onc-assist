@@ -128,7 +128,7 @@ export function RelatorioCobertura({ linhas }: { linhas: LinhaCobertura[] }) {
       )
       .join("");
     const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Cobertura CID x Formas de Organização</title></head><body style="font-family:Arial,sans-serif;color:#1e293b">
-<h1 style="color:#0891b2">Cobertura de CID-10 por formas de organização (SIGTAP 0304)</h1>
+<h1 style="color:#0891b2">Cobertura de CID-10 por formas de organização (SIGTAP 0304 e 0605)</h1>
 <p>Objetivo: identificar CIDs oncológicos sem código de procedimento disponível para tratar o paciente em cada forma de organização.</p>
 <p><em>Gerado em ${new Date().toLocaleString("pt-BR")} — ${linhas.length} CIDs analisados.</em></p>
 <h2>Resumo por quantidade de formas atendidas</h2>
@@ -143,12 +143,12 @@ ${secoes}</body></html>`;
       const amostra = linhasDetalhe;
       await gerarRelatorioPDF({
         titulo: "Cobertura de CID-10 por formas de organização",
-        subtitulo: "Distribuição dos CIDs oncológicos conforme o número de formas de organização do subgrupo 0304 com código disponível",
+        subtitulo: "Distribuição dos CIDs oncológicos conforme o número de formas de organização dos subgrupos 0304 e 0605 com código disponível",
         badges: [`${linhas.length} CIDs`, `${totalFormas} formas`, `Gerado em ${new Date().toLocaleDateString("pt-BR")}`],
         contextoIA: {
           tipo: "auditoria",
           resumoDados:
-            `Estudo de cobertura assistencial: ${linhas.length} CIDs oncológicos avaliados contra as ${totalFormas} formas de organização do subgrupo 0304 do SIGTAP. ` +
+            `Estudo de cobertura assistencial: ${linhas.length} CIDs oncológicos avaliados contra as ${totalFormas} formas de organização dos subgrupos 0304 e 0605 do SIGTAP. ` +
             `Distribuição: ${grupos.map((g) => `${g.qtd} formas: ${g.linhas.length} CIDs`).join("; ")}. ` +
             `O objetivo é identificar em quais CIDs não existe código de procedimento para tratar o paciente.`,
           publicoAlvo: "Gestão, auditoria e faturamento em oncologia (SUS)",

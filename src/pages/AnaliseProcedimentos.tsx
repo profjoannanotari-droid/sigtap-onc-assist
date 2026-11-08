@@ -145,17 +145,17 @@ export default function AnaliseProcedimentos() {
 
       const resumo = especifico
         ? `Análise ESPECÍFICA do recorte solicitado nos filtros (${descricaoFiltros}) sobre a cobertura de CID-10 ` +
-          `pelas formas de organização do subgrupo 0304 (SIGTAP). ` +
+          `pelas formas de organização dos subgrupos 0304 e 0605 (SIGTAP). ` +
           `${filtradas.length} CIDs correspondem ao recorte, de um total de ${matriz.length} CIDs oncológicos da base. ` +
           `Lacunas dentro do recorte: ${resumoEscopo.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} sem código`).join("; ")}. ` +
-          `${filtradas.filter((l) => l.totalProcedimentos === 0).length} CIDs do recorte não possuem qualquer procedimento do subgrupo 0304. ` +
+          `${filtradas.filter((l) => l.totalProcedimentos === 0).length} CIDs do recorte não possuem qualquer procedimento dos subgrupos 0304 e 0605. ` +
           `A análise deve tratar exclusivamente deste recorte, suas implicações assistenciais e de faturamento, sem generalizar para toda a tabela.`
-        : `Análise de cobertura de CID-10 por forma de organização do subgrupo 0304 (SIGTAP). ` +
+        : `Análise de cobertura de CID-10 por forma de organização dos subgrupos 0304 e 0605 (SIGTAP). ` +
           `${matriz.length} CIDs oncológicos analisados contra ${procedimentosBase.length} procedimentos da competência ${competencia}. ` +
           `Filtro: ${descricaoFiltros}. ` +
           `${filtradas.length} CIDs listados. ` +
           `Lacunas por forma: ${resumoPorForma.map((f) => `${f.curto} ${f.nome}: ${f.semCodigo} CIDs sem código`).join("; ")}. ` +
-          `${semNenhum.length} CIDs não possuem qualquer procedimento do subgrupo 0304. ` +
+          `${semNenhum.length} CIDs não possuem qualquer procedimento dos subgrupos 0304 e 0605. ` +
           `Confronto com a fonte oficial ${fonteCidOficial.nome} (universo ${fonteCidOficial.universo} códigos, escopo ${fonteCidOficial.escopo}): ` +
           `${cidsAusentesSigtap.length} códigos oncológicos oficiais sequer constam da tabela SIGTAP ` +
           `(${ausentesPorGrupo.map((g) => `${g.nome}: ${g.qtd}`).join("; ")}).`;
@@ -215,8 +215,8 @@ export default function AnaliseProcedimentos() {
           ? "Análise Específica — Recorte de Filtros"
           : "Análise de Procedimentos por Forma de Organização",
         subtitulo: especifico
-          ? `Cobertura de CID-10 no subgrupo 0304 para o recorte: ${descricaoFiltros}`
-          : "Cobertura de CID-10 no subgrupo 0304 (Tratamento em Oncologia) e identificação de lacunas",
+          ? `Cobertura de CID-10 nos subgrupos 0304 e 0605 para o recorte: ${descricaoFiltros}`
+          : "Cobertura de CID-10 nos subgrupos 0304 e 0605 e identificação de lacunas",
         badges: [
           `Competência ${competencia}`,
           `${filtradas.length} CIDs listados`,
@@ -247,7 +247,7 @@ export default function AnaliseProcedimentos() {
               l.codigo,
               l.descricao,
               l.faltantes.length === formasOrganizacao.length
-                ? "TODAS (sem procedimento no 0304)"
+                ? "TODAS (sem procedimento no 0304/0605)"
                 : l.faltantes.map((c) => formasOrganizacao.find((f) => f.codigo === c)?.curto).join(", ") || "—",
             ]),
           },
@@ -276,7 +276,7 @@ export default function AnaliseProcedimentos() {
             <Grid3x3 className="w-6 h-6" /> Análise de Procedimentos
           </h1>
           <p className="text-primary-foreground/80 text-xs sm:text-sm mt-1">
-            Cobertura de CID-10 pelas formas de organização do subgrupo 0304 e relatório de lacunas
+            Cobertura de CID-10 pelas formas de organização dos subgrupos 0304 e 0605 e relatório de lacunas
           </p>
         </div>
       </header>
@@ -440,7 +440,7 @@ export default function AnaliseProcedimentos() {
                     <TableCell className="text-xs align-top">
                       <span className="block leading-snug break-words">{l.descricao}</span>
                       {l.totalProcedimentos === 0 && (
-                        <Badge variant="destructive" className="mt-1 text-[10px]">sem procedimento no 0304</Badge>
+                        <Badge variant="destructive" className="mt-1 text-[10px]">sem procedimento no 0304/0605</Badge>
                       )}
                     </TableCell>
                     {formasOrganizacao.map((f) => (

@@ -155,7 +155,7 @@ export default function AuditoriaCompatibilidades() {
   async function exportarPDF() {
     setGerandoPdf(true);
     try {
-      const resumo = `Auditoria de compatibilidades da competência ${competencia} com ${stats.totalProc} procedimentos do subgrupo 0304 (SIGTAP). ` +
+      const resumo = `Auditoria de compatibilidades da competência ${competencia} com ${stats.totalProc} procedimentos dos subgrupos 0304 e 0605 (SIGTAP). ` +
         `Total de ${stats.totalRelacoes} relações no sistema vs ${stats.totalEsperadas} relações brutas (diretas + reversas com duplicatas) na base SIGTAP. ` +
         `${stats.comDivergencia} procedimento(s) com divergência detectada.`;
       await gerarRelatorioPDF({
@@ -218,7 +218,7 @@ export default function AuditoriaCompatibilidades() {
       const resumo =
         `Atualização SIGTAP da competência ${atualizacaoInfo.competenciaAnterior} para ${atualizacaoInfo.competencia} ` +
         `(${atualizacaoInfo.mesNome}), aplicada em ${atualizacaoInfo.dataAtualizacao}. ` +
-        `Total de ${atualizacaoInfo.totalProcedimentos} procedimentos do subgrupo 0304 (oncologia). ` +
+        `Total de ${atualizacaoInfo.totalProcedimentos} procedimentos dos subgrupos 0304 e 0605. ` +
         `Mudanças detectadas: ${resumoMudancas.adicionados} novo(s), ${resumoMudancas.removidos} removido(s), ` +
         `${resumoMudancas.valorAlterado} com valor alterado, ${resumoMudancas.cidsAlterado} com CIDs alterados, ` +
         `${resumoMudancas.cbosAlterado} com CBOs alterados, ${resumoMudancas.compatAlterado} relação(ões) de compatibilidade modificada(s).`;
@@ -242,7 +242,7 @@ export default function AuditoriaCompatibilidades() {
               { chave: "Competência atual", valor: atualizacaoInfo.competencia },
               { chave: "Competência anterior", valor: atualizacaoInfo.competenciaAnterior },
               { chave: "Data da atualização", valor: atualizacaoInfo.dataAtualizacao },
-              { chave: "Procedimentos no subgrupo 0304", valor: String(atualizacaoInfo.totalProcedimentos) },
+              { chave: "Procedimentos nos subgrupos 0304 e 0605", valor: String(atualizacaoInfo.totalProcedimentos) },
               { chave: "Procedimentos adicionados", valor: String(resumoMudancas.adicionados) },
               { chave: "Procedimentos removidos", valor: String(resumoMudancas.removidos) },
               { chave: "Mudanças de valor SUS", valor: String(resumoMudancas.valorAlterado) },

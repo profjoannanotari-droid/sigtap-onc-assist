@@ -56,13 +56,13 @@ export function SeletorCompetencia({ bases, base, competencia, onChange, onRecar
     try {
       const snap = await parseProcedimentosXLS(file);
       if (snap.totalProcedimentos === 0) {
-        toast({ title: "Arquivo sem procedimentos 0304", description: "Verifique se é a TABELA_PROCEDIMENTO do SIGTAP.", variant: "destructive" });
+        toast({ title: "Arquivo sem procedimentos 0304 ou 0605", description: "Verifique se é a TABELA_PROCEDIMENTO do SIGTAP.", variant: "destructive" });
         return;
       }
       salvarCompetenciaUpload(novaComp, snap);
       onRecarregar();
       onChange(novaComp);
-      toast({ title: `Competência ${novaComp} importada`, description: `${snap.totalProcedimentos} procedimentos do subgrupo 0304.` });
+      toast({ title: `Competência ${novaComp} importada`, description: `${snap.totalProcedimentos} procedimentos dos subgrupos 0304 e 0605.` });
       setNovaComp("");
     } catch (e) {
       toast({ title: "Falha ao ler o arquivo", description: (e as Error).message, variant: "destructive" });

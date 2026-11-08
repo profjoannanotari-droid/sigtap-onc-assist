@@ -1,6 +1,7 @@
 // Integração com a sincronização automática da Tabela Unificada (DATASUS).
 import { supabase } from "@/integrations/supabase/client";
 import { aplicarBaseNuvem, type Procedimento } from "@/data/sigtap";
+import { aplicarCompatibilidadesNuvem, type Compatibilidade } from "@/data/compatibilidade";
 import { atualizacaoInfo } from "@/data/atualizacao";
 
 export interface RegistroSincronizacao {
@@ -8,7 +9,7 @@ export interface RegistroSincronizacao {
   status: "sucesso" | "sem_novidade" | "falha" | "executando";
   competencia: string | null;
   mensagem: string;
-  detalhes: { etapa?: string; ajuste?: string; arquivo?: string; total?: number } | null;
+  detalhes: { etapa?: string; ajuste?: string; arquivo?: string; total?: number; total0304?: number; total0605?: number; totalVinculos?: number; vinculos0605?: number } | null;
   created_at: string;
 }
 
@@ -37,22 +38,33 @@ export async function executarSincronizacao(): Promise<RegistroSincronizacao> {
   return (await r.json()) as RegistroSincronizacao;
 }
 
-/** Na abertura do sistema: se houver competência baixada mais nova que a compilada, passa a usá-la. */
+interface BaseRemota {
+  competencia: string;
+  procedimentos: Procedimento[];
+  compatibilidades: Record<string, Compatibilidade[]> | null;
+  versao_importador: number;
+  created_at: string;
+}
+
+/** Na abertura: usa competência mais nova ou uma revisão mais completa da mesma competência. */
 export async function carregarBaseMaisRecente(prazoMs = 3500) {
   try {
     const consulta = supabase
       .from("sigtap_bases" as never)
-      .select("competencia, arquivo, procedimentos, created_at")
+      .select("competencia, arquivo, procedimentos, compatibilidades, versao_importador, created_at")
       .order("created_at", { ascending: false })
       .limit(5);
     const { data } = (await Promise.race([
       consulta,
       new Promise((r) => setTimeout(() => r({ data: null }), prazoMs)),
-    ])) as { data: { competencia: string; procedimentos: Procedimento[]; created_at: string }[] | null };
+    ])) as { data: BaseRemota[] | null };
     if (!data?.length) return;
     const maisNova = [...data].sort((a, b) => ordem(b.competencia) - ordem(a.competencia))[0];
-    if (ordem(maisNova.competencia) <= ordem(atualizacaoInfo.competencia)) return;
+    const diferencaCompetencia = ordem(maisNova.competencia) - ordem(atualizacaoInfo.competencia);
+    if (diferencaCompetencia < 0) return;
+    if (diferencaCompetencia === 0 && maisNova.versao_importador <= atualizacaoInfo.versaoImportador) return;
     aplicarBaseNuvem(maisNova.procedimentos);
+    if (maisNova.compatibilidades) aplicarCompatibilidadesNuvem(maisNova.compatibilidades);
     const [m, a] = maisNova.competencia.split("/");
     const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
     Object.assign(atualizacaoInfo as Record<string, unknown>, {
@@ -61,6 +73,7 @@ export async function carregarBaseMaisRecente(prazoMs = 3500) {
       mesNome: `${meses[Number(m) - 1]}/${a}`,
       dataAtualizacao: new Date(maisNova.created_at).toLocaleDateString("pt-BR"),
       totalProcedimentos: maisNova.procedimentos.length,
+      versaoImportador: maisNova.versao_importador,
     });
   } catch {
     /* mantém a base compilada */

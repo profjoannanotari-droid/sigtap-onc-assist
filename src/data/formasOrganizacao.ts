@@ -1,4 +1,4 @@
-// Nomenclatura oficial das formas de organização (subgrupo 0304)
+// Nomenclatura oficial das formas de organização (subgrupos 0304 e 0605)
 export const formasOrganizacao = [
   { codigo: "030401", curto: "30401", nome: "RADIOTERAPIA" },
   { codigo: "030402", curto: "30402", nome: "PALIATIVO" },
@@ -10,4 +10,7 @@ export const formasOrganizacao = [
   { codigo: "030408", curto: "30408", nome: "PROCEDIMENTOS ESPECIAIS" },
   { codigo: "030409", curto: "30409", nome: "MEDICINA NUCLEAR" },
   { codigo: "030410", curto: "30410", nome: "GERAIS EM ONCOLOGIA" },
+  { codigo: "060501", curto: "60501", nome: "COMPRA CENTRALIZADA" },
+  { codigo: "060502", curto: "60502", nome: "NEGOCIAÇÃO NACIONAL" },
+  { codigo: "060503", curto: "60503", nome: "COMPRA DESCENTRALIZADA" },
 ];

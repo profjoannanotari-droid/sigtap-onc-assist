@@ -47,8 +47,8 @@ export function HistoricoAtualizacoes() {
       await gerarRelatorioPDF({
         titulo: `Auditoria da competência ${base.competencia}`,
         subtitulo: anterior
-          ? `Comparação com a competência ${anterior.competencia} · subgrupo 0304 (Oncologia)`
-          : "Primeira competência registrada no sistema · subgrupo 0304 (Oncologia)",
+          ? `Comparação com a competência ${anterior.competencia} · subgrupos 0304 e 0605`
+          : "Primeira competência registrada no sistema · subgrupos 0304 e 0605",
         badges: [
           origemRotulo[base.origem],
           `${base.procedimentos.length} procedimentos`,
@@ -60,7 +60,7 @@ export function HistoricoAtualizacoes() {
           resumoDados:
             `Auditoria da competência ${base.competencia}` +
             (anterior ? ` frente à competência ${anterior.competencia}` : "") +
-            `. ${base.procedimentos.length} procedimentos no subgrupo 0304, ` +
+            `. ${base.procedimentos.length} procedimentos nos subgrupos 0304 e 0605, ` +
             `${diffs.length} alteração(ões) de cadastro e ${compat.length} procedimento(s) com ` +
             `${totalVinculos} mudança(s) nas regras de compatibilidade.`,
           publicoAlvo: "Auditoria e faturamento em oncologia (SUS)",

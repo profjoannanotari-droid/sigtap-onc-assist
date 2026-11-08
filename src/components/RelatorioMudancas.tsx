@@ -34,7 +34,7 @@ export function RelatorioMudancas() {
   const narrativa = useMemo(() => {
     const partes: string[] = [];
     partes.push(
-      `A tabela SIGTAP do subgrupo 0304 (Tratamento em Oncologia) foi atualizada da competência ` +
+      `A tabela SIGTAP dos subgrupos 0304 e 0605 (Oncologia e Assistência Farmacêutica) foi atualizada da competência ` +
         `${atualizacaoInfo.competenciaAnterior} para ${atualizacaoInfo.competencia} (${atualizacaoInfo.mesNome}), ` +
         `em ${atualizacaoInfo.dataAtualizacao}, totalizando ${atualizacaoInfo.totalProcedimentos} procedimentos.`,
     );
@@ -93,7 +93,7 @@ export function RelatorioMudancas() {
               { chave: "Competência atual", valor: atualizacaoInfo.competencia },
               { chave: "Competência anterior", valor: atualizacaoInfo.competenciaAnterior },
               { chave: "Data da atualização", valor: atualizacaoInfo.dataAtualizacao },
-              { chave: "Procedimentos no subgrupo 0304", valor: String(atualizacaoInfo.totalProcedimentos) },
+              { chave: "Procedimentos nos subgrupos 0304 e 0605", valor: String(atualizacaoInfo.totalProcedimentos) },
               { chave: "Procedimentos incluídos", valor: String(resumoMudancas.adicionados) },
               { chave: "Procedimentos excluídos", valor: String(resumoMudancas.removidos) },
               { chave: "Valores alterados", valor: String(resumoMudancas.valorAlterado) },
@@ -127,7 +127,7 @@ export function RelatorioMudancas() {
                   titulo: "Mudanças no cadastro dos procedimentos",
                   texto:
                     "Não houve inclusão, exclusão ou alteração de valor, nome, CIDs, CBOs, faixa etária ou sexo " +
-                    "nos procedimentos do subgrupo 0304 nesta competência.",
+                    "nos procedimentos dos subgrupos 0304 e 0605 nesta competência.",
                 },
               ])),
           ...(totalCompat > 0
